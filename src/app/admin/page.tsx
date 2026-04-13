@@ -1,43 +1,34 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
+import Link from 'next/link'
 
 export default async function AdminDashboardPage() {
   const supabase = await createServerSupabaseClient()
 
   const [
-    { count: projectCount },
-    { count: publishedCount },
-    { count: leadCount },
-    { count: newLeadCount },
+    { count: furnitureCount },
+    { count: providerCount },
+    { count: propertyCount },
   ] = await Promise.all([
-    supabase.from('projects').select('*', { count: 'exact', head: true }),
-    supabase.from('projects').select('*', { count: 'exact', head: true }).eq('is_published', true),
-    supabase.from('leads').select('*', { count: 'exact', head: true }),
-    supabase.from('leads').select('*', { count: 'exact', head: true }).eq('internal_status', 'new'),
+    supabase.from('furniture_items').select('*', { count: 'exact', head: true }),
+    supabase.from('providers').select('*', { count: 'exact', head: true }),
+    supabase.from('properties').select('*', { count: 'exact', head: true }),
   ])
 
-  const stats = [
-    { label: 'Total Projects', value: projectCount ?? 0 },
-    { label: 'Published', value: publishedCount ?? 0 },
-    { label: 'Total Leads', value: leadCount ?? 0 },
-    { label: 'New Leads', value: newLeadCount ?? 0 },
-  ]
-
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-stone-900">Dashboard</h1>
-      <p className="mt-1 text-sm text-stone-500">Overview of your projects and leads.</p>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+      <p className="mt-1 text-sm text-gray-500">Manage furniture catalog, providers, and platform data.</p>
 
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-xl border border-stone-200 bg-white p-6"
-          >
-            <p className="text-xs font-medium uppercase tracking-wider text-stone-400">
-              {stat.label}
-            </p>
-            <p className="mt-2 text-3xl font-semibold text-stone-900">{stat.value}</p>
-          </div>
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {[
+          { label: 'Furniture Items', value: furnitureCount ?? 0, href: '/admin/furniture' },
+          { label: 'Providers', value: providerCount ?? 0, href: '/admin/providers' },
+          { label: 'Total Properties', value: propertyCount ?? 0, href: '#' },
+        ].map((stat) => (
+          <Link key={stat.label} href={stat.href} className="rounded-xl border border-gray-200 bg-white p-6 hover:border-blue-300 transition-colors">
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">{stat.label}</p>
+            <p className="mt-2 text-3xl font-bold text-gray-900">{stat.value}</p>
+          </Link>
         ))}
       </div>
     </div>

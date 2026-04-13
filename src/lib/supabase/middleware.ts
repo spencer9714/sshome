@@ -29,16 +29,26 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Protect /admin routes
-  if (request.nextUrl.pathname.startsWith('/admin')) {
+  const path = request.nextUrl.pathname
+
+  // Protect authenticated routes
+  const authRequired = path.startsWith('/dashboard') || path.startsWith('/properties') || path.startsWith('/catalog')
+  if (authRequired && !user) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    url.searchParams.set('redirect', path)
+    return NextResponse.redirect(url)
+  }
+
+  // Protect /admin routes (requires admin role)
+  if (path.startsWith('/admin')) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'
-      url.searchParams.set('redirect', request.nextUrl.pathname)
+      url.searchParams.set('redirect', path)
       return NextResponse.redirect(url)
     }
 
-    // Check admin role
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
@@ -47,27 +57,18 @@ export async function updateSession(request: NextRequest) {
 
     if (!profile || profile.role !== 'admin') {
       const url = request.nextUrl.clone()
-      url.pathname = '/login'
-      url.searchParams.set('error', 'unauthorized')
+      url.pathname = '/dashboard'
       return NextResponse.redirect(url)
     }
   }
 
-  // Redirect logged-in admins away from /login
-  if (request.nextUrl.pathname === '/login' && user) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', user.id)
-      .single()
-
-    if (profile?.role === 'admin') {
-      const redirect = request.nextUrl.searchParams.get('redirect') || '/admin'
-      const url = request.nextUrl.clone()
-      url.pathname = redirect
-      url.search = ''
-      return NextResponse.redirect(url)
-    }
+  // Redirect logged-in users away from /login
+  if (path === '/login' && user) {
+    const redirect = request.nextUrl.searchParams.get('redirect') || '/dashboard'
+    const url = request.nextUrl.clone()
+    url.pathname = redirect
+    url.search = ''
+    return NextResponse.redirect(url)
   }
 
   return supabaseResponse

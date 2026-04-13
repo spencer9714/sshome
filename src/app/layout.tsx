@@ -12,27 +12,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | STR Design & Staging in California`,
+    default: `${SITE_NAME} | AI Furniture Planning for Airbnb`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  openGraph: {
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
 }
 
 export default function RootLayout({

@@ -1,107 +1,93 @@
-export const SITE_NAME = 'SSHome Staging'
-export const SITE_DESCRIPTION = 'Designing high-performing Airbnbs across California. Staging, design, and setup for short-term rentals.'
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sshomestaging.com'
-
-export const PROPERTY_TYPES = [
-  'SFH',
-  'Condo',
-  'Townhouse',
-  'Cabin',
-  'Pool Home',
-] as const
+export const SITE_NAME = 'FurnishAI'
+export const SITE_DESCRIPTION = 'AI-powered furniture planning for Airbnb hosts. Upload your floor plan, set your style and budget, and get a complete room layout instantly.'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://furnishai.com'
 
 export const STYLE_OPTIONS = [
+  'Modern',
+  'Minimalist',
   'Japandi',
-  'Desert Modern',
-  'Soft Modern',
   'Coastal',
+  'Bohemian',
+  'Industrial',
+  'Scandinavian',
+  'Mid-Century Modern',
+  'Cozy / Warm',
 ] as const
 
-export const BUDGET_RANGES = [
-  'Under $15k',
-  '$15k - $30k',
-  '$30k+',
+export const FURNITURE_CATEGORIES = [
+  'sofa',
+  'armchair',
+  'coffee_table',
+  'side_table',
+  'tv_stand',
+  'dining_table',
+  'dining_chair',
+  'bed',
+  'nightstand',
+  'dresser',
+  'wardrobe',
+  'desk',
+  'office_chair',
+  'bookshelf',
+  'rug',
+  'lamp',
+  'other',
 ] as const
 
-export const GOAL_OPTIONS = [
-  'New listing',
-  'Refresh',
-  'Reposition',
-] as const
+export const FURNITURE_CATEGORY_LABELS: Record<string, string> = {
+  sofa: 'Sofa',
+  armchair: 'Armchair',
+  coffee_table: 'Coffee Table',
+  side_table: 'Side Table',
+  tv_stand: 'TV Stand',
+  dining_table: 'Dining Table',
+  dining_chair: 'Dining Chair',
+  bed: 'Bed',
+  nightstand: 'Nightstand',
+  dresser: 'Dresser',
+  wardrobe: 'Wardrobe',
+  desk: 'Desk',
+  office_chair: 'Office Chair',
+  bookshelf: 'Bookshelf',
+  rug: 'Rug',
+  lamp: 'Lamp',
+  other: 'Other',
+}
 
-export const TARGET_GUEST_OPTIONS = [
-  'Couples',
-  'Families',
-  'Business travelers',
-  'Groups',
-  'Luxury travelers',
-  'Digital nomads',
-] as const
-
-export const CURRENT_STATUS_OPTIONS = [
-  'New listing',
-  'Refresh existing listing',
-  'Reposition / rebrand',
-  'Renovating soon',
-] as const
-
-export const SCOPE_OPTIONS = [
-  'Turnkey Airbnb Launch',
-  'Refresh / Re-Stage',
-  'Design-only (remote)',
-  'Outdoor areas',
-  'Kids room',
-  'Themed rooms',
-  'Photo styling',
-] as const
-
-export const TIMELINE_OPTIONS = [
-  'ASAP',
-  'Within 1 month',
-  '1-3 months',
-  '3+ months',
-  'Flexible',
-] as const
-
-export const FURNISHING_BUDGET_OPTIONS = [
-  'Under $10k',
-  '$10k - $20k',
-  '$20k - $35k',
-  '$35k - $50k',
-  '$50k+',
-] as const
-
-export const SERVICE_BUDGET_OPTIONS = [
-  'Under $3k',
-  '$3k - $5k',
-  '$5k - $10k',
-  '$10k+',
-] as const
-
-export const SPACE_OPTIONS = [
+export const ROOM_TYPES = [
   'Living Room',
   'Bedroom',
-  'Bathroom',
+  'Master Bedroom',
   'Kitchen',
-  'Dining',
-  'Outdoor',
-  'Entryway',
+  'Dining Room',
+  'Bathroom',
   'Office',
+  'Balcony',
+  'Hallway',
   'Other',
 ] as const
 
-export const LEAD_STATUS_OPTIONS = [
-  'new',
-  'contacted',
-  'quoted',
-  'won',
-  'lost',
-] as const
+export const WALL_POSITIONS = ['top', 'right', 'bottom', 'left'] as const
 
-export const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/quote', label: 'Get a Quote' },
-] as const
+export const CURRENCY_OPTIONS = ['USD', 'TWD', 'CAD', 'AUD', 'EUR', 'GBP'] as const
+
+// Category colors for 2D canvas
+export const CATEGORY_COLORS: Record<string, string> = {
+  sofa: '#93c5fd',
+  armchair: '#a5b4fc',
+  coffee_table: '#6ee7b7',
+  side_table: '#6ee7b7',
+  tv_stand: '#fca5a5',
+  dining_table: '#fcd34d',
+  dining_chair: '#fde68a',
+  bed: '#c4b5fd',
+  nightstand: '#ddd6fe',
+  dresser: '#e9d5ff',
+  wardrobe: '#f5d0fe',
+  desk: '#fed7aa',
+  office_chair: '#fdba74',
+  bookshelf: '#a7f3d0',
+  rug: '#fecaca',
+  lamp: '#fef08a',
+  other: '#e5e7eb',
+}

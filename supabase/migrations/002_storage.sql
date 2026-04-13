@@ -1,52 +1,52 @@
 -- ============================================================
--- Storage Bucket & Policies
+-- FurnishAI - Storage Buckets
 -- ============================================================
--- NOTE: Run this in Supabase SQL editor or via CLI.
--- The bucket creation may need to be done via the Supabase Dashboard
--- if running via migrations (storage.buckets isn't always available in migrations).
 
--- Create the portfolio bucket (public read)
+-- Floor plan images (private)
 INSERT INTO storage.buckets (id, name, public)
-VALUES ('portfolio', 'portfolio', true)
+VALUES ('floor-plans', 'floor-plans', false)
 ON CONFLICT (id) DO NOTHING;
 
--- Policy: Anyone can read objects in portfolio bucket
-CREATE POLICY "Public can read portfolio images"
-  ON storage.objects FOR SELECT
-  USING (bucket_id = 'portfolio');
+-- Furniture product images (public)
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('furniture', 'furniture', true)
+ON CONFLICT (id) DO NOTHING;
 
--- Policy: Only admins can upload to portfolio bucket
-CREATE POLICY "Admins can upload portfolio images"
+-- floor-plans: authenticated users can upload
+CREATE POLICY "Authenticated users can upload floor plans"
   ON storage.objects FOR INSERT
-  WITH CHECK (
-    bucket_id = 'portfolio'
-    AND EXISTS (
-      SELECT 1 FROM public.profiles
-      WHERE id = auth.uid()
-      AND role = 'admin'
-    )
-  );
+  WITH CHECK (bucket_id = 'floor-plans' AND auth.role() = 'authenticated');
 
--- Policy: Only admins can update objects in portfolio bucket
-CREATE POLICY "Admins can update portfolio images"
-  ON storage.objects FOR UPDATE
+-- floor-plans: users can view files in their own folder (user_id/...)
+CREATE POLICY "Users can view own floor plans"
+  ON storage.objects FOR SELECT
   USING (
-    bucket_id = 'portfolio'
-    AND EXISTS (
-      SELECT 1 FROM public.profiles
-      WHERE id = auth.uid()
-      AND role = 'admin'
-    )
+    bucket_id = 'floor-plans'
+    AND auth.uid()::text = (storage.foldername(name))[1]
   );
 
--- Policy: Only admins can delete objects in portfolio bucket
-CREATE POLICY "Admins can delete portfolio images"
+CREATE POLICY "Users can delete own floor plans"
   ON storage.objects FOR DELETE
   USING (
-    bucket_id = 'portfolio'
-    AND EXISTS (
-      SELECT 1 FROM public.profiles
-      WHERE id = auth.uid()
-      AND role = 'admin'
-    )
+    bucket_id = 'floor-plans'
+    AND auth.uid()::text = (storage.foldername(name))[1]
+  );
+
+-- furniture images: public read, admin write
+CREATE POLICY "Public can view furniture images"
+  ON storage.objects FOR SELECT
+  USING (bucket_id = 'furniture');
+
+CREATE POLICY "Admins can upload furniture images"
+  ON storage.objects FOR INSERT
+  WITH CHECK (
+    bucket_id = 'furniture'
+    AND EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin')
+  );
+
+CREATE POLICY "Admins can delete furniture images"
+  ON storage.objects FOR DELETE
+  USING (
+    bucket_id = 'furniture'
+    AND EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin')
   );

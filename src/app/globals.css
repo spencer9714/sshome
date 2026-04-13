@@ -1,40 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #faf9f7;
-  --color-foreground: #1a1a1a;
-  --color-stone-50: #fafaf9;
-  --color-stone-100: #f5f5f4;
-  --color-stone-200: #e7e5e4;
-  --color-stone-300: #d6d3d1;
-  --color-stone-400: #a8a29e;
-  --color-stone-500: #78716c;
-  --color-stone-600: #57534e;
-  --color-stone-700: #44403c;
-  --color-stone-800: #292524;
-  --color-stone-900: #1c1917;
-  --color-warm-50: #fdf8f0;
-  --color-warm-100: #f5ebe0;
-  --color-warm-200: #e8d5c0;
-  --color-warm-300: #d4b896;
-  --color-warm-400: #c49a6c;
-  --color-warm-500: #b07d4f;
-  --color-warm-600: #9a6a3f;
-  --color-warm-700: #7d5533;
-  --color-warm-800: #5f3f27;
-  --color-warm-900: #3f2a1a;
-  --color-sage-50: #f4f6f3;
-  --color-sage-100: #e4e9e1;
-  --color-sage-200: #ccd5c7;
-  --color-sage-300: #a8b89f;
-  --color-sage-400: #7f9472;
-  --color-sage-500: #5f7851;
-  --color-sage-600: #4a5f3f;
-  --color-sage-700: #3b4c33;
-  --color-sage-800: #2d3a27;
-  --color-sage-900: #1f281b;
-  --color-accent: #c49a6c;
-  --color-accent-dark: #9a6a3f;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -45,13 +13,11 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus styles */
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }

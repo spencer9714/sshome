@@ -9,7 +9,7 @@ import type { FloorPlanData, WallData, OpeningData } from '@robinweitzel/floor-p
 
 const WALL_THICKNESS_CM = 15 // ~6 inches, standard US interior wall
 
-/** When two room edges are within this distance, snap them together. */
+/** When two room edges are within this distance, snap them together (abutting or aligned). */
 const SNAP_TOLERANCE_CM = 10
 
 /** When two walls are within this distance of each other (collinear), merge them. */
@@ -29,51 +29,95 @@ export interface RoomShape {
 // ─── Snap room edges ─────────────────────────────────────────────────────────
 
 /**
- * For each pair of rooms whose edges are within SNAP_TOLERANCE_CM of each other,
- * snap them to share a clean edge. This corrects AI coordinate imprecision.
+ * For each pair of rooms fix two classes of imprecision:
+ *
+ * Abutting: Room A's right edge nearly touches Room B's left edge →
+ *   snap them to meet at the midpoint so they share a clean boundary.
+ *
+ * Alignment: Room A's top edge is nearly equal to Room B's top edge →
+ *   snap both to the same value so they form a straight horizontal line.
+ *
+ * Both classes use SNAP_TOLERANCE_CM = 10 cm.
  */
 function snapRoomsToSharedEdges(rooms: RoomShape[]): RoomShape[] {
   const snapped = rooms.map(r => ({ ...r }))
 
   for (let i = 0; i < snapped.length; i++) {
     for (let j = i + 1; j < snapped.length; j++) {
+      // Re-read each iteration since previous snaps may have changed values
       const a = snapped[i]
       const b = snapped[j]
 
-      // Right edge of A vs left edge of B
-      const aRight = a.position_x + a.width_cm
-      const gap_RL = b.position_x - aRight
-      if (Math.abs(gap_RL) <= SNAP_TOLERANCE_CM && gap_RL !== 0) {
+      // ── Abutting: right-left ──────────────────────────────────────────────
+      const aRight  = a.position_x + a.width_cm
+      const gap_RL  = b.position_x - aRight
+      if (gap_RL !== 0 && Math.abs(gap_RL) <= SNAP_TOLERANCE_CM) {
         const mid = Math.round((aRight + b.position_x) / 2)
         snapped[i] = { ...snapped[i], width_cm: mid - snapped[i].position_x }
         snapped[j] = { ...snapped[j], position_x: mid }
       }
 
-      // Right edge of B vs left edge of A
-      const bRight = b.position_x + b.width_cm
-      const gap_LR = a.position_x - bRight
-      if (Math.abs(gap_LR) <= SNAP_TOLERANCE_CM && gap_LR !== 0) {
+      // ── Abutting: left-right ──────────────────────────────────────────────
+      const bRight  = b.position_x + b.width_cm
+      const gap_LR  = a.position_x - bRight
+      if (gap_LR !== 0 && Math.abs(gap_LR) <= SNAP_TOLERANCE_CM) {
         const mid = Math.round((bRight + a.position_x) / 2)
         snapped[j] = { ...snapped[j], width_cm: mid - snapped[j].position_x }
         snapped[i] = { ...snapped[i], position_x: mid }
       }
 
-      // Bottom edge of A vs top edge of B
+      // ── Abutting: bottom-top ──────────────────────────────────────────────
       const aBottom = a.position_y + a.depth_cm
-      const gap_BT = b.position_y - aBottom
-      if (Math.abs(gap_BT) <= SNAP_TOLERANCE_CM && gap_BT !== 0) {
+      const gap_BT  = b.position_y - aBottom
+      if (gap_BT !== 0 && Math.abs(gap_BT) <= SNAP_TOLERANCE_CM) {
         const mid = Math.round((aBottom + b.position_y) / 2)
         snapped[i] = { ...snapped[i], depth_cm: mid - snapped[i].position_y }
         snapped[j] = { ...snapped[j], position_y: mid }
       }
 
-      // Bottom edge of B vs top edge of A
+      // ── Abutting: top-bottom ──────────────────────────────────────────────
       const bBottom = b.position_y + b.depth_cm
-      const gap_TB = a.position_y - bBottom
-      if (Math.abs(gap_TB) <= SNAP_TOLERANCE_CM && gap_TB !== 0) {
+      const gap_TB  = a.position_y - bBottom
+      if (gap_TB !== 0 && Math.abs(gap_TB) <= SNAP_TOLERANCE_CM) {
         const mid = Math.round((bBottom + a.position_y) / 2)
         snapped[j] = { ...snapped[j], depth_cm: mid - snapped[j].position_y }
         snapped[i] = { ...snapped[i], position_y: mid }
+      }
+
+      // ── Alignment: top edges (position_y) ────────────────────────────────
+      const gap_TT = snapped[i].position_y - snapped[j].position_y
+      if (gap_TT !== 0 && Math.abs(gap_TT) <= SNAP_TOLERANCE_CM) {
+        const mid = Math.round((snapped[i].position_y + snapped[j].position_y) / 2)
+        snapped[i] = { ...snapped[i], position_y: mid }
+        snapped[j] = { ...snapped[j], position_y: mid }
+      }
+
+      // ── Alignment: bottom edges (position_y + depth_cm) ──────────────────
+      const aBotAligned = snapped[i].position_y + snapped[i].depth_cm
+      const bBotAligned = snapped[j].position_y + snapped[j].depth_cm
+      const gap_BB = aBotAligned - bBotAligned
+      if (gap_BB !== 0 && Math.abs(gap_BB) <= SNAP_TOLERANCE_CM) {
+        const mid = Math.round((aBotAligned + bBotAligned) / 2)
+        snapped[i] = { ...snapped[i], depth_cm: mid - snapped[i].position_y }
+        snapped[j] = { ...snapped[j], depth_cm: mid - snapped[j].position_y }
+      }
+
+      // ── Alignment: left edges (position_x) ───────────────────────────────
+      const gap_LL = snapped[i].position_x - snapped[j].position_x
+      if (gap_LL !== 0 && Math.abs(gap_LL) <= SNAP_TOLERANCE_CM) {
+        const mid = Math.round((snapped[i].position_x + snapped[j].position_x) / 2)
+        snapped[i] = { ...snapped[i], position_x: mid }
+        snapped[j] = { ...snapped[j], position_x: mid }
+      }
+
+      // ── Alignment: right edges (position_x + width_cm) ───────────────────
+      const aRightAligned = snapped[i].position_x + snapped[i].width_cm
+      const bRightAligned = snapped[j].position_x + snapped[j].width_cm
+      const gap_RR = aRightAligned - bRightAligned
+      if (gap_RR !== 0 && Math.abs(gap_RR) <= SNAP_TOLERANCE_CM) {
+        const mid = Math.round((aRightAligned + bRightAligned) / 2)
+        snapped[i] = { ...snapped[i], width_cm: mid - snapped[i].position_x }
+        snapped[j] = { ...snapped[j], width_cm: mid - snapped[j].position_x }
       }
     }
   }
@@ -87,9 +131,11 @@ function snapRoomsToSharedEdges(rooms: RoomShape[]): RoomShape[] {
  * After building all room walls, merge walls that are collinear and
  * overlapping/touching (within MERGE_TOLERANCE_CM). This eliminates the
  * double-wall that appears between every pair of adjacent rooms.
+ *
+ * Returns the merged walls AND an idMap: oldWallId → survivingWallId.
+ * Callers must use idMap to reroute any openings whose original wallId was merged away.
  */
-function mergeWalls(walls: WallData[]): WallData[] {
-  // Separate horizontal (y1 ≈ y2) from vertical (x1 ≈ x2) walls
+function mergeWalls(walls: WallData[]): { walls: WallData[]; idMap: Map<string, string> } {
   const horizontal: WallData[] = []
   const vertical:   WallData[] = []
 
@@ -98,20 +144,26 @@ function mergeWalls(walls: WallData[]): WallData[] {
     else                              vertical.push(w)
   }
 
-  const mergedH = mergeAxisWalls(horizontal, 'horizontal')
-  const mergedV = mergeAxisWalls(vertical,   'vertical')
+  const idMap = new Map<string, string>()
+  const mergedH = mergeAxisWalls(horizontal, 'horizontal', idMap)
+  const mergedV = mergeAxisWalls(vertical,   'vertical',   idMap)
 
-  return [...mergedH, ...mergedV]
+  return { walls: [...mergedH, ...mergedV], idMap }
 }
 
 /**
  * Group walls by their fixed coordinate (y for horizontal, x for vertical),
  * then within each group merge any overlapping/touching segments.
+ * Populates idMap with { removedId → survivingId } for every wall that was merged away.
  */
-function mergeAxisWalls(walls: WallData[], axis: 'horizontal' | 'vertical'): WallData[] {
+function mergeAxisWalls(
+  walls: WallData[],
+  axis: 'horizontal' | 'vertical',
+  idMap: Map<string, string>,
+): WallData[] {
   if (walls.length === 0) return []
 
-  // Key = rounded fixed coordinate (within MERGE_TOLERANCE_CM bucket)
+  // Group by fixed coordinate, bucketing within MERGE_TOLERANCE_CM
   const groups = new Map<number, WallData[]>()
 
   for (const w of walls) {
@@ -119,25 +171,17 @@ function mergeAxisWalls(walls: WallData[], axis: 'horizontal' | 'vertical'): Wal
       ? Math.round((w.y1 + w.y2) / 2)
       : Math.round((w.x1 + w.x2) / 2)
 
-    // Find an existing group whose key is within tolerance
     let groupKey: number | undefined
     for (const key of groups.keys()) {
-      if (Math.abs(key - fixed) <= MERGE_TOLERANCE_CM) {
-        groupKey = key
-        break
-      }
+      if (Math.abs(key - fixed) <= MERGE_TOLERANCE_CM) { groupKey = key; break }
     }
-    if (groupKey === undefined) {
-      groups.set(fixed, [w])
-    } else {
-      groups.get(groupKey)!.push(w)
-    }
+    if (groupKey === undefined) groups.set(fixed, [w])
+    else                         groups.get(groupKey)!.push(w)
   }
 
   const result: WallData[] = []
 
   for (const group of groups.values()) {
-    // Convert each wall to a [min, max] span along the variable axis
     type Seg = { min: number; max: number; wall: WallData }
     const segs: Seg[] = group.map(w =>
       axis === 'horizontal'
@@ -145,22 +189,21 @@ function mergeAxisWalls(walls: WallData[], axis: 'horizontal' | 'vertical'): Wal
         : { min: Math.min(w.y1, w.y2), max: Math.max(w.y1, w.y2), wall: w }
     )
 
-    // Sort by start of span
     segs.sort((a, b) => a.min - b.min)
 
-    // Merge overlapping/touching segments
     const merged: Seg[] = [segs[0]]
     for (let i = 1; i < segs.length; i++) {
       const last = merged[merged.length - 1]
       if (segs[i].min <= last.max + MERGE_TOLERANCE_CM) {
-        // Overlapping or touching — extend the current span
+        // This segment is consumed by the previous one.
+        // Record the ID remapping so callers can redirect openings.
+        idMap.set(segs[i].wall.id, last.wall.id)
         last.max = Math.max(last.max, segs[i].max)
       } else {
         merged.push(segs[i])
       }
     }
 
-    // Rebuild WallData from merged segments, using the fixed axis value of the group
     const fixedVal = axis === 'horizontal'
       ? (group[0].y1 + group[0].y2) / 2
       : (group[0].x1 + group[0].x2) / 2
@@ -186,9 +229,11 @@ function mergeAxisWalls(walls: WallData[], axis: 'horizontal' | 'vertical'): Wal
  *   ID pattern: `{roomId}-T` | `-B` | `-L` | `-R`
  *
  * Shared walls between adjacent rooms are merged into a single wall.
+ * Opening wallIds are remapped through the merge ID map so doors/windows
+ * are never orphaned by the merge step.
  */
 export function roomsToFloorPlan(rooms: RoomShape[]): FloorPlanData {
-  // Fix AI coordinate imprecision: snap room edges that are nearly touching
+  // Fix AI coordinate imprecision: snap room edges that are nearly touching or misaligned
   const snappedRooms = snapRoomsToSharedEdges(rooms)
 
   const walls: WallData[] = []
@@ -240,13 +285,19 @@ export function roomsToFloorPlan(rooms: RoomShape[]): FloorPlanData {
     }
   }
 
-  // Merge duplicate/shared walls so adjacent rooms share one wall instead of two
-  const mergedWalls = mergeWalls(walls)
+  // Merge duplicate/shared walls; get idMap to reroute orphaned openings
+  const { walls: mergedWalls, idMap } = mergeWalls(walls)
+
+  // Remap any opening whose original wallId was merged away to the surviving wall
+  const finalOpenings = openings.map(op => ({
+    ...op,
+    wallId: idMap.get(op.wallId) ?? op.wallId,
+  }))
 
   return {
     version: 1,
     walls: mergedWalls,
-    openings,
+    openings: finalOpenings,
     furniture: [],
     metadata: { rooms: roomMeta },
   }

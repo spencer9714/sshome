@@ -37,7 +37,6 @@ export function NewPropertyButton({ className }: { className?: string }) {
     setName('')
     setAddress('')
     router.push(`/properties/${data.id}`)
-    router.refresh()
   }
 
   return (

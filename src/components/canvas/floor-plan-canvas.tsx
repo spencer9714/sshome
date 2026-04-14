@@ -1,9 +1,10 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
-import { Stage, Layer, Rect, Text, Line, Group } from 'react-konva'
+import { useRef, useEffect, useState, useCallback } from 'react'
+import { Stage, Layer, Rect, Text, Line, Group, Arc, Image as KonvaImage } from 'react-konva'
 import type Konva from 'konva'
 import { CATEGORY_COLORS } from '@/lib/constants'
+import { formatFtInch } from '@/lib/units'
 
 interface Door { x: number; y: number; width: number; wall: string }
 interface Window { x: number; y: number; width: number; wall: string }
@@ -15,8 +16,8 @@ interface Room {
   depth_cm: number
   position_x: number
   position_y: number
-  doors: Door[]
-  windows: Window[]
+  doors: Door[] | null
+  windows: Window[] | null
 }
 
 interface PlacedItem {
@@ -40,198 +41,325 @@ interface FloorPlanCanvasProps {
   items: PlacedItem[]
   onItemMove?: (itemId: string, x: number, y: number) => void
   readOnly?: boolean
+  backgroundImageUrl?: string
+  totalWidthCm?: number
+  totalDepthCm?: number
 }
 
-const SCALE = 0.4 // pixels per cm
-const PADDING = 40
+const PADDING = 60
+const SNAP = 10 // cm
 
-export function FloorPlanCanvas({ rooms, items, onItemMove, readOnly = false }: FloorPlanCanvasProps) {
+// Only auto-arrange if rooms genuinely have no positional data (all identical positions)
+function autoArrangeRooms(rooms: Room[]): Room[] {
+  if (rooms.length <= 1) return rooms
+
+  // Check if all positions are identical (not just all zero — also catches all same non-zero)
+  const positions = rooms.map(r => `${r.position_x},${r.position_y}`)
+  const uniquePositions = new Set(positions)
+  if (uniquePositions.size > 1) return rooms // positions are varied — trust them
+
+  // All same position: auto-arrange in a grid
+  const GAP = 80
+  const COLS = Math.ceil(Math.sqrt(rooms.length))
+  const colHeights: number[] = new Array(COLS).fill(0)
+  const colWidths: number[] = new Array(COLS).fill(0)
+
+  return rooms.map((room, idx) => {
+    const col = idx % COLS
+    const row = Math.floor(idx / COLS)
+    const x = colWidths.slice(0, col).reduce((a, b) => a + b + GAP, 0)
+    const y = colHeights.slice(0, row).reduce((a, b) => a + b + GAP, 0)
+    // Update column width tracking
+    colWidths[col] = Math.max(colWidths[col], room.width_cm)
+    if (idx >= COLS) colHeights[row - 1] = Math.max(colHeights[row - 1] ?? 0, room.depth_cm)
+    return { ...room, position_x: x, position_y: y }
+  })
+}
+
+function calcScale(rooms: Room[], containerWidth: number): number {
+  if (rooms.length === 0) return 0.5
+  const maxX = Math.max(...rooms.map(r => r.position_x + r.width_cm))
+  const maxY = Math.max(...rooms.map(r => r.position_y + r.depth_cm))
+  const availW = containerWidth - PADDING * 2
+  const availH = 600 - PADDING * 2
+  const scaleX = availW / maxX
+  const scaleY = availH / maxY
+  return Math.min(scaleX, scaleY, 0.9)
+}
+
+export function FloorPlanCanvas({ rooms, items, onItemMove, readOnly = false, backgroundImageUrl, totalWidthCm, totalDepthCm }: FloorPlanCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [size, setSize] = useState({ width: 800, height: 600 })
+  const [containerWidth, setContainerWidth] = useState(900)
+  const [bgImage, setBgImage] = useState<HTMLImageElement | null>(null)
 
   useEffect(() => {
-    if (containerRef.current) {
-      setSize({
-        width: containerRef.current.offsetWidth,
-        height: containerRef.current.offsetHeight,
-      })
+    if (!backgroundImageUrl) return
+    const img = new window.Image()
+    img.crossOrigin = 'anonymous'
+    img.src = backgroundImageUrl
+    img.onload = () => setBgImage(img)
+  }, [backgroundImageUrl])
+
+  useEffect(() => {
+    const update = () => {
+      if (containerRef.current) setContainerWidth(containerRef.current.offsetWidth)
     }
+    update()
+    const ro = new ResizeObserver(update)
+    if (containerRef.current) ro.observe(containerRef.current)
+    return () => ro.disconnect()
   }, [])
 
-  if (rooms.length === 0) return null
+  const arranged = autoArrangeRooms(rooms)
+  const scale = calcScale(arranged, containerWidth)
 
-  // Calculate bounding box of all rooms
-  const maxX = Math.max(...rooms.map(r => r.position_x + r.width_cm)) * SCALE + PADDING * 2
-  const maxY = Math.max(...rooms.map(r => r.position_y + r.depth_cm)) * SCALE + PADDING * 2
+  const px = useCallback((cm: number) => cm * scale, [scale])
 
-  const stageWidth = Math.max(size.width, maxX)
-  const stageHeight = Math.max(400, maxY)
+  const stageWidth = containerWidth
+  const stageHeight = arranged.length > 0
+    ? Math.max(500, Math.max(...arranged.map(r => r.position_y + r.depth_cm)) * scale + PADDING * 2)
+    : 500
 
-  const toPixels = (cm: number) => cm * SCALE
-  const roomX = (room: Room) => toPixels(room.position_x) + PADDING
-  const roomY = (room: Room) => toPixels(room.position_y) + PADDING
-
-  const getDoorPoints = (door: Door, room: Room): number[] => {
-    const rx = roomX(room)
-    const ry = roomY(room)
-    const w = toPixels(room.width_cm)
-    const h = toPixels(room.depth_cm)
-    const doorStart = toPixels(door.x)
-    const doorWidth = toPixels(door.width)
-
-    switch (door.wall) {
-      case 'top': return [rx + doorStart, ry, rx + doorStart + doorWidth, ry]
-      case 'bottom': return [rx + doorStart, ry + h, rx + doorStart + doorWidth, ry + h]
-      case 'left': return [rx, ry + doorStart, rx, ry + doorStart + doorWidth]
-      case 'right': return [rx + w, ry + doorStart, rx + w, ry + doorStart + doorWidth]
-      default: return []
-    }
-  }
-
-  const getWindowPoints = (win: Window, room: Room): { points: number[]; offset: number } => {
-    const rx = roomX(room)
-    const ry = roomY(room)
-    const w = toPixels(room.width_cm)
-    const h = toPixels(room.depth_cm)
-    const winStart = toPixels(win.x)
-    const winWidth = toPixels(win.width)
-    const offset = 4
-
-    switch (win.wall) {
-      case 'top': return { points: [rx + winStart, ry, rx + winStart + winWidth, ry], offset }
-      case 'bottom': return { points: [rx + winStart, ry + h, rx + winStart + winWidth, ry + h], offset }
-      case 'left': return { points: [rx, ry + winStart, rx, ry + winStart + winWidth], offset }
-      case 'right': return { points: [rx + w, ry + winStart, rx + w, ry + winStart + winWidth], offset }
-      default: return { points: [], offset }
-    }
-  }
-
-  const SNAP = 10 // snap to 10cm grid
+  const roomScreenX = (r: Room) => px(r.position_x) + PADDING
+  const roomScreenY = (r: Room) => px(r.position_y) + PADDING
 
   const handleDragEnd = (itemId: string, e: Konva.KonvaEventObject<DragEvent>, room: Room) => {
     if (readOnly || !onItemMove) return
-
     const node = e.target
-    const rx = roomX(room)
-    const ry = roomY(room)
-
-    // Snap to grid
-    let newX = Math.round((node.x() - rx) / (SNAP * SCALE)) * (SNAP * SCALE)
-    let newY = Math.round((node.y() - ry) / (SNAP * SCALE)) * (SNAP * SCALE)
-
-    // Clamp within room bounds
+    const rx = roomScreenX(room)
+    const ry = roomScreenY(room)
     const item = items.find(i => i.id === itemId)
-    if (item) {
-      const itemW = toPixels(item.width_cm)
-      const itemH = toPixels(item.depth_cm)
-      newX = Math.max(0, Math.min(toPixels(room.width_cm) - itemW, newX))
-      newY = Math.max(0, Math.min(toPixels(room.depth_cm) - itemH, newY))
-    }
+    if (!item) return
 
+    let newX = Math.round((node.x() - rx) / (SNAP * scale)) * (SNAP * scale)
+    let newY = Math.round((node.y() - ry) / (SNAP * scale)) * (SNAP * scale)
+    newX = Math.max(0, Math.min(px(room.width_cm) - px(item.width_cm), newX))
+    newY = Math.max(0, Math.min(px(room.depth_cm) - px(item.depth_cm), newY))
     node.x(rx + newX)
     node.y(ry + newY)
-
-    onItemMove(itemId, Math.round(newX / SCALE), Math.round(newY / SCALE))
+    onItemMove(itemId, Math.round(newX / scale), Math.round(newY / scale))
   }
 
+  if (rooms.length === 0) return null
+
   return (
-    <div ref={containerRef} className="w-full overflow-auto rounded-xl border border-gray-200 bg-white">
+    <div ref={containerRef} className="w-full overflow-auto rounded-xl border border-gray-100 bg-[#f0f0f0]">
       <Stage width={stageWidth} height={stageHeight}>
         <Layer>
-          {rooms.map(room => {
-            const rx = roomX(room)
-            const ry = roomY(room)
-            const rw = toPixels(room.width_cm)
-            const rh = toPixels(room.depth_cm)
+          {/* Floor background */}
+          <Rect x={0} y={0} width={stageWidth} height={stageHeight} fill="#f0f0f0" />
+
+          {/* Original floor plan image as background */}
+          {bgImage && totalWidthCm && totalDepthCm && (
+            <KonvaImage
+              image={bgImage}
+              x={PADDING}
+              y={PADDING}
+              width={px(totalWidthCm)}
+              height={px(totalDepthCm)}
+              opacity={0.3}
+              listening={false}
+            />
+          )}
+
+          {arranged.map(room => {
+            const rx = roomScreenX(room)
+            const ry = roomScreenY(room)
+            const rw = px(room.width_cm)
+            const rh = px(room.depth_cm)
             const roomItems = items.filter(i => i.room_id === room.id)
+            const WALL = Math.max(2, scale * 8) // wall thickness in px
 
             return (
               <Group key={room.id}>
-                {/* Room background */}
-                <Rect x={rx} y={ry} width={rw} height={rh} fill="#f9fafb" stroke="#374151" strokeWidth={2} />
+                {/* Room fill */}
+                <Rect x={rx} y={ry} width={rw} height={rh} fill="#ffffff" />
 
-                {/* Room label */}
-                <Text
-                  x={rx + 6} y={ry + 5}
-                  text={`${room.name}\n${(room.width_cm / 100).toFixed(1)}m × ${(room.depth_cm / 100).toFixed(1)}m`}
-                  fontSize={10} fill="#6b7280" fontStyle="bold"
-                />
+                {/* Walls - drawn as thick border segments */}
+                {/* Top wall */}
+                <Rect x={rx} y={ry} width={rw} height={WALL} fill="#2d2d2d" />
+                {/* Bottom wall */}
+                <Rect x={rx} y={ry + rh - WALL} width={rw} height={WALL} fill="#2d2d2d" />
+                {/* Left wall */}
+                <Rect x={rx} y={ry} width={WALL} height={rh} fill="#2d2d2d" />
+                {/* Right wall */}
+                <Rect x={rx + rw - WALL} y={ry} width={WALL} height={rh} fill="#2d2d2d" />
 
-                {/* Doors (gap in wall = white line) */}
-                {room.doors.map((door, i) => {
-                  const pts = getDoorPoints(door, room)
-                  return pts.length > 0 ? (
-                    <Line key={`door-${i}`} points={pts} stroke="white" strokeWidth={5} />
-                  ) : null
-                })}
+                {/* Doors - gap in wall + swing arc */}
+                {(room.doors ?? []).map((door, i) => {
+                  const ds = px(door.x)
+                  const dw = px(door.width)
 
-                {/* Door markers (orange) */}
-                {room.doors.map((door, i) => {
-                  const pts = getDoorPoints(door, room)
-                  return pts.length > 0 ? (
-                    <Line key={`door-mark-${i}`} points={pts} stroke="#f97316" strokeWidth={3} dash={[4, 2]} />
-                  ) : null
-                })}
-
-                {/* Windows (double line = cyan) */}
-                {room.windows.map((win, i) => {
-                  const { points } = getWindowPoints(win, room)
-                  return points.length > 0 ? (
-                    <Group key={`win-${i}`}>
-                      <Line points={points} stroke="#06b6d4" strokeWidth={5} />
+                  if (door.wall === 'top') return (
+                    <Group key={`d${i}`}>
+                      <Rect x={rx + ds} y={ry} width={dw} height={WALL} fill="#ffffff" />
+                      <Arc x={rx + ds} y={ry + WALL} innerRadius={0} outerRadius={dw}
+                        angle={90} rotation={0} fill="rgba(251,191,36,0.15)" stroke="#f59e0b" strokeWidth={1} dash={[3,2]} />
                     </Group>
-                  ) : null
+                  )
+                  if (door.wall === 'bottom') return (
+                    <Group key={`d${i}`}>
+                      <Rect x={rx + ds} y={ry + rh - WALL} width={dw} height={WALL} fill="#ffffff" />
+                      <Arc x={rx + ds} y={ry + rh - WALL} innerRadius={0} outerRadius={dw}
+                        angle={90} rotation={-90} fill="rgba(251,191,36,0.15)" stroke="#f59e0b" strokeWidth={1} dash={[3,2]} />
+                    </Group>
+                  )
+                  if (door.wall === 'left') return (
+                    <Group key={`d${i}`}>
+                      <Rect x={rx} y={ry + ds} width={WALL} height={dw} fill="#ffffff" />
+                      <Arc x={rx + WALL} y={ry + ds} innerRadius={0} outerRadius={dw}
+                        angle={90} rotation={90} fill="rgba(251,191,36,0.15)" stroke="#f59e0b" strokeWidth={1} dash={[3,2]} />
+                    </Group>
+                  )
+                  if (door.wall === 'right') return (
+                    <Group key={`d${i}`}>
+                      <Rect x={rx + rw - WALL} y={ry + ds} width={WALL} height={dw} fill="#ffffff" />
+                      <Arc x={rx + rw - WALL} y={ry + ds} innerRadius={0} outerRadius={dw}
+                        angle={90} rotation={180} fill="rgba(251,191,36,0.15)" stroke="#f59e0b" strokeWidth={1} dash={[3,2]} />
+                    </Group>
+                  )
+                  return null
                 })}
 
-                {/* Furniture items */}
+                {/* Windows - gap with double cyan lines */}
+                {(room.windows ?? []).map((win, i) => {
+                  const ws = px(win.x)
+                  const ww = px(win.width)
+                  const wt = WALL
+
+                  if (win.wall === 'top') return (
+                    <Group key={`w${i}`}>
+                      <Rect x={rx + ws} y={ry} width={ww} height={wt} fill="#bfdbfe" />
+                      <Line points={[rx + ws, ry + wt * 0.25, rx + ws + ww, ry + wt * 0.25]} stroke="#3b82f6" strokeWidth={1} />
+                      <Line points={[rx + ws, ry + wt * 0.75, rx + ws + ww, ry + wt * 0.75]} stroke="#3b82f6" strokeWidth={1} />
+                    </Group>
+                  )
+                  if (win.wall === 'bottom') return (
+                    <Group key={`w${i}`}>
+                      <Rect x={rx + ws} y={ry + rh - wt} width={ww} height={wt} fill="#bfdbfe" />
+                      <Line points={[rx + ws, ry + rh - wt * 0.25, rx + ws + ww, ry + rh - wt * 0.25]} stroke="#3b82f6" strokeWidth={1} />
+                      <Line points={[rx + ws, ry + rh - wt * 0.75, rx + ws + ww, ry + rh - wt * 0.75]} stroke="#3b82f6" strokeWidth={1} />
+                    </Group>
+                  )
+                  if (win.wall === 'left') return (
+                    <Group key={`w${i}`}>
+                      <Rect x={rx} y={ry + ws} width={wt} height={ww} fill="#bfdbfe" />
+                      <Line points={[rx + wt * 0.25, ry + ws, rx + wt * 0.25, ry + ws + ww]} stroke="#3b82f6" strokeWidth={1} />
+                      <Line points={[rx + wt * 0.75, ry + ws, rx + wt * 0.75, ry + ws + ww]} stroke="#3b82f6" strokeWidth={1} />
+                    </Group>
+                  )
+                  if (win.wall === 'right') return (
+                    <Group key={`w${i}`}>
+                      <Rect x={rx + rw - wt} y={ry + ws} width={wt} height={ww} fill="#bfdbfe" />
+                      <Line points={[rx + rw - wt * 0.25, ry + ws, rx + rw - wt * 0.25, ry + ws + ww]} stroke="#3b82f6" strokeWidth={1} />
+                      <Line points={[rx + rw - wt * 0.75, ry + ws, rx + rw - wt * 0.75, ry + ws + ww]} stroke="#3b82f6" strokeWidth={1} />
+                    </Group>
+                  )
+                  return null
+                })}
+
+                {/* Furniture */}
                 {roomItems.map(item => {
-                  const fw = toPixels(item.width_cm)
-                  const fh = toPixels(item.depth_cm)
-                  const fx = rx + toPixels(item.position_x)
-                  const fy = ry + toPixels(item.position_y)
+                  const fw = px(item.width_cm)
+                  const fh = px(item.depth_cm)
+                  const fx = rx + px(item.position_x)
+                  const fy = ry + px(item.position_y)
                   const color = CATEGORY_COLORS[item.furniture_category] ?? '#e5e7eb'
+                  const fontSize = Math.max(7, Math.min(11, fw / 8))
 
                   return (
                     <Group
                       key={item.id}
-                      x={fx}
-                      y={fy}
+                      x={fx + fw / 2}
+                      y={fy + fh / 2}
+                      offsetX={fw / 2}
+                      offsetY={fh / 2}
+                      rotation={item.rotation ?? 0}
                       draggable={!readOnly}
                       onDragEnd={(e) => handleDragEnd(item.id, e, room)}
                     >
                       <Rect
-                        width={fw}
-                        height={fh}
+                        x={-fw / 2} y={-fh / 2}
+                        width={fw} height={fh}
                         fill={color}
-                        stroke="#374151"
-                        strokeWidth={1}
+                        stroke="#64748b"
+                        strokeWidth={0.8}
                         cornerRadius={2}
-                        shadowColor="black"
-                        shadowBlur={readOnly ? 0 : 4}
-                        shadowOpacity={0.1}
+                        shadowColor="#000"
+                        shadowBlur={3}
+                        shadowOpacity={0.12}
+                        shadowOffsetX={1}
+                        shadowOffsetY={1}
                       />
+                      {/* Furniture label */}
                       <Text
-                        x={3} y={3}
-                        width={fw - 6}
-                        height={fh - 6}
-                        text={item.furniture_name}
-                        fontSize={9}
-                        fill="#1f2937"
+                        x={-fw / 2 + 2} y={-fh / 2 + 2}
+                        width={fw - 4} height={fh - 4}
+                        text={item.furniture_name.replace(/^(IKEA |Wayfair )/i, '')}
+                        fontSize={fontSize}
+                        fill="#1e293b"
                         align="center"
                         verticalAlign="middle"
                         wrap="word"
                         ellipsis
+                        fontStyle="500"
                       />
                     </Group>
                   )
                 })}
+
+                {/* Room label - bottom of room */}
+                <Rect
+                  x={rx + WALL}
+                  y={ry + rh - WALL - 22}
+                  width={rw - WALL * 2}
+                  height={20}
+                  fill="rgba(255,255,255,0.8)"
+                  cornerRadius={2}
+                />
+                <Text
+                  x={rx + WALL + 4}
+                  y={ry + rh - WALL - 20}
+                  width={rw - WALL * 2 - 8}
+                  text={`${room.name}  ${formatFtInch(room.width_cm)}×${formatFtInch(room.depth_cm)}`}
+                  fontSize={Math.max(8, Math.min(11, rw / 14))}
+                  fill="#374151"
+                  fontStyle="bold"
+                  align="center"
+                />
+
+                {/* Dimension lines */}
+                {/* Width */}
+                <Line
+                  points={[rx, ry - 14, rx + rw, ry - 14]}
+                  stroke="#94a3b8" strokeWidth={1}
+                />
+                <Line points={[rx, ry - 18, rx, ry - 10]} stroke="#94a3b8" strokeWidth={1} />
+                <Line points={[rx + rw, ry - 18, rx + rw, ry - 10]} stroke="#94a3b8" strokeWidth={1} />
+                <Text
+                  x={rx} y={ry - 24} width={rw}
+                  text={formatFtInch(room.width_cm)}
+                  fontSize={8} fill="#94a3b8" align="center"
+                />
               </Group>
             )
           })}
 
-          {/* Legend */}
-          <Line points={[PADDING, stageHeight - 20, PADDING + 40 * SCALE, stageHeight - 20]} stroke="#374151" strokeWidth={1} />
-          <Text x={PADDING} y={stageHeight - 14} text={`= 40cm`} fontSize={9} fill="#9ca3af" />
+          {/* Scale bar */}
+          {(() => {
+            const barCm = 100
+            const barPx = px(barCm)
+            const bx = PADDING
+            const by = stageHeight - 28
+            return (
+              <Group>
+                <Rect x={bx} y={by + 6} width={barPx} height={4} fill="#94a3b8" />
+                <Rect x={bx} y={by + 4} width={2} height={8} fill="#94a3b8" />
+                <Rect x={bx + barPx} y={by + 4} width={2} height={8} fill="#94a3b8" />
+                <Text x={bx} y={by} width={barPx} text="3'3&quot;" fontSize={9} fill="#64748b" align="center" />
+              </Group>
+            )
+          })()}
         </Layer>
       </Stage>
     </div>

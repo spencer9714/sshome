@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { ROOM_TYPES, WALL_POSITIONS } from '@/lib/constants'
+import { FtInchInput } from '@/components/ui/ft-inch-input'
+import { formatFtInch, US_DOOR_DEFAULT_CM } from '@/lib/units'
 
 interface Door {
   x: number
@@ -29,7 +31,7 @@ export function AddRoomButton({ floorId, className }: { floorId: string; classNa
   const [customName, setCustomName] = useState('')
   const [widthCm, setWidthCm] = useState(400)
   const [depthCm, setDepthCm] = useState(350)
-  const [doors, setDoors] = useState<Door[]>([{ x: 100, y: 0, width: 90, wall: 'top' }])
+  const [doors, setDoors] = useState<Door[]>([{ x: 100, y: 0, width: US_DOOR_DEFAULT_CM, wall: 'top' }])
   const [windows, setWindows] = useState<Window[]>([])
 
   const addDoor = () => setDoors([...doors, { x: 0, y: 0, width: 90, wall: 'top' }])
@@ -101,32 +103,22 @@ export function AddRoomButton({ floorId, className }: { floorId: string; classNa
                 )}
               </div>
 
-              {/* Dimensions */}
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Width (cm) *</label>
-                  <input
-                    type="number"
-                    value={widthCm}
-                    onChange={(e) => setWidthCm(Number(e.target.value))}
-                    min={50}
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Depth (cm) *</label>
-                  <input
-                    type="number"
-                    value={depthCm}
-                    onChange={(e) => setDepthCm(Number(e.target.value))}
-                    min={50}
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-                  />
-                </div>
+              {/* Dimensions — ft/inch inputs */}
+              <div className="flex flex-wrap gap-4">
+                <FtInchInput
+                  label="Width *"
+                  valueCm={widthCm}
+                  onChangeCm={setWidthCm}
+                  min={30}
+                />
+                <FtInchInput
+                  label="Depth *"
+                  valueCm={depthCm}
+                  onChangeCm={setDepthCm}
+                  min={30}
+                />
               </div>
-              <p className="text-xs text-gray-400">{(widthCm / 100).toFixed(1)}m × {(depthCm / 100).toFixed(1)}m</p>
+              <p className="text-xs text-gray-400">{formatFtInch(widthCm)} × {formatFtInch(depthCm)}</p>
 
               {/* Doors */}
               <div>
@@ -141,9 +133,10 @@ export function AddRoomButton({ floorId, className }: { floorId: string; classNa
                       {WALL_POSITIONS.map(w => <option key={w}>{w}</option>)}
                     </select>
                     <input type="number" value={door.x} onChange={(e) => updateDoor(i, 'x', Number(e.target.value))}
-                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="X (cm)" />
+                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="X cm" title="Offset from wall corner (cm)" />
+                    <span className="text-xs text-gray-500">{formatFtInch(door.width)} wide</span>
                     <input type="number" value={door.width} onChange={(e) => updateDoor(i, 'width', Number(e.target.value))}
-                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="W (cm)" />
+                      className="w-14 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="cm" title="Door width (cm)" />
                     <button type="button" onClick={() => removeDoor(i)} className="text-red-400 hover:text-red-600 text-xs">✕</button>
                   </div>
                 ))}
@@ -162,9 +155,10 @@ export function AddRoomButton({ floorId, className }: { floorId: string; classNa
                       {WALL_POSITIONS.map(w => <option key={w}>{w}</option>)}
                     </select>
                     <input type="number" value={win.x} onChange={(e) => updateWindow(i, 'x', Number(e.target.value))}
-                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="X (cm)" />
+                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="X cm" title="Offset from wall corner (cm)" />
+                    <span className="text-xs text-gray-500">{formatFtInch(win.width)} wide</span>
                     <input type="number" value={win.width} onChange={(e) => updateWindow(i, 'width', Number(e.target.value))}
-                      className="w-16 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="W (cm)" />
+                      className="w-14 rounded border border-gray-300 px-2 py-1 text-xs" placeholder="cm" title="Window width (cm)" />
                     <button type="button" onClick={() => removeWindow(i)} className="text-red-400 hover:text-red-600 text-xs">✕</button>
                   </div>
                 ))}

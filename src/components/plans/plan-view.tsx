@@ -9,8 +9,8 @@ import { FURNITURE_CATEGORY_LABELS } from '@/lib/constants'
 interface Room {
   id: string; name: string; width_cm: number; depth_cm: number
   position_x: number; position_y: number
-  doors: { x: number; y: number; width: number; wall: string }[]
-  windows: { x: number; y: number; width: number; wall: string }[]
+  doors: { x: number; y: number; width: number; wall: string }[] | null
+  windows: { x: number; y: number; width: number; wall: string }[] | null
 }
 
 interface PlanItem {
@@ -33,9 +33,12 @@ interface PlanViewProps {
   planItems: PlanItem[]
   propertyId: string
   floorId: string
+  backgroundImageUrl?: string
+  totalWidthCm?: number
+  totalDepthCm?: number
 }
 
-export function PlanView({ plan, rooms, planItems, propertyId, floorId }: PlanViewProps) {
+export function PlanView({ plan, rooms, planItems, propertyId, floorId, backgroundImageUrl, totalWidthCm, totalDepthCm }: PlanViewProps) {
   const router = useRouter()
   const [items, setItems] = useState(planItems)
   const [saving, setSaving] = useState(false)
@@ -128,6 +131,9 @@ export function PlanView({ plan, rooms, planItems, propertyId, floorId }: PlanVi
           items={canvasItems}
           onItemMove={handleItemMove}
           readOnly={false}
+          backgroundImageUrl={backgroundImageUrl}
+          totalWidthCm={totalWidthCm}
+          totalDepthCm={totalDepthCm}
         />
       </div>
 

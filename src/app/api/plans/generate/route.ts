@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
-import { generateLayoutPlans } from '@/lib/claude/generate-layout'
+import { generateLayoutPlans, buildSearchUrl } from '@/lib/claude/generate-layout'
 
 export async function POST(request: NextRequest) {
   try {
@@ -34,54 +34,38 @@ export async function POST(request: NextRequest) {
       .eq('floor_id', floorId)
 
     if (!rooms || rooms.length === 0) {
-      return NextResponse.json({ error: 'No rooms found for this floor' }, { status: 400 })
+      return NextResponse.json({ error: 'No rooms found. Add rooms first.' }, { status: 400 })
     }
 
-    // Get matching furniture (filter by style tags if provided)
-    let furnitureQuery = supabase
-      .from('furniture_items')
-      .select('*')
-      .eq('is_active', true)
-
-    if (budgetLimit) {
-      // Rough per-item budget filter (budget / estimated 5 items per room)
-      const maxItemPrice = budgetLimit * 0.4
-      furnitureQuery = furnitureQuery.lte('price', maxItemPrice)
-    }
-
-    const { data: allFurniture } = await furnitureQuery
-
-    // Filter by style if preferences given
-    let availableFurniture = allFurniture ?? []
-    if (stylePreferences.length > 0) {
-      const styleFurniture = availableFurniture.filter(f =>
-        f.style_tags.some((tag: string) => stylePreferences.map(s => s.toLowerCase()).includes(tag.toLowerCase()))
-      )
-      // Fall back to all furniture if style filtering returns too few items
-      if (styleFurniture.length >= 5) availableFurniture = styleFurniture
-    }
-
-    if (availableFurniture.length === 0) {
-      return NextResponse.json({ error: 'No furniture items available in catalog. Please add furniture first.' }, { status: 400 })
-    }
-
-    // Generate plans with Claude
+    // Generate plans — Claude suggests its own furniture
     const plans = await generateLayoutPlans(
       rooms as Parameters<typeof generateLayoutPlans>[0],
-      availableFurniture.map(f => ({
-        id: f.id,
-        name: f.name,
-        category: f.category,
-        width_cm: f.width_cm,
-        depth_cm: f.depth_cm,
-        price: f.price,
-        currency: f.currency,
-        style_tags: f.style_tags,
-      })),
       stylePreferences,
       budgetLimit,
       currency
     )
+
+    // Ensure "AI Suggested" provider exists
+    let { data: provider } = await supabase
+      .from('providers')
+      .select('id')
+      .eq('name', 'AI Suggested')
+      .single()
+
+    if (!provider) {
+      const { data: newProvider } = await supabase
+        .from('providers')
+        .insert({ name: 'AI Suggested', website: 'https://www.ikea.com', is_active: true })
+        .select()
+        .single()
+      provider = newProvider
+    }
+
+    if (!provider) {
+      return NextResponse.json({ error: 'Failed to create provider' }, { status: 500 })
+    }
+
+    const providerId = provider.id
 
     // Save plans to database
     const savedPlanIds: string[] = []
@@ -102,21 +86,65 @@ export async function POST(request: NextRequest) {
         .single()
 
       if (planError || !savedPlan) continue
-
       savedPlanIds.push(savedPlan.id)
 
-      // Save plan items
-      const planItems = plan.rooms.flatMap(room =>
-        room.furniture.map(item => ({
-          plan_id: savedPlan.id,
-          room_id: room.room_id,
-          furniture_item_id: item.furniture_item_id,
-          position_x: item.position_x,
-          position_y: item.position_y,
-          rotation: item.rotation,
-          quantity: item.quantity,
-        }))
-      )
+      // Save each furniture item and plan_item
+      const planItems = []
+
+      for (const room of plan.rooms) {
+        for (const placement of room.furniture) {
+          const f = placement.item
+
+          // Upsert furniture item (match by name to avoid duplicates)
+          let { data: existingItem } = await supabase
+            .from('furniture_items')
+            .select('id')
+            .eq('name', f.name)
+            .single()
+
+          if (!existingItem) {
+            const { data: newItem } = await supabase
+              .from('furniture_items')
+              .insert({
+                provider_id: providerId,
+                name: f.name,
+                category: f.category,
+                width_cm: f.width_cm,
+                depth_cm: f.depth_cm,
+                height_cm: f.height_cm,
+                price: f.price,
+                currency: f.currency,
+                product_url: buildSearchUrl(f.name),
+                style_tags: f.style_tags,
+                is_active: true,
+              })
+              .select()
+              .single()
+            existingItem = newItem
+          }
+
+          if (!existingItem) continue
+
+          // Clamp position within room bounds
+          const roomData = (rooms as { id: string; width_cm: number; depth_cm: number }[]).find(r => r.id === room.room_id)
+          const clampedX = roomData
+            ? Math.max(0, Math.min(placement.position_x, roomData.width_cm - f.width_cm))
+            : Math.max(0, placement.position_x)
+          const clampedY = roomData
+            ? Math.max(0, Math.min(placement.position_y, roomData.depth_cm - f.depth_cm))
+            : Math.max(0, placement.position_y)
+
+          planItems.push({
+            plan_id: savedPlan.id,
+            room_id: room.room_id,
+            furniture_item_id: existingItem.id,
+            position_x: clampedX,
+            position_y: clampedY,
+            rotation: placement.rotation,
+            quantity: placement.quantity,
+          })
+        }
+      }
 
       if (planItems.length > 0) {
         await supabase.from('plan_items').insert(planItems)

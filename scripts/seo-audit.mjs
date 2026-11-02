@@ -44,7 +44,7 @@ export async function audit(site = defaultSite) {
       }
     }
   }
-  for (const check of checks) console.log(`${check.issues.length ? 'FAIL' : 'PASS'} ${check.path} [${check.agent}] ${check.issues.join('; ')}`);
+  for (const check of checks) console.log(`${check.issues.length ? 'FAIL' : 'PASS'} ${check.path} [${check.agent}]${check.server ? ` (${check.server})` : ''} ${check.issues.join('; ')}`);
   console.log('User-Agent probes do not verify real crawler IP access, indexing, or account-level reports. Review CDN/WAF logs separately.');
   return checks.every((check) => check.issues.length === 0);
 }

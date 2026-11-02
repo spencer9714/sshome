@@ -3,9 +3,9 @@ import { LanguageSwitch } from '@/components/language-switch';
 
 const links = [
   { href: '/#homes', label: 'Homes', short: 'Homes', phone: 'block' },
-  { href: '/#compare', label: 'Compare', short: 'Compare', phone: 'hidden min-[360px]:block' },
+  { href: '/#compare', label: 'Compare', short: 'Compare', phone: 'hidden' },
   { href: '/sequoia-kings-canyon-guide', label: 'Park guide', short: 'Guide', phone: 'block' },
-  { href: '/about', label: 'About & contact', short: 'About', phone: 'block' },
+  { href: '/about', label: 'About & contact', short: 'About', phone: 'hidden min-[400px]:block' },
 ];
 
 export function SiteHeader({ language = 'en' }: { language?: 'en' | 'zh-Hant' }) {
@@ -21,7 +21,7 @@ export function SiteHeader({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
         <Link href={zh ? '/zh-tw' : '/'} className="font-display text-xl tracking-[0.12em]">
           SSHOME
         </Link>
-        <nav aria-label={zh ? '主要導覽' : 'Main'} className="flex items-center gap-2 text-sm sm:gap-7">
+        <nav aria-label={zh ? '主要導覽' : 'Main'} className="flex items-center gap-2 text-sm sm:gap-4 lg:gap-7">
           {navigation.map((link) => (
             <Link
               key={link.href}

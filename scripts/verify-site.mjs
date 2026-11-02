@@ -32,7 +32,23 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
 
 for (const path of paths.filter((path) => path !== '/about')) {
   const html = pages.get(path);
-  for (const language of ['en', 'zh-Hant', 'x-default']) assert.ok(html.includes(`hrefLang="${language}"`), `${path}: ${language} alternate`);
+  const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/stays\/)/, '');
+  const zh = en === '/' ? '/zh-tw' : en === '/sequoia-kings-canyon-guide' ? '/zh-tw/sequoia-guide' : `/zh-tw${en}`;
+  const alternateTags = html.match(/<link\b[^>]*>/g) || [];
+  for (const [language, expected] of [['en', en], ['zh-Hant', zh], ['x-default', en]]) {
+    const tag = alternateTags.find((tag) => tag.includes(`hrefLang="${language}"`));
+    const href = tag?.match(/\bhref="([^"]+)"/)?.[1];
+    assert.equal(new URL(href).href, new URL(expected, canonicalSite).href, `${path}: correct ${language} alternate destination`);
+  }
+}
+// Every rendered internal page/fragment link must resolve within the audited site.
+for (const path of paths) {
+  for (const match of pages.get(path).matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
+    const url = new URL(match[1].replace(/&amp;/g, '&'), new URL(path, canonicalSite));
+    if (url.origin !== new URL(canonicalSite).origin) continue;
+    assert.ok(pages.has(url.pathname), `${path}: unknown internal destination ${url.pathname}`);
+    if (url.hash) assert.ok(pages.get(url.pathname).includes(`id="${decodeURIComponent(url.hash.slice(1))}"`), `${path}: missing fragment ${url.pathname}${url.hash}`);
+  }
 }
 assert.ok(pages.get('/zh-tw/sequoia-guide').includes('五張臥室床'));
 assert.ok(pages.get('/llms.txt').includes('5 bedroom beds'));
@@ -46,6 +62,8 @@ for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-h
   assert.equal(rental.containsPlace.occupancy.value, 14);
   assert.equal(new URL(rental.url).pathname, path, 'Chinese rental schema uses Chinese page URL');
   assert.ok(pages.get('/sitemap.xml').includes(path), 'Chinese listing is in sitemap');
+  assert.ok(html.includes('id="photo-tour"') && html.includes('相簿空間分類'), 'Chinese listing has an interactive localized gallery');
+  assert.ok(html.includes('入住時間與房屋規則') && html.includes('16:00') && html.includes('10:00'), 'Chinese check-in/out details');
 }
 assert.ok(pages.get('/zh-tw').includes('zh-home-card'));
 assert.equal((await fetch(new URL('/this-page-does-not-exist', base))).status, 404);

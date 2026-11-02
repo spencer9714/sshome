@@ -66,7 +66,6 @@ export function PhotoTour({ photos: sourcePhotos, language = 'en' }: { photos: P
               <button type="button" onClick={() => setSelected(photos.indexOf(photo))} aria-label={zh ? `放大${label(space)}照片 ${roomIndex + 1}` : `Enlarge: ${photo.alt}`} className="group relative block aspect-[3/2] w-full cursor-zoom-in overflow-hidden rounded-lg">
                 <Image src={photo.src} alt={photo.alt} fill sizes={roomIndex === 0 ? '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw' : '(min-width: 1024px) 33vw, 50vw'} className="object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
               </button>
-              <figcaption lang="en" className="mt-2 hidden text-sm text-stone md:block">{photo.alt}</figcaption>
             </figure>)}
           </div>
         </section>)}

@@ -39,6 +39,7 @@ export type Stay = {
   amenities: { group: string; items: string[] }[];
   goodToKnow: string[];
   faqs: Faq[];
+  heroPhoto?: string;
   photos: Photo[];
 };
 
@@ -71,6 +72,7 @@ const familyRating = {
 export const stays: Stay[] = [
   {
     slug: 'desert-retreat-pool-hot-tub-visalia',
+    heroPhoto: '/stays/desert-retreat/pool-baja-shelf.jpg',
     name: 'Desert Retreat',
     airbnbId: '1800164576342497106',
     airbnbTitle: 'Desert Retreat near Sequoia | Pool, hot tub & EV',
@@ -79,7 +81,7 @@ export const stays: Stay[] = [
     metaDescription:
       'Entire 5-bedroom Visalia, CA home sleeping 14, with a private pool, hot tub, fire pit and EV charging. A base for Sequoia National Park. Book on Airbnb.',
     bestFor: 'Groups who want a pool and a backyard to come home to',
-    lead: 'A desert-inspired home in Visalia with a private pool, a separate hot tub and a fire pit circle out back. Inside, there is a 98-inch TV for movie night, a kitchen with HexClad cookware, and a Smart TV in each of the five bedrooms.',
+    lead: 'Make room for shared meals, time by the pool and evenings outside. This five-bedroom Visalia home is designed for groups who want to spend time together between park days.',
     guests: 14,
     bedrooms: 5,
     beds: 6,
@@ -180,7 +182,7 @@ export const stays: Stay[] = [
       desert('pool-4', 'In-water loungers on the shallow Baja shelf of the private pool', 'Pool'),
       desert('backyard-3', 'Fire pit circled by Adirondack chairs in the desert-landscaped backyard', 'Backyard & patio'),
       desert('kitchen-1', 'Fully equipped kitchen at the Desert Retreat', 'Kitchen'),
-      desert('pool-baja-shelf', 'Private outdoor pool with a Baja shelf and in-water loungers', 'Pool'),
+      desert('pool-baja-shelf', 'Daylight view of the private pool, in-water loungers and two-story Desert Retreat home in Visalia', 'Pool'),
       desert('pool-3', 'Private pool and backyard at the Desert Retreat', 'Pool'),
       desert('pool-5', 'Private pool and patio at the Desert Retreat', 'Pool'),
       desert('hot-tub-1', 'Private hot tub in the backyard', 'Hot tub'),
@@ -234,7 +236,7 @@ export const stays: Stay[] = [
     metaDescription:
       'Four-bedroom Visalia vacation home for up to 14 with a hot tub, pool table, loft, Wi-Fi and EV charging. Explore Sequoia and book on Airbnb.',
     bestFor: 'Families and groups who want rainy-day space and proven reviews',
-    lead: 'A warm, modern family home with a pool table in the game room, a second-floor loft stocked with board games, and a six-person hot tub out back. Use Visalia as your base for Sequoia and Kings Canyon; allow additional driving time beyond the park entrances.',
+    lead: 'A four-bedroom Visalia home with separate spaces to play, unwind and spend time together. A good fit for families who want an evening at home after exploring the parks.',
     guests: 14,
     bedrooms: 4,
     beds: 5,
@@ -313,7 +315,7 @@ export const stays: Stay[] = [
       { room: 'Living room', beds: '1 couch, 1 air mattress' },
       { room: 'Loft, 2nd floor', beds: '1 sofa bed, 1 air mattress' },
     ],
-    extraSleeping: 'Up to 14 overnight guests, using the beds, sofa bed, couch and air mattresses above. Air mattress sizes are not listed, so message the host on Airbnb to confirm the setup for your group.',
+    extraSleeping: 'Up to 14 overnight guests, including the sofa bed, couch and 3 air mattresses listed above. Confirm air mattress sizes with the host on Airbnb if needed.',
     rules: {
       checkIn: '4:00 PM',
       checkOut: '10:00 AM',
@@ -461,3 +463,5 @@ export const siteFaqs: Faq[] = [
     answer: 'Check-in is at 4:00 PM and checkout is at 10:00 AM at both homes. Early check-in or late checkout may be available for a fee, subject to availability.',
   },
 ];
+
+export const getHeroPhoto = (stay: Stay): Photo => stay.photos.find((photo) => photo.src === stay.heroPhoto) ?? stay.photos[0];

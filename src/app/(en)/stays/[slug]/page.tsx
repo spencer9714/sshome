@@ -7,7 +7,7 @@ import { BookingForm } from '@/components/booking-form';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
-import { airbnbUrl, factsCheckedOn, getStay, stays } from '@/data/stays';
+import { airbnbUrl, factsCheckedOn, getHeroPhoto, getStay, stays } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, staySchema, stayPath } from '@/lib/schema';
 import { parkFacts } from '@/lib/site';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: stay.metaTitle,
       description: stay.metaDescription,
       url: stayPath(stay),
-      images: [{ url: stay.photos[0].src, alt: stay.photos[0].alt }],
+      images: [{ url: getHeroPhoto(stay).src, alt: getHeroPhoto(stay).alt }],
     },
   };
 }
@@ -43,12 +43,15 @@ export default async function StayPage({ params }: Props) {
   if (!stay) notFound();
 
   const others = stays.filter((other) => other.slug !== stay.slug);
-  const [lead, ...supporting] = stay.photos;
+  const lead = getHeroPhoto(stay);
+  const supporting = stay.photos.filter((photo) => photo.src !== lead.src);
+  const wideHero = Boolean(stay.heroPhoto);
+  const followUpFaqs = stay.faqs.filter((faq) => /remotely|pets|charging/i.test(faq.question));
 
   return (
     <>
       <JsonLd data={staySchema(stay)} />
-      <JsonLd data={faqSchema(stay.faqs)} />
+      <JsonLd data={faqSchema(followUpFaqs)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', path: '/' },
@@ -67,9 +70,9 @@ export default async function StayPage({ params }: Props) {
         <h1 className="mt-4 text-4xl leading-tight sm:text-6xl">{stay.name}</h1>
         <p className="mt-2 text-lg text-stone">Entire home in Visalia, California</p>
 
-        <div className="mt-8 grid gap-2 overflow-hidden rounded-lg md:grid-cols-4 md:grid-rows-2">
-          <div className="relative aspect-[3/2] md:col-span-2 md:row-span-2 md:aspect-auto md:min-h-[30rem]">
-            <Image src={lead.src} alt={lead.alt} fill priority sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+        <div className={`mt-8 grid gap-2 overflow-hidden rounded-lg md:grid-rows-2 ${wideHero ? 'md:grid-cols-6' : 'md:grid-cols-4'}`}>
+          <div className={`relative aspect-[3/2] md:row-span-2 md:aspect-auto md:min-h-[30rem] ${wideHero ? 'md:col-span-4' : 'md:col-span-2'}`}>
+            <Image src={lead.src} alt={lead.alt} fill priority sizes={wideHero ? '(min-width: 1280px) 800px, (min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 50vw, 100vw'} className="object-cover object-[50%_55%]" />
           </div>
           {supporting.slice(0, 4).map((photo) => (
             <div key={photo.src} className="relative hidden md:block">
@@ -154,11 +157,11 @@ export default async function StayPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-sm text-stone">{stay.extraSleeping}</p>
+              <p className="mt-4 text-sm text-stone">{stay.slug.startsWith('desert-') ? 'Also provided: 1 queen and 2 twin air mattresses. Total capacity is 14 guests, including these extra sleeping spaces.' : stay.extraSleeping}</p>
             </section>
 
             <section className="mt-14">
-              <h2 className="text-3xl">What is included</h2>
+              <h2 className="text-3xl">Amenities</h2>
               <div className="mt-6 grid gap-8 sm:grid-cols-2">
                 {stay.amenities.map((group) => (
                   <div key={group.group}>
@@ -179,10 +182,10 @@ export default async function StayPage({ params }: Props) {
             <section className="mt-14">
               <h2 className="text-3xl">Getting to the parks</h2>
               <p className="mt-4 leading-relaxed text-stone">
-                From Visalia, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
+                From Visalia Municipal Airport, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
                 {parkFacts.drives[0].entrance} into {parkFacts.drives[0].place}, and{' '}
                 {parkFacts.drives[1].time.toLowerCase()} to the {parkFacts.drives[1].entrance} into{' '}
-                {parkFacts.drives[1].place}.{' '}
+                {parkFacts.drives[1].place}. These are airport-to-entrance references; allow extra time to reach the giant sequoia groves.{' '}
                 <Link href="/sequoia-kings-canyon-guide" className="text-ink underline hover:text-ember">
                   Plan your days with our park guide.
                 </Link>
@@ -221,7 +224,7 @@ export default async function StayPage({ params }: Props) {
           <aside className="hidden lg:col-span-4 lg:block">
             <div className="sticky top-24 rounded-lg border border-line bg-white p-6 shadow-sm">
               <p className="font-display text-2xl">Check your dates</p>
-              <p className="mb-5 mt-1 text-sm text-stone">{stay.reviewNote} · Sleeps {stay.guests}</p>
+              <p className="mb-5 mt-1 text-sm text-stone">Up to {stay.guests} guests</p>
               <BookingForm stay={stay} />
             </div>
           </aside>
@@ -229,7 +232,7 @@ export default async function StayPage({ params }: Props) {
 
         <section id="book" className="mt-14 rounded-lg border border-line bg-white p-6 lg:hidden">
           <h2 className="text-2xl">Check your dates</h2>
-          <p className="mb-5 mt-1 text-sm text-stone">{stay.reviewNote} · Sleeps {stay.guests}</p>
+          <p className="mb-5 mt-1 text-sm text-stone">Up to {stay.guests} guests</p>
           <BookingForm stay={stay} />
         </section>
 
@@ -238,7 +241,7 @@ export default async function StayPage({ params }: Props) {
         <section className="mt-16 max-w-4xl">
           <h2 className="text-3xl">Frequently asked questions</h2>
           <div className="mt-6">
-            <FaqList faqs={stay.faqs} />
+            <FaqList faqs={followUpFaqs} />
           </div>
         </section>
 

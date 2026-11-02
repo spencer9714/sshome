@@ -14,13 +14,14 @@ export const metadata: Metadata = { alternates: { canonical: '/', languages: lan
 
 export default function HomePage() {
   const hero = stays[0].photos[0];
+  const homeFaqs = siteFaqs.filter((faq) => !['Which SSHOME home has a swimming pool?', 'How should two families or 10 to 14 guests choose a home?', 'How far is Visalia from Sequoia and Kings Canyon National Parks?'].includes(faq.question));
   const featuredReviews = stays
     .flatMap((stay) => stay.reviews.map((review) => ({ review, stayName: stay.name })))
     .slice(0, 3);
 
   return (
     <>
-      <JsonLd data={faqSchema(siteFaqs)} />
+      <JsonLd data={faqSchema(homeFaqs)} />
 
       <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-dusk text-white">
         <Image src={hero.src} alt={hero.alt} fill priority sizes="(max-aspect-ratio: 3/2) 135vh, 100vw" className="-z-20 object-cover" />
@@ -31,8 +32,7 @@ export default function HomePage() {
             Visalia vacation homes for up to {maxGuests} guests
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-            Two private vacation homes in Visalia, near Sequoia &amp; Kings Canyon. Room for up to {maxGuests} guests,
-            full kitchens, and your choice of poolside days or game-room nights. Check dates and prices on Airbnb.
+            Your base for Sequoia &amp; Kings Canyon, with full kitchens and a choice of poolside days or game-room nights.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
             <Link
@@ -76,11 +76,6 @@ export default function HomePage() {
                 <p className="mt-4 text-sm text-stone">
                   {stay.guests} guests · {stay.bedrooms} bedrooms · {stay.beds} bedroom beds · {stay.baths} baths
                 </p>
-                <ul className="mt-5 space-y-1.5 text-sm leading-relaxed text-stone">
-                  {stay.highlights.slice(0, 3).map((highlight) => (
-                    <li key={highlight.title}>{highlight.title}</li>
-                  ))}
-                </ul>
                 <Link
                   href={stayPath(stay)}
                   className="mt-6 inline-block border-b border-ink pb-0.5 font-medium transition-colors hover:border-ember hover:text-ember"
@@ -88,7 +83,6 @@ export default function HomePage() {
                   View {stay.name}
                 </Link>
                 <a href={airbnbUrl(stay)} data-booking-placement="home-card" data-airbnb-intent="availability" className="mt-5 block w-fit rounded-md bg-ember px-5 py-3 font-medium text-white hover:bg-ember-dark">Check dates &amp; prices on Airbnb</a>
-                <p className="mt-2 text-xs text-stone">Booking, payment and current availability on Airbnb.</p>
               </div>
             </article>
           ))}
@@ -115,10 +109,7 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
             Choose Desert Retreat for a private, unheated pool and five bedrooms. Choose Luxury Family Home for a pool table, loft and four bedrooms. Both have a hot tub; only Desert Retreat has a swimming pool.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {stays.map((stay) => (<div key={stay.slug} className="rounded-lg border border-line bg-white p-6"><h3 className="text-2xl">{stay.name}</h3><p className="mt-3 text-stone">{stay.bestFor}</p><p className="mt-3 text-sm text-stone">{stay.extraSleeping}</p><Link href={`${stayPath(stay)}#sleeping`} className="mt-4 inline-block underline">See every sleeping space</Link></div>))}
-          </div>
-          <p className="mt-6 text-sm text-stone">Up to 14 guests includes additional sleeping arrangements, not 14 permanent beds. EV charging and BBQ propane cost extra. First-night hot tub availability is not guaranteed; ask the host before booking if it is essential.</p>
+          <p className="mt-4 text-sm text-stone">Guest capacity includes additional sleeping arrangements. Check each room layout before booking.</p>
           <div className="mt-10">
             <CompareTable />
           </div>
@@ -168,7 +159,7 @@ export default function HomePage() {
       <section id="faq" className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <h2 className="text-3xl sm:text-5xl">Questions about staying with {site.name}</h2>
         <div className="mt-10">
-          <FaqList faqs={siteFaqs} />
+          <FaqList faqs={homeFaqs} />
         </div>
       </section>
     </>

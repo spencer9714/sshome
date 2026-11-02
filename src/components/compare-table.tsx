@@ -18,7 +18,29 @@ const rows = [
 
 export function CompareTable() {
   return (
-    <div className="overflow-x-auto rounded-lg border border-line bg-white">
+    <>
+      {/* Two home columns don't fit a phone, so each home gets its own card there. */}
+      <div className="space-y-4 md:hidden">
+        {stays.map((stay) => (
+          <div key={stay.slug} className="rounded-lg border border-line bg-white p-5">
+            <h3 className="text-2xl">
+              <Link href={stayPath(stay)} className="hover:text-ember">
+                {stay.name}
+              </Link>
+            </h3>
+            <dl className="mt-3 divide-y divide-line text-sm">
+              {rows.map((row) => (
+                <div key={row.label} className="py-3 last:pb-0">
+                  <dt className="font-medium">{row.label}</dt>
+                  <dd className="mt-1 leading-relaxed text-stone">{row.value(stay)}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden overflow-x-auto rounded-lg border border-line bg-white md:block">
       <table className="w-full min-w-160 border-collapse text-left text-sm">
         <caption className="sr-only">Comparison of SSHOME vacation homes in Visalia, California</caption>
         <thead>
@@ -48,6 +70,7 @@ export function CompareTable() {
           ))}
         </tbody>
       </table>
-    </div>
+      </div>
+    </>
   );
 }

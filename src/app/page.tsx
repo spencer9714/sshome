@@ -20,7 +20,7 @@ export default function HomePage() {
 
       <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-dusk text-white">
         <Image src={hero.src} alt={hero.alt} fill priority sizes="(max-aspect-ratio: 3/2) 135vh, 100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/55 to-black/10 sm:from-black/75 sm:via-black/25" />
         <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-32 sm:px-6 sm:pb-16 lg:px-8">
           <p className="text-sm font-medium tracking-wide">Visalia, California</p>
           <h1 className="mt-3 max-w-4xl text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">
@@ -30,13 +30,17 @@ export default function HomePage() {
             Two private vacation homes in Visalia, near Sequoia &amp; Kings Canyon. Room for up to {maxGuests} guests,
             full kitchens, and your choice of poolside days or game-room nights. Check dates and prices on Airbnb.
           </p>
-          <Link
-            href="#homes"
-            className="mt-8 inline-block rounded-md bg-ember px-6 py-3.5 font-medium transition-colors hover:bg-ember-dark"
-          >
-            Find your home
-          </Link>
-          <Link href="#compare" className="ml-5 inline-block border-b border-white pb-1">Compare the two homes</Link>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+            <Link
+              href="#homes"
+              className="rounded-md bg-ember px-6 py-3.5 font-medium transition-colors hover:bg-ember-dark"
+            >
+              Find your home
+            </Link>
+            <Link href="#compare" className="border-b border-white pb-1">
+              Compare the two homes
+            </Link>
+          </div>
         </div>
       </section>
 

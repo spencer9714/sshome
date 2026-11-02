@@ -16,6 +16,7 @@ Everything about a home lives in [src/data/stays.ts](src/data/stays.ts). Pages, 
 To add a home:
 
 1. Put its photos in `public/stays/<folder>/`.
+   Each photo entry includes a `space` label (such as `Living room` or `Bedroom 1`); the photo tour groups by that label in first-appearance order. Keep each bedroom separate and use confirmed room descriptions.
 2. Add an entry to the `stays` array, and only include facts confirmed on the live Airbnb listing.
 3. Update `factsCheckedOn`, and the "Which SSHOME home is best" answer in `siteFaqs`, which names the homes.
 

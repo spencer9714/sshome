@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { PhotoTour } from '@/components/photo-tour';
 import { BookingForm } from '@/components/booking-form';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
@@ -75,6 +76,8 @@ export default async function StayPage({ params }: Props) {
             </div>
           ))}
         </div>
+
+        <a href="#photo-tour" className="mt-4 inline-block rounded-md border border-ink px-4 py-2 text-sm font-medium hover:bg-sand">Explore all {stay.photos.length} photos by room</a>
 
         <div className="mt-12 grid gap-14 lg:grid-cols-12">
           <div className="min-w-0 lg:col-span-8">
@@ -210,26 +213,7 @@ export default async function StayPage({ params }: Props) {
           <BookingForm stay={stay} />
         </section>
 
-        <section className="mt-16">
-          <h2 className="text-3xl">Photo tour</h2>
-          <div className="mt-6 grid grid-cols-2 gap-2 lg:grid-cols-3">
-            {supporting.map((photo, index) => (
-              <figure
-                key={photo.src}
-                // The first four are already in the desktop mosaic, which is hidden on phones.
-                className={`relative aspect-[3/2] overflow-hidden rounded-md ${index < 4 ? 'md:hidden' : ''}`}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 50vw"
-                  className="object-cover"
-                />
-              </figure>
-            ))}
-          </div>
-        </section>
+        <PhotoTour photos={stay.photos} />
 
         <section className="mt-16 max-w-4xl">
           <h2 className="text-3xl">Frequently asked questions</h2>

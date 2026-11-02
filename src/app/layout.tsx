@@ -1,33 +1,40 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Fraunces, Instrument_Sans } from 'next/font/google';
+import { JsonLd } from '@/components/json-ld';
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
+import { organizationSchema } from '@/lib/schema';
+import { site, siteUrl } from '@/lib/site';
+import './globals.css';
 
-const inter = Inter({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-})
+const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
+const instrument = Instrument_Sans({ subsets: ['latin'], variable: '--font-instrument', display: 'swap' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${SITE_NAME} | AI Furniture Planning for Airbnb`,
-    template: `%s | ${SITE_NAME}`,
+  metadataBase: new URL(siteUrl),
+  title: { default: site.title, template: `%s | ${site.name}` },
+  description: site.description,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    url: '/',
+    images: [{ url: site.ogImage, width: 1440, height: 960 }],
   },
-  description: SITE_DESCRIPTION,
-}
+  twitter: { card: 'summary_large_image' },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        {children}
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
+      <body>
+        <JsonLd data={organizationSchema()} />
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
       </body>
     </html>
-  )
+  );
 }

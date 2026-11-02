@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SSHOME
 
-## Getting Started
+Marketing site for SSHOME's Airbnb homes in Visalia, California, near Sequoia and Kings Canyon National Parks. Built for search engines and AI agents as well as guests. Bookings happen on Airbnb.
 
-First, run the development server:
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Update content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Everything about a home lives in [src/data/stays.ts](src/data/stays.ts). Pages, the comparison table, structured data, the sitemap and `/llms.txt` are all generated from it.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To add a home:
 
-## Learn More
+1. Put its photos in `public/stays/<folder>/`.
+2. Add an entry to the `stays` array, and only include facts confirmed on the live Airbnb listing.
+3. Update `factsCheckedOn`, and the "Which SSHOME home is best" answer in `siteFaqs`, which names the homes.
 
-To learn more about Next.js, take a look at the following resources:
+Ratings and review counts are copied by hand, so re-check them periodically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The production site is `https://www.sshomedesigns.com`, the default for canonical URLs, the sitemap and structured data. `NEXT_PUBLIC_SITE_URL` overrides it, so leave that variable unset in production.
 
-## Deploy on Vercel
+## Machine-readable surfaces
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/llms.txt`: plain-text summary for AI agents
+- `/sitemap.xml` and `/robots.txt`
+- JSON-LD on every page: `VacationRental`, `FAQPage`, `BreadcrumbList`, `Organization`, `Article`

@@ -1,23 +1,52 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@theme inline {
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-bone: #f7f2e9;
+  --color-sand: #ebe2d2;
+  --color-ink: #1c2230;
+  --color-dusk: #252c44;
+  --color-stone: #5e5f62;
+  --color-line: #d9cfbc;
+  --color-ember: #b8472a;
+  --color-ember-dark: #973619;
+  --color-glow: #f0a273;
+  --color-olive: #47553a;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-}
+/* In the base layer so Tailwind utilities can override these defaults. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
 
-*:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }

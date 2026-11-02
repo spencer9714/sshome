@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: Object.fromEntries(Object.entries(languageAlternates(en, zh)).map(([locale, path]) => [locale, absoluteUrl(path)])) },
     }))),
     { url: absoluteUrl('/sequoia-group-lodging'), lastModified: pageUpdates['/sequoia-group-lodging'] },
+    { url: absoluteUrl('/sequoia-winter-guide'), lastModified: pageUpdates['/sequoia-winter-guide'] },
     { url: absoluteUrl('/about'), lastModified: pageUpdates['/about'] },
   ];
 }

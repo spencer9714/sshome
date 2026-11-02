@@ -144,6 +144,9 @@ export default function GuidePage() {
               </div>
             ))}
           </div>
+          <Link href="/sequoia-winter-guide" className="mt-6 inline-block py-1 font-medium underline hover:text-ember">
+            Planning a winter trip? Read our Sequoia winter guide
+          </Link>
         </section>
 
         <section className="mt-14">

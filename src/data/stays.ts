@@ -109,14 +109,14 @@ export const stays: Stay[] = [
       },
     ],
     compare: {
-      outdoor: 'Private pool, hot tub, fire pit, BBQ, covered patio, lawn games',
+      outdoor: 'Private fenced pool, hot tub, fire pit, BBQ, covered patio, lawn games',
       indoor: '98-inch TV, Nex Playground motion games',
       work: 'Desk, chair, monitor and lamp in Bedroom 2',
       parking: '2 driveway spaces, street parking, EV charging for a fee',
     },
     highlights: [
       {
-        title: 'Private pool with a lounging shelf',
+        title: 'Private fenced pool with a lounging shelf',
         body: 'A shallow Baja shelf with in-water loungers, lit after dark.',
       },
       {
@@ -155,7 +155,7 @@ export const stays: Stay[] = [
       { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
     ],
     goodToKnow: [
-      'Families: the backyard is reached through a sliding glass door and is not fully fenced. The pool has its own fence with two gates, but the hot tub sits outside it with no separate fence. Children must be supervised at all times.',
+      'Families: the pool has its own fence with two self-closing, self-latching gates, and the latches are out of young children’s reach. The hot tub is outside the pool fence, with a heavy cover that does not lock. The backyard opens from a sliding glass door and is not fully fenced, so children must be supervised at all times.',
       'Exterior security cameras cover the area above the garage, the yard (fire pit, pool and lawn) and the front door. There are no cameras inside the home.',
       'The home has stairs.',
       'First-night hot tub availability is not guaranteed. After a full water change, reheating can take about 20 to 30 hours in winter, so message the host before booking if it matters to you.',

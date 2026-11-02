@@ -4,8 +4,8 @@ export const staysZh: Record<string, { title: string; description: string; name:
     description: 'Desert Retreat 位於 Visalia，五房可住14人，附私人不加熱泳池、熱水池、火坑、完整廚房、Wi-Fi 與工作區。查看床位分配與設施，再到 Airbnb 查日期與價格。',
     name: 'Desert Retreat｜五房私人泳池度假屋',
     intro: '適合想多一間臥室、享受私人泳池與戶外空間的家庭或朋友。五房最多14人，附熱水池與火坑；泳池不加熱。',
-    features: ['私人泳池與淺水躺椅區；泳池不加熱', '獨立熱水池、火坑、戶外座位與 cornhole 投沙包', '98 吋電視、各臥室 Smart TV 與 Nex Playground 體感遊戲', '完整廚房、洗衣機與烘衣機', 'Wi-Fi；第二間臥室有書桌、椅子、螢幕與桌燈', '車道可停兩台車；Tesla Level 2 充電器另計費，請先確認車輛相容性'],
-    houseRules: ['最多14位過夜旅客；禁止派對或活動', '禁止吸菸，包含電子菸', '安靜時段為晚上9點至隔天早上8點', '最多可攜帶3隻寵物，費用請在 Airbnb 確認；協助動物依 Airbnb 政策處理', '禁止商業攝影或錄影'],
+    features: ['私人泳池附獨立圍欄與淺水躺椅區；泳池不加熱', '獨立熱水池、火坑、戶外座位與 cornhole 投沙包', '98 吋電視、各臥室 Smart TV 與 Nex Playground 體感遊戲', '完整廚房、洗衣機與烘衣機', 'Wi-Fi；第二間臥室有書桌、椅子、螢幕與桌燈', '車道可停兩台車；Tesla Level 2 充電器另計費，請先確認車輛相容性'],
+    houseRules: ['最多14位過夜旅客；禁止派對或活動', '禁止吸菸，包含電子菸', '安靜時段為晚上9點至隔天早上8點', '最多可攜帶3隻寵物，費用請在 Airbnb 確認；協助動物依 Airbnb 政策處理', '禁止商業攝影或錄影', '親子提醒：泳池有獨立圍欄，兩道門會自動關閉並上鎖，門閂裝在幼童搆不到的高度。熱水池在泳池圍欄外，蓋子很重但不能上鎖；後院可從滑門進出，且沒有完全圍起，孩童需全程由大人看顧。'],
   },
   'luxury-family-home-hot-tub-game-room-visalia': {
     title: 'Visalia 四房14人家庭住宿｜Family Home 熱水池與撞球桌',

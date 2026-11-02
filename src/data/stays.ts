@@ -152,7 +152,7 @@ export const stays: Stay[] = [
       { group: 'Outdoors', items: ['Private pool (not heated)', 'Hot tub', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
       { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wifi'] },
       { group: 'Kitchen', items: ['HexClad cookware', 'Instant Pot', 'Blender', 'Electric kettle', 'Brita pitcher', 'K-Cup and drip coffee maker', 'Kid-friendly dinnerware'] },
-      { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
     ],
     goodToKnow: [
       'Families: the pool has its own fence with two self-closing, self-latching gates, and the latches are out of young children’s reach. The hot tub is outside the pool fence, with a heavy cover that does not lock. The backyard opens from a sliding glass door and is not fully fenced, so children must be supervised at all times.',
@@ -323,7 +323,7 @@ export const stays: Stay[] = [
       { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fully fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
       { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
       { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Drip and Keurig coffee makers', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
-      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
     ],
     goodToKnow: [
       'Exterior security cameras cover the area above the garage, the yard (including the hot tub) and the front door.',

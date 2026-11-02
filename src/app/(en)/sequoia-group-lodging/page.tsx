@@ -60,7 +60,7 @@ const tips = [
   },
   {
     title: 'Laundry',
-    body: 'Both homes have a washer and dryer, which helps on longer stays or after dusty trail days.',
+    body: 'Each home has its own second-floor laundry room with a washer and dryer, which helps on longer stays or after dusty trail days.',
   },
 ];
 

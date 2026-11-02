@@ -49,6 +49,7 @@ export function GET() {
     ),
     `- Source: ${parkFacts.sourceUrl}`,
     `- Park guide: ${absoluteUrl('/sequoia-kings-canyon-guide')}`,
+    `- Group lodging and sleeping plans for 8 to 14 guests: ${absoluteUrl('/sequoia-group-lodging')}`,
     `- Visalia vs Three Rivers and suggested itineraries: ${absoluteUrl('/sequoia-kings-canyon-guide#where-to-stay')}`,
     `- Traditional Chinese travel guide: ${absoluteUrl('/zh-tw/sequoia-guide')}`,
     `- About SSHOME and contacting the host on Airbnb: ${absoluteUrl('/about')}`,

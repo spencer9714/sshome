@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(path), lastModified: factsCheckedOn,
       alternates: { languages: Object.fromEntries(Object.entries(languageAlternates(en, zh)).map(([locale, path]) => [locale, absoluteUrl(path)])) },
     }))),
+    { url: absoluteUrl('/sequoia-group-lodging'), lastModified: factsCheckedOn },
     { url: absoluteUrl('/about'), lastModified: factsCheckedOn },
   ];
 }

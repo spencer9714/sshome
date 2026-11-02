@@ -4,7 +4,7 @@ export const defaultSite = 'https://www.sshomedesigns.com';
 export const paths = [
   '/', '/stays/desert-retreat-pool-hot-tub-visalia',
   '/stays/luxury-family-home-hot-tub-game-room-visalia',
-  '/sequoia-kings-canyon-guide', '/zh-tw/sequoia-guide', '/about',
+  '/sequoia-kings-canyon-guide', '/sequoia-group-lodging', '/zh-tw/sequoia-guide', '/about',
   '/zh-tw', '/zh-tw/stays/desert-retreat-pool-hot-tub-visalia',
   '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia',
 ];

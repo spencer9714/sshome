@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/json-ld';
 import { pageUpdates } from '@/data/page-updates';
 import { stays, type Faq } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, stayPath } from '@/lib/schema';
+import { languageAlternates } from '@/lib/locales';
 import { absoluteUrl, parkFacts } from '@/lib/site';
 
 const path = '/sequoia-winter-guide';
@@ -17,7 +18,7 @@ const image = '/park/sequoia-winter-snow.jpg';
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  alternates: { canonical: path },
+  alternates: { canonical: path, languages: languageAlternates(path, '/zh-tw/sequoia-winter-guide') },
   openGraph: { title, description, url: path, type: 'article', images: [{ url: image }] },
 };
 

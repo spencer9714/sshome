@@ -54,6 +54,8 @@ export function GET() {
     `- Winter guide with tire chains, road access and snow play areas: ${absoluteUrl('/sequoia-winter-guide')}`,
     `- Visalia vs Three Rivers and suggested itineraries: ${absoluteUrl('/sequoia-kings-canyon-guide#where-to-stay')}`,
     `- Traditional Chinese travel guide: ${absoluteUrl('/zh-tw/sequoia-guide')}`,
+    `- Traditional Chinese group lodging guide: ${absoluteUrl('/zh-tw/sequoia-group-lodging')}`,
+    `- Traditional Chinese winter guide: ${absoluteUrl('/zh-tw/sequoia-winter-guide')}`,
     `- About SSHOME and contacting the host on Airbnb: ${absoluteUrl('/about')}`,
     '',
     '## FAQ',

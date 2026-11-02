@@ -5,6 +5,7 @@ import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { airbnbUrl, factsCheckedOn, stays, type Faq } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, stayPath } from '@/lib/schema';
+import { languageAlternates } from '@/lib/locales';
 import { absoluteUrl } from '@/lib/site';
 import { pageUpdates } from '@/data/page-updates';
 
@@ -17,7 +18,7 @@ const image = '/stays/desert-retreat/dining.jpg';
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  alternates: { canonical: path },
+  alternates: { canonical: path, languages: languageAlternates(path, '/zh-tw/sequoia-group-lodging') },
   openGraph: { title, description, url: path, type: 'article', images: [{ url: image }] },
 };
 

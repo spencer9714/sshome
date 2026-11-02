@@ -13,7 +13,7 @@ export function SiteHeader({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
   const navigation = zh ? [
     { href: '/zh-tw#homes', label: '房源', short: '房源', phone: 'block' },
     { href: '/zh-tw/sequoia-guide', label: '自駕指南', short: '指南', phone: 'block' },
-    { href: '/zh-tw#about', label: '關於我們', short: '關於', phone: 'hidden min-[400px]:block' },
+    { href: '/zh-tw/about', label: '關於我們', short: '關於', phone: 'hidden min-[400px]:block' },
   ] : links;
   return (
     <header lang={language} className="sticky top-0 z-40 border-b border-line bg-bone/95 backdrop-blur">

@@ -52,7 +52,7 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
 
 for (const path of paths) {
   const html = pages.get(path);
-  const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/stays\/)/, '');
+  const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/(?:stays\/|sequoia-group-lodging$|sequoia-winter-guide$|about$))/, '');
   const zh = en === '/' ? '/zh-tw' : en === '/sequoia-kings-canyon-guide' ? '/zh-tw/sequoia-guide' : `/zh-tw${en}`;
   if (!pages.has(zh)) continue; // Single-language pages must not invent translated counterparts.
   const alternateTags = html.match(/<link\b[^>]*>/g) || [];
@@ -87,6 +87,11 @@ for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-h
   assert.ok(html.includes('入住時間與房屋規則') && html.includes('16:00') && html.includes('10:00'), 'Chinese check-in/out details');
 }
 assert.ok(pages.get('/zh-tw').includes('zh-home-card'));
+assert.ok(pages.get('/zh-tw').includes('"@type":"FAQPage"'), 'Chinese home has FAQ markup');
+for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
+  const html = pages.get(`/zh-tw/stays/${slug}`);
+  assert.ok(html.includes('"@type":"FAQPage"') && html.includes('房客怎麼說') && html.includes('查看 Airbnb 英文原文'), 'Chinese stay has FAQs and labelled review translations');
+}
 assert.equal((await fetch(new URL('/this-page-does-not-exist', base))).status, 404);
 
 // Regression: an origin-only canonical is equivalent to a root URL ending in /.

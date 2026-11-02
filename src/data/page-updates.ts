@@ -8,8 +8,11 @@ export const pageUpdates: Record<string, string> = {
   '/zh-tw/stays/desert-retreat-pool-hot-tub-visalia': '2026-11-02',
   '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia': '2026-11-02',
   '/sequoia-kings-canyon-guide': '2026-11-02',
-  '/zh-tw/sequoia-guide': '2026-11-01',
-  '/about': '2026-11-01',
+  '/zh-tw/sequoia-guide': '2026-11-02',
+  '/zh-tw/sequoia-group-lodging': '2026-11-02',
+  '/zh-tw/sequoia-winter-guide': '2026-11-02',
+  '/zh-tw/about': '2026-11-02',
+  '/about': '2026-11-02',
   '/sequoia-group-lodging': '2026-11-02',
   '/sequoia-winter-guide': '2026-11-02',
 };

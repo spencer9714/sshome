@@ -22,11 +22,11 @@ export type Stay = {
   metaDescription: string;
   bestFor: string;
   lead: string;
-  // Approximate map position published by Airbnb, rounded so it never pinpoints the home.
-  geo: { latitude: number; longitude: number };
   guests: number;
   bedrooms: number;
-  beds: number;
+  beds: number; // Permanent bedroom beds; excludes sofa beds and air mattresses.
+  bedSummary: string;
+  summaryZh: string;
   baths: number;
   rating: { value: number; count: number; categories?: { label: string; score: number }[] } | null;
   reviewNote: string;
@@ -54,6 +54,19 @@ const photo = (folder: string) => (file: string, alt: string, space: string): Ph
 const desert = photo('desert-retreat');
 const family = photo('luxury-family-home');
 
+const familyRating = {
+      value: 4.91,
+      count: 103,
+      categories: [
+        { label: 'Check-in', score: 5.0 },
+        { label: 'Communication', score: 5.0 },
+        { label: 'Accuracy', score: 4.9 },
+        { label: 'Location', score: 4.9 },
+        { label: 'Cleanliness', score: 4.8 },
+        { label: 'Value', score: 4.8 },
+      ],
+    };
+
 export const stays: Stay[] = [
   {
     slug: 'desert-retreat-pool-hot-tub-visalia',
@@ -61,15 +74,16 @@ export const stays: Stay[] = [
     airbnbId: '1800164576342497106',
     airbnbTitle: 'Desert Retreat near Sequoia | Pool, hot tub & EV',
     tagline: 'A private pool, a fire pit, and five bedrooms for the whole group.',
-    metaTitle: 'Desert Retreat: 5-Bedroom Visalia Home with Pool & Hot Tub near Sequoia',
+    metaTitle: '5-Bedroom Visalia Rental for 14 with Pool | SSHOME',
     metaDescription:
-      'Entire 5-bedroom home in Visalia, CA sleeping 14, with a private pool, hot tub, fire pit and EV charging, about 1 hour from Sequoia National Park. Book on Airbnb.',
+      'Entire 5-bedroom home in Visalia, CA sleeping 14, with a private pool, hot tub, fire pit and EV charging, a Visalia base for Sequoia National Park. Book on Airbnb.',
     bestFor: 'Groups who want a pool and a backyard to come home to',
     lead: 'A desert-inspired home in Visalia with a private pool, a separate hot tub and a fire pit circle out back. Inside, there is a 98-inch TV for movie night, a kitchen with HexClad cookware, and a Smart TV in each of the five bedrooms.',
-    geo: { latitude: 36.31, longitude: -119.28 },
     guests: 14,
     bedrooms: 5,
     beds: 6,
+    bedSummary: '6 bedroom beds + 1 queen and 2 twin air mattresses',
+    summaryZh: '五房、六張臥室床、三間衛浴，附私人不加熱泳池、熱水池與火坑。臥室有一張 King、三張 Queen 及兩張 Twin，可睡 10 人；另有一張 Queen 氣墊床和兩張 Twin 氣墊床，可再睡 4 人，合計 14 人。',
     baths: 3,
     rating: null,
     reviewNote: 'New on Airbnb',
@@ -142,7 +156,7 @@ export const stays: Stay[] = [
       { question: 'How many people does the Desert Retreat sleep?', answer: 'Up to 14 guests: five bedrooms have 1 king bed, 3 queen beds and a kids’ room with 2 twin beds, sleeping 10. One queen air mattress sleeps 2 and two twin air mattresses sleep 1 each. There are 3 bathrooms.' },
       { question: 'How big is the pool at the Desert Retreat?', answer: 'The private pool is about 15 by 33 feet, with a shallow Baja shelf and in-water loungers.' },
       { question: 'Is the pool at the Desert Retreat heated?', answer: 'No, the pool is not heated. The separate hot tub can be heated, but first-night availability is not guaranteed.' },
-      { question: 'How far is the Desert Retreat from Sequoia National Park?', answer: 'The home is in Visalia, about a 1-hour drive from Sequoia National Park.' },
+      { question: 'How far is the Desert Retreat from Sequoia National Park?', answer: 'The home is in Visalia. NPS estimates about 1 hour from Visalia Municipal Airport to Sequoia’s Ash Mountain Entrance, not from this home to the giant sequoia groves. Allow extra time for park roads, traffic, parking and walking.' },
       { question: 'Does the Desert Retreat have EV charging?', answer: 'Yes, for an additional fee. Contact the host in advance for pricing and arrangements.' },
       { question: 'Can I work remotely from the Desert Retreat?', answer: 'Yes. Bedroom 2 has a desk, chair, monitor and lamp, and the home has Wifi. Nearby construction may cause daytime noise.' },
     ],
@@ -181,29 +195,19 @@ export const stays: Stay[] = [
     airbnbId: '1291019377672253246',
     airbnbTitle: 'Luxury family home | Hot Tub | EV | BBQ',
     tagline: 'A game room, a loft, and a hot tub under string lights.',
-    metaTitle: 'Luxury Family Home: 4-Bedroom Visalia Rental with Hot Tub & Game Room',
+    metaTitle: 'Visalia Family Rental for 14 near Sequoia | SSHOME',
     metaDescription:
-      'Entire 4-bedroom Visalia, CA home sleeping 14, rated 4.91 from 103 Airbnb reviews. Hot tub, pool table, loft and EV charging, 35 miles from Sequoia National Park.',
+      'Four-bedroom Visalia vacation home for up to 14 with a hot tub, pool table, loft, Wi-Fi and EV charging. Explore Sequoia and book on Airbnb.',
     bestFor: 'Families and groups who want rainy-day space and proven reviews',
-    lead: 'A warm, modern family home with a pool table in the game room, a second-floor loft stocked with board games, and a six-person hot tub out back. It is 35 miles from Sequoia National Park and 55 miles from Kings Canyon.',
-    geo: { latitude: 36.36, longitude: -119.31 },
+    lead: 'A warm, modern family home with a pool table in the game room, a second-floor loft stocked with board games, and a six-person hot tub out back. Use Visalia as your base for Sequoia and Kings Canyon; allow additional driving time beyond the park entrances.',
     guests: 14,
     bedrooms: 4,
-    beds: 6,
+    beds: 5,
+    bedSummary: '5 bedroom beds + 1 double sofa bed + 2 queen air mattresses',
+    summaryZh: '四房、五張臥室床、三間衛浴，附撞球桌、閣樓與熱水池；沒有泳池。臥室有一張 King、兩張 Queen 及兩張 Twin，可睡 8 人；另有一張雙人沙發床和兩張 Queen 氣墊床，可再睡 6 人，合計 14 人。車道可停兩台車，部分車庫已改為遊戲室。',
     baths: 3,
-    rating: {
-      value: 4.91,
-      count: 103,
-      categories: [
-        { label: 'Check-in', score: 5.0 },
-        { label: 'Communication', score: 5.0 },
-        { label: 'Accuracy', score: 4.9 },
-        { label: 'Location', score: 4.9 },
-        { label: 'Cleanliness', score: 4.8 },
-        { label: 'Value', score: 4.8 },
-      ],
-    },
-    reviewNote: '4.91 from 103 reviews',
+    rating: familyRating,
+    reviewNote: `${familyRating.value} from ${familyRating.count} Airbnb reviews`,
     reviews: [
       {
         initial: 'J.',
@@ -241,7 +245,7 @@ export const stays: Stay[] = [
     compare: {
       outdoor: '6-person hot tub, BBQ, fenced yard with string lights, cactus garden',
       indoor: 'Pool table, 75-inch TV, loft with board games',
-      work: 'None listed',
+      work: 'Wi-Fi; no dedicated workspace',
       parking: '2 driveway spaces, street parking, EV charging for a fee',
     },
     highlights: [
@@ -260,6 +264,10 @@ export const stays: Stay[] = [
       {
         title: 'Thoughtful family details',
         body: "A kids' room, children's plates and utensils, plus Toto bidets in the bathrooms.",
+      },
+      {
+        title: 'Easy everyday shopping',
+        body: 'Target is less than a five-minute drive away, according to the owners’ local driving estimate. Actual travel time varies with traffic.',
       },
     ],
     sleeping: [
@@ -286,8 +294,8 @@ export const stays: Stay[] = [
     ],
     faqs: [
       { question: 'What are the Luxury Family Home sleeping arrangements?', answer: 'Up to 14 guests: four bedrooms have 1 king bed, 2 queen beds and 2 twin beds, sleeping 8. One sofa bed sleeps 2 and two queen air mattresses sleep 2 each, for 14 sleeping places in total. There are 3 bathrooms.' },
-      { question: 'What is the Luxury Family Home rated on Airbnb?', answer: `It is rated 4.91 out of 5 from 103 Airbnb reviews, as of ${factsCheckedOn}.` },
-      { question: 'How far is the Luxury Family Home from the national parks?', answer: 'It is 35 miles to Sequoia National Park, 55 miles to Kings Canyon National Park, and about 3 hours to Yosemite National Park.' },
+      { question: 'What is the Luxury Family Home rated on Airbnb?', answer: `It is rated ${familyRating.value} out of 5 from ${familyRating.count} Airbnb reviews, as of ${factsCheckedOn}.` },
+      { question: 'How far is the Luxury Family Home from the national parks?', answer: 'NPS estimates about 1 hour from Visalia Municipal Airport to Sequoia’s Ash Mountain Entrance and about 1.5 hours to Kings Canyon’s Big Stump Entrance. These are airport-to-entrance references, not measured drives from the home or times to the main sights.' },
       { question: 'Are restaurants and grocery stores close to the Luxury Family Home?', answer: "Guests report grocery stores and quick-bite options nearby, plus gas stations and late-night restaurants such as Raising Cane's and In-N-Out about a 5-minute drive away." },
       { question: 'Does the Luxury Family Home have a hot tub?', answer: 'Yes, a private six-person hot tub. First-night availability is not guaranteed, because reheating after servicing can take about 20 to 30 hours in winter.' },
       { question: 'Does the Luxury Family Home allow pets?', answer: 'The Airbnb listing shows pets as allowed. Check the listing for the current pet policy and any fees before booking.' },
@@ -329,6 +337,14 @@ export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 
 export const siteFaqs: Faq[] = [
   {
+    question: 'Who owns and manages SSHOME?',
+    answer: 'SSHOME is owned by Spencer and Sylvia. The management team includes Janson and Miyu. Contact the team through the relevant Airbnb listing.',
+  },
+  {
+    question: 'Do both SSHOME homes have Wi-Fi and a workspace?',
+    answer: 'Both homes have Wi-Fi. Only Desert Retreat has a dedicated workspace, with a desk, chair, monitor and lamp in Bedroom 2. Luxury Family Home does not have a dedicated workspace.',
+  },
+  {
     question: 'Which SSHOME home has a swimming pool?',
     answer: 'Only Desert Retreat has a private swimming pool, which is not heated. Both Desert Retreat and Luxury Family Home have a hot tub. First-night hot tub availability is not guaranteed; contact the host before booking if it is essential.',
   },
@@ -350,7 +366,7 @@ export const siteFaqs: Faq[] = [
   },
   {
     question: 'Which SSHOME home is best for a large group?',
-    answer: `Both homes sleep up to ${maxGuests}. Choose the Desert Retreat for a private pool, fire pit and five bedrooms. Choose the Luxury Family Home for a game room, loft and 4.91-rated reviews.`,
+    answer: `Both homes sleep up to ${maxGuests}. Choose the Desert Retreat for a private pool, fire pit and five bedrooms. Choose the Luxury Family Home for a pool table, loft and hot tub.`,
   },
   {
     question: 'How do I book an SSHOME stay?',

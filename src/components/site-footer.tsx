@@ -4,7 +4,7 @@ import { stayPath } from '@/lib/schema';
 
 export function SiteFooter() {
   return (
-    <footer className="bg-dusk text-bone">
+    <footer lang="en" className="bg-dusk text-bone">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <p className="font-display text-2xl tracking-[0.12em]">SSHOME</p>

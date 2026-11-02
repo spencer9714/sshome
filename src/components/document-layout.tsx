@@ -5,13 +5,13 @@ import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { organizationSchema } from '@/lib/schema';
 import { site, siteUrl } from '@/lib/site';
-import './globals.css';
+import '@/app/globals.css';
 import { Analytics } from '@/components/analytics';
 
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
 const instrument = Instrument_Sans({ subsets: ['latin'], variable: '--font-instrument', display: 'swap' });
 
-export const metadata: Metadata = {
+export const baseMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: site.title, template: `%s | ${site.name}` },
   description: site.description,
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export function DocumentLayout({ children, language }: { children: React.ReactNode; language: 'en' | 'zh-Hant' }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
+    <html lang={language} className={`${fraunces.variable} ${instrument.variable}`}>
       <body>
         <Analytics />
         <JsonLd data={organizationSchema()} />

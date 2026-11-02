@@ -12,7 +12,7 @@ export function ReviewCard({ review, stayName }: { review: GuestReview; stayName
       <figcaption className="mt-5 text-sm text-stone">
         <span className="font-medium text-ink">{review.initial}</span> · {review.dateLabel} · {stayName ?? review.context}
       </figcaption>
-      {stay && <a href={airbnbUrl(stay)} className="mt-3 text-sm underline hover:text-ember">Read reviews on Airbnb</a>}
+      {stay && <a href={airbnbUrl(stay)} data-airbnb-intent="reviews" data-booking-placement="review-card" className="mt-3 text-sm underline hover:text-ember">Read reviews on Airbnb</a>}
     </figure>
   );
 }

@@ -16,7 +16,9 @@ export function BookingForm({ stay }: { stay: Stay }) {
   const [today, setToday] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  const [guests, setGuests] = useState('6');
+  const [adults, setAdults] = useState(6);
+  const [children, setChildren] = useState(0);
+  const guests = adults + children;
 
   useEffect(() => {
     const now = new Date();
@@ -46,18 +48,29 @@ export function BookingForm({ stay }: { stay: Stay }) {
         </label>
       </div>
       <label className="block text-xs font-medium">
-        Guests
-        <select name="adults" value={guests} onChange={(event) => setGuests(event.target.value)} className={fieldClass}>
+        Adults (13+)
+        <select name="adults" value={adults} onChange={(event) => {
+          const value = Number(event.target.value);
+          setAdults(value);
+          setChildren((count) => Math.min(count, stay.guests - value));
+        }} className={fieldClass}>
           {Array.from({ length: stay.guests }, (_, index) => index + 1).map((count) => (
             <option key={count} value={count}>
-              {count} {count === 1 ? 'guest' : 'guests'}
+              {count} {count === 1 ? 'adult' : 'adults'}
             </option>
           ))}
         </select>
       </label>
+      <label className="block text-xs font-medium">
+        Children (2–12)
+        <select name="children" value={children} onChange={(event) => setChildren(Number(event.target.value))} className={fieldClass}>
+          {Array.from({ length: stay.guests - adults + 1 }, (_, count) => <option key={count} value={count}>{count} {count === 1 ? 'child' : 'children'}</option>)}
+        </select>
+      </label>
+      <p className="text-xs text-stone">Traveling with infants under 2? Add them on Airbnb and confirm suitable arrangements with the host.</p>
       <input type="hidden" name="guests" value={guests} />
       <p aria-live="polite" className="text-sm text-stone">
-        {nights > 0 ? `${nights} ${nights === 1 ? 'night' : 'nights'} / ${guests} ${guests === '1' ? 'guest' : 'guests'}` : 'Choose your check-in and checkout dates.'}
+        {nights > 0 ? `${nights} ${nights === 1 ? 'night' : 'nights'} / ${guests} ${guests === 1 ? 'guest' : 'guests'}` : 'Choose your check-in and checkout dates.'}
       </p>
       <button
         type="submit"

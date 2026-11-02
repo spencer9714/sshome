@@ -85,7 +85,7 @@ export default async function StayPage({ params }: Props) {
               {[
                 ['Guests', stay.guests],
                 ['Bedrooms', stay.bedrooms],
-                ['Beds', stay.beds],
+                ['Bedroom beds', stay.beds],
                 ['Baths', stay.baths],
               ].map(([label, value]) => (
                 <div key={label} className="flex flex-col-reverse">
@@ -136,7 +136,7 @@ export default async function StayPage({ params }: Props) {
                 </div>
                 <p className="mt-4 text-xs text-stone">
                   A selection of reviews from Airbnb, shown word for word. Names are shortened for privacy.{' '}
-                  <a href={airbnbUrl(stay)} className="underline hover:text-ember">
+                  <a href={airbnbUrl(stay)} data-airbnb-intent="reviews" data-booking-placement="stay-reviews" className="underline hover:text-ember">
                     Read all reviews on Airbnb.
                   </a>
                 </p>
@@ -170,7 +170,7 @@ export default async function StayPage({ params }: Props) {
                   </div>
                 ))}
               </div>
-              <a href={airbnbUrl(stay)} className="mt-6 inline-block text-sm underline hover:text-ember">
+              <a href={airbnbUrl(stay)} data-airbnb-intent="amenities" data-booking-placement="stay-amenities" className="mt-6 inline-block text-sm underline hover:text-ember">
                 See the full amenity list on Airbnb
               </a>
             </section>

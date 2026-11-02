@@ -24,7 +24,7 @@ export default function HomePage() {
         <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-32 sm:px-6 sm:pb-16 lg:px-8">
           <p className="text-sm font-medium tracking-wide">Visalia, California</p>
           <h1 className="mt-3 max-w-4xl text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">
-            Sequoia adventures. A home for everyone.
+            Visalia vacation homes for up to {maxGuests} guests
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
             Two private vacation homes in Visalia, near Sequoia &amp; Kings Canyon. Room for up to {maxGuests} guests,
@@ -70,7 +70,7 @@ export default function HomePage() {
                 </h3>
                 <p className="mt-3 text-lg leading-relaxed">{stay.tagline}</p>
                 <p className="mt-4 text-sm text-stone">
-                  {stay.guests} guests · {stay.bedrooms} bedrooms · {stay.beds} beds · {stay.baths} baths
+                  {stay.guests} guests · {stay.bedrooms} bedrooms · {stay.beds} bedroom beds · {stay.baths} baths
                 </p>
                 <ul className="mt-5 space-y-1.5 text-sm leading-relaxed text-stone">
                   {stay.highlights.slice(0, 3).map((highlight) => (
@@ -83,7 +83,7 @@ export default function HomePage() {
                 >
                   View {stay.name}
                 </Link>
-                <a href={airbnbUrl(stay)} data-booking-placement="home-card" className="mt-5 block w-fit rounded-md bg-ember px-5 py-3 font-medium text-white hover:bg-ember-dark">Check dates &amp; prices on Airbnb</a>
+                <a href={airbnbUrl(stay)} data-booking-placement="home-card" data-airbnb-intent="availability" className="mt-5 block w-fit rounded-md bg-ember px-5 py-3 font-medium text-white hover:bg-ember-dark">Check dates &amp; prices on Airbnb</a>
                 <p className="mt-2 text-xs text-stone">Booking, payment and current availability on Airbnb.</p>
               </div>
             </article>

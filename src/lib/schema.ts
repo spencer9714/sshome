@@ -39,8 +39,6 @@ export const staySchema = (stay: Stay) => ({
   sameAs: airbnbUrl(stay),
   brand: { '@id': organizationId },
   image: stay.photos.map((photo) => absoluteUrl(photo.src)),
-  latitude: stay.geo.latitude,
-  longitude: stay.geo.longitude,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Visalia',
@@ -50,7 +48,7 @@ export const staySchema = (stay: Stay) => ({
   containsPlace: {
     '@type': 'Accommodation',
     additionalType: 'EntirePlace',
-    occupancy: { '@type': 'QuantitativeValue', maxValue: stay.guests },
+    occupancy: { '@type': 'QuantitativeValue', value: stay.guests },
     numberOfBedrooms: stay.bedrooms,
     numberOfBathroomsTotal: stay.baths,
     bed: { '@type': 'BedDetails', numberOfBeds: stay.beds },
@@ -58,23 +56,6 @@ export const staySchema = (stay: Stay) => ({
       .flatMap((group) => group.items)
       .map((name) => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
   },
-  ...(stay.rating && {
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: stay.rating.value,
-      reviewCount: stay.rating.count,
-      bestRating: 5,
-    },
-  }),
-  ...(stay.reviews.length > 0 && {
-    review: stay.reviews.map((review) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: review.initial },
-      datePublished: review.date,
-      reviewBody: review.text,
-      reviewRating: { '@type': 'Rating', ratingValue: review.rating, bestRating: 5 },
-    })),
-  }),
   potentialAction: {
     '@type': 'ReserveAction',
     name: 'Check availability on Airbnb',

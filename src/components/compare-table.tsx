@@ -7,8 +7,9 @@ const rows = [
   { label: 'Sleeps', value: (stay: (typeof stays)[number]) => `Up to ${stay.guests} guests` },
   {
     label: 'Rooms',
-    value: (stay: (typeof stays)[number]) => `${stay.bedrooms} bedrooms, ${stay.beds} beds, ${stay.baths} baths`,
+    value: (stay: (typeof stays)[number]) => `${stay.bedrooms} bedrooms, ${stay.beds} bedroom beds, ${stay.baths} baths`,
   },
+  { label: 'Sleeping setup', value: (stay: (typeof stays)[number]) => stay.bedSummary },
   { label: 'Airbnb reviews', value: (stay: (typeof stays)[number]) => stay.reviewNote },
   { label: 'Outdoors', value: (stay: (typeof stays)[number]) => stay.compare.outdoor },
   { label: 'Indoor fun', value: (stay: (typeof stays)[number]) => stay.compare.indoor },

@@ -30,7 +30,11 @@ export async function audit(site = defaultSite) {
           if (/<meta\b(?=[^>]*\bname=["'](?:robots|googlebot|bingbot)["'])(?=[^>]*\bcontent=["'][^"']*\b(?:noindex|none)\b)[^>]*>/i.test(body)) issues.push('meta tag prevents indexing');
           if (!/<h1[\s>]/i.test(body)) issues.push('missing H1');
           const canonicalTags = body.match(/<link\b[^>]*>/gi) || [];
-          if (!canonicalTags.some((tag) => /rel=["']canonical["']/i.test(tag) && tag.includes(new URL(path, site).href))) issues.push('missing matching canonical');
+          if (!canonicalTags.some((tag) => {
+            const href = tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
+            if (!/rel=["']canonical["']/i.test(tag) || !href) return false;
+            try { return new URL(href, site).href === new URL(path, site).href; } catch { return false; }
+          })) issues.push('missing matching canonical');
         }
         checks.push({ path, agent, status: response.status, server: response.headers.get('server'), issues });
       } catch (error) {

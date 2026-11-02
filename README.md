@@ -11,7 +11,11 @@ npm run dev
 
 ## Update content
 
-Everything about a home lives in [src/data/stays.ts](src/data/stays.ts). Pages, the comparison table, structured data, the sitemap and `/llms.txt` are all generated from it.
+Everything about a home lives in [src/data/stays.ts](src/data/stays.ts). Pages, the comparison table, structured data, the sitemap and `/llms.txt` are all generated from it. `beds` counts permanent bedroom beds only; sofa beds and air mattresses are described separately in `bedSummary`, `sleeping` and `extraSleeping`. The Chinese guide reads `summaryZh` from the same file. Family review labels and FAQ read the single `familyRating` snapshot.
+
+English pages use the `(en)` route group; the Chinese guide uses `(zh)`. Both use `DocumentLayout`, with server-rendered document language `en` or `zh-Hant`. These internal folders do not change public URLs. The two guides publish reciprocal language alternates and self-canonicals.
+
+After building, start a local production server (`npm run start -- --port 3100`) and run `npm run test:seo`. If the build intentionally uses a different `NEXT_PUBLIC_SITE_URL`, pass the serving origin and expected canonical origin explicitly, e.g. `npm run test:seo -- http://localhost:3100 http://localhost:3000`. The checks cover rendered routes, languages, canonicals, guide alternates, sleeping counts, descriptive schema, adult/child fields, click intent markers, 404s and canonical audit regression cases. They do not replace browser testing of date pickers, Airbnb's live UI, or GA4 event receipt.
 
 To add a home:
 
@@ -31,6 +35,8 @@ The production site is `https://www.sshomedesigns.com`, the default for canonica
 - `/llms.txt`: plain-text summary for AI agents
 - `/sitemap.xml` and `/robots.txt`
 - JSON-LD on every page: `VacationRental`, `FAQPage`, `BreadcrumbList`, `Organization`, `Article`
+
+The rental schema describes occupancy using `value` and deliberately omits approximate coordinates and copied Airbnb review/rating markup. Visible Airbnb reviews retain source links and snapshot dates. This is descriptive schema, not a claim of eligibility for Google's Vacation Rental/Hotel Center program. Do not manufacture precise coordinates or addresses to pass rich-result checks. FAQ content remains useful to guests; FAQ schema is not a promise of a Google rich result.
 
 ## Search verification and crawl checks
 
@@ -53,6 +59,7 @@ Official references: [Google sitemap submission](https://developers.google.com/w
 - `/go/desert` and `/go/family` are temporary redirects to the corresponding clean Airbnb URLs. Use them for QR codes or social posts; home pages remain available for comparison. Next.js forwards incoming query parameters, so do not add fixed travel dates to evergreen campaign links.
 - Optional GA4: set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` in the hosting environment and rebuild. Without a valid ID, the site loads no analytics script and sends no analytics events.
 - Once configured, GA4 receives `airbnb_click` for Airbnb links and valid date-form submissions, with `listing_id`, `placement`, and `page_path`. These include review/contact links as well as booking links: they measure outbound interest, not confirmed bookings. Travel dates and guest counts are not included in the custom event.
+- `intent` distinguishes `availability`, `reviews`, `amenities`, `contact` and general `listing` visits. Report availability separately from review and contact clicks. The booking form sends separate `adults` (13+) and `children` (2–12), plus their combined `guests` count; combined guests cannot exceed the home's limit. Infants are added on Airbnb.
 - Tag links **into the website** with campaign parameters, e.g. `/?utm_source=instagram&utm_medium=social&utm_campaign=desert_pool#homes`. GA4 handles source attribution and page views. Link to the home page or an individual home page when website engagement matters: a direct visit to `/go/*` redirects before the analytics script runs, so it is not measured by this client-side integration.
 - Compare traffic source and `airbnb_click` by listing/placement in GA4. Confirm event receipt in DebugView/Realtime after configuring the real property; then separately compare Airbnb reservations. Analytics integration is not a cross-domain booking attribution system.
 

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "seo:audit": "node scripts/seo-audit.mjs",
+    "test:seo": "node scripts/verify-site.mjs",
     "indexnow:submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {

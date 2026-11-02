@@ -32,6 +32,7 @@ export function Analytics() {
       window.gtag?.('event', 'airbnb_click', {
         listing_id: room || url.pathname.split('/').pop(),
         placement: element.getAttribute('data-booking-placement') || method,
+        intent: element.getAttribute('data-airbnb-intent') || (method === 'date-form' ? 'availability' : 'listing'),
         page_path: window.location.pathname,
         transport_type: 'beacon',
       });

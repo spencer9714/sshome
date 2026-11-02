@@ -4,7 +4,7 @@ export const site = {
   name: 'SSHOME',
   title: 'SSHOME | Visalia Vacation Homes near Sequoia & Kings Canyon',
   description:
-    'Private, design-led vacation homes in Visalia, California for groups of up to 14, near Sequoia and Kings Canyon National Parks. Pool, hot tub, EV charging and full kitchens. Book on Airbnb.',
+    'Private Visalia vacation homes for up to 14 guests, a base for Sequoia and Kings Canyon. Choose a pool home or a family home with a game room. Both offer hot tubs, Wi-Fi and full kitchens. Book on Airbnb.',
   ogImage: '/stays/desert-retreat/pool-1.jpg',
 };
 

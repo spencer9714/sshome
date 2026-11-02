@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: site.title, template: `%s | ${site.name}` },
   description: site.description,
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } : {},
+  },
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',

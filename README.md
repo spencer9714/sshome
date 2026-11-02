@@ -32,6 +32,22 @@ The production site is `https://www.sshomedesigns.com`, the default for canonica
 - `/sitemap.xml` and `/robots.txt`
 - JSON-LD on every page: `VacationRental`, `FAQPage`, `BreadcrumbList`, `Organization`, `Article`
 
+## Search verification and crawl checks
+
+Production audit on 2026-11-01 (America/Los_Angeles): `www.sshomedesigns.com` resolved through `ext-sq.squarespace.com`. The homepage, rental pages, guide and sitemap returned Squarespace HTTP 404 with title “Website Expired”. The live robots.txt returned `User-agent: *` with `Disallow: /`. Changing this repository does not change that Squarespace deployment or its DNS.
+
+First point the domain at the approved Next.js deployment and verify its TLS certificate. Preserve mail-related DNS records. Use the actual hosting provider's required records; do not guess deployment targets.
+
+1. In Google Search Console add the URL-prefix property `https://www.sshomedesigns.com/`, choose HTML tag verification, and put only the `content` value in the host environment variable `GOOGLE_SITE_VERIFICATION`. Alternatively use DNS verification for a Domain property. Redeploy, then finish verification in the owner's account.
+2. In Bing Webmaster Tools add the same site, choose the meta-tag option and set `BING_SITE_VERIFICATION` to the `msvalidate.01` content value. Redeploy and finish verification, or import an already verified Google property using Bing's supported flow.
+3. Submit `https://www.sshomedesigns.com/sitemap.xml` in both accounts. Inspect the homepage, both `/stays/*` pages, `/sequoia-kings-canyon-guide`, `/zh-tw/sequoia-guide` and `/about`. Review index status and crawl errors in the dashboards; HTTP success is not proof of indexing.
+4. Run `npm run seo:audit` against production. It checks HTTP responses, sitemap entries, canonical tags, obvious noindex rules and homepage responses to Googlebot, bingbot and OAI-SearchBot User-Agent probes. This is a conservative preflight, not a complete robots parser or real crawler IP test. Review CDN/WAF configuration and verified crawler logs before claiming actual bot access is confirmed.
+5. IndexNow proof is stored in `indexnow.json` and the matching public root `.txt` file. This key is intentionally public and is not an account password. Once deployed, run `npm run indexnow:submit` after meaningful content updates. The script refuses submission if the production audit fails or the published proof file does not match. It notifies participating engines; it does not submit to Google Search Console or guarantee indexing. Check Bing's dashboard for receipt.
+
+Commands require network access. Do not submit the expired Squarespace pages. No Google/Bing verification or sitemap submission has been completed merely by adding these source settings.
+
+Official references: [Google sitemap submission](https://developers.google.com/webmaster-tools/v1/sitemaps/submit), [Bing IndexNow setup](https://www.bing.com/indexnow/getstarted), [OpenAI crawler access](https://developers.openai.com/api/docs/bots).
+
 ## Airbnb links and measurement
 
 - `/go/desert` and `/go/family` are temporary redirects to the corresponding clean Airbnb URLs. Use them for QR codes or social posts; home pages remain available for comparison. Next.js forwards incoming query parameters, so do not add fixed travel dates to evergreen campaign links.

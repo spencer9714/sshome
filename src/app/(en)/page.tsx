@@ -7,7 +7,7 @@ import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, maxGuests, siteFaqs, stays } from '@/data/stays';
-import { faqSchema, stayPath } from '@/lib/schema';
+import { collectionSchema, faqSchema, stayPath } from '@/lib/schema';
 import { parkFacts, site } from '@/lib/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/', languages: languageAlternates('/', '/zh-tw') } };
@@ -22,6 +22,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={faqSchema(homeFaqs)} />
+      <JsonLd data={collectionSchema('en')} />
 
       <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-dusk text-white">
         <Image src={hero.src} alt={hero.alt} fill priority sizes="(max-aspect-ratio: 3/2) 135vh, 100vw" className="-z-20 object-cover" />

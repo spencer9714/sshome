@@ -5,6 +5,8 @@ import { airbnbUrl, factsCheckedOn, stays } from '@/data/stays';
 import { staysZh } from '@/data/stays-zh';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
 import { site } from '@/lib/site';
+import { JsonLd } from '@/components/json-ld';
+import { collectionSchema } from '@/lib/schema';
 
 const title = 'Visalia 紅杉國家公園住宿｜14人家庭包棟・泳池度假屋｜SSHOME';
 const description = '規劃 Sequoia 紅杉與 Kings Canyon 國家公園自駕旅行？比較 SSHOME 在 Visalia 的兩間14人整棟住宿：五房泳池屋、四房家庭遊戲屋。查看床位、設施與繁中行程，透過 Airbnb 訂房。';
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
 
 export default function ChineseHome() {
   return <>
+    <JsonLd data={collectionSchema('zh-Hant')} />
     <section className="relative isolate flex min-h-[70svh] items-end overflow-hidden bg-dusk text-white">
       <Image src={stays[0].photos[0].src} alt="Visalia Desert Retreat 私人泳池與度假屋" fill priority sizes="100vw" className="-z-20 object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />

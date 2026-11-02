@@ -1,13 +1,33 @@
 import assert from 'node:assert/strict';
+import { access } from 'node:fs/promises';
 import { audit, defaultSite, paths } from './seo-audit.mjs';
 
 const base = process.argv[2] || 'http://localhost:3100';
 const canonicalSite = process.argv[3] || defaultSite;
 const pages = new Map();
-for (const path of [...paths, '/sitemap.xml', '/llms.txt', '/robots.txt']) {
+for (const path of [...paths, '/sitemap.xml', '/image-sitemap.xml', '/llms.txt', '/robots.txt']) {
   const response = await fetch(new URL(path, base));
   assert.equal(response.status, 200, path);
   pages.set(path, await response.text());
+}
+
+const imageSitemap = pages.get('/image-sitemap.xml');
+assert.ok(imageSitemap.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'));
+assert.ok(pages.get('/robots.txt').includes('/image-sitemap.xml'));
+const imageUrls = [...imageSitemap.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((match) => match[1].replace(/&amp;/g, '&'));
+assert.ok(imageUrls.length > 0, 'Image sitemap contains actual listing photos');
+assert.equal(new Set(imageUrls).size, imageUrls.length, 'Image URLs are unique');
+for (const image of imageUrls) {
+  const url = new URL(image);
+  assert.equal(url.origin, new URL(canonicalSite).origin);
+  assert.ok(url.pathname.startsWith('/stays/'));
+  await access(new URL(`../public${url.pathname}`, import.meta.url));
+}
+for (const path of ['/', '/zh-tw']) {
+  const schemas = [...pages.get(path).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+  const collection = schemas.find((schema) => schema['@type'] === 'CollectionPage');
+  assert.equal(collection.mainEntity.numberOfItems, 2);
+  assert.equal(collection.inLanguage, path === '/' ? 'en' : 'zh-Hant');
 }
 
 for (const path of paths) {
@@ -30,10 +50,11 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
   assert.ok(html.includes('data-airbnb-intent="reviews"') && html.includes('data-airbnb-intent="amenities"'), 'Distinct outbound intents');
 }
 
-for (const path of paths.filter((path) => path !== '/about')) {
+for (const path of paths) {
   const html = pages.get(path);
   const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/stays\/)/, '');
   const zh = en === '/' ? '/zh-tw' : en === '/sequoia-kings-canyon-guide' ? '/zh-tw/sequoia-guide' : `/zh-tw${en}`;
+  if (!pages.has(zh)) continue; // Single-language pages must not invent translated counterparts.
   const alternateTags = html.match(/<link\b[^>]*>/g) || [];
   for (const [language, expected] of [['en', en], ['zh-Hant', zh], ['x-default', en]]) {
     const tag = alternateTags.find((tag) => tag.includes(`hrefLang="${language}"`));

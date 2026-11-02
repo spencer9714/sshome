@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/json-ld';
 import { airbnbUrl, factsCheckedOn, stays, type Faq } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, stayPath } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
+import { pageUpdates } from '@/data/page-updates';
 
 const path = '/sequoia-group-lodging';
 const title = 'Group Lodging near Sequoia: Visalia Homes for 10 to 14 Guests';
@@ -94,7 +95,7 @@ export default function GroupLodgingPage() {
           description,
           url: absoluteUrl(path),
           image: absoluteUrl(image),
-          dateModified: factsCheckedOn,
+          dateModified: pageUpdates[path],
           author: { '@type': 'Organization', name: 'SSHOME' },
           publisher: { '@type': 'Organization', name: 'SSHOME' },
         }}

@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/json-ld';
 import { airbnbUrl, factsCheckedOn, getHeroPhoto, getStay, stays } from '@/data/stays';
 import { sharedNotesZh, staysZh } from '@/data/stays-zh';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
-import { breadcrumbSchema, stayPath, staySchema } from '@/lib/schema';
+import { breadcrumbSchema, rentalPageSchema, stayPath, staySchema } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -31,6 +31,7 @@ export default async function ChineseStay({ params }: Props) {
   if (!stay || !staysZh[slug]) notFound();
   const text = staysZh[slug];
   return <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <JsonLd data={rentalPageSchema(stay, 'zh-Hant', text.title)} />
     <JsonLd data={{ ...staySchema(stay), '@id': `${absoluteUrl(zhStayPath(slug))}#rental`, name: text.name, description: text.description, url: absoluteUrl(zhStayPath(slug)) }} />
     <JsonLd data={breadcrumbSchema([{ name: '中文首頁', path: '/zh-tw' }, { name: text.name, path: zhStayPath(slug) }])} />
     <Link href="/zh-tw#homes" className="text-sm underline">比較兩間住宿</Link><h1 className="mt-4 text-4xl leading-tight sm:text-5xl">{text.name}</h1><p className="mt-4 text-stone">Visalia 整棟住宿・最多 {stay.guests} 人・{stay.bedrooms} 房・{stay.baths} 間衛浴</p>

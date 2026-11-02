@@ -36,6 +36,7 @@ export function GET() {
   const body = [
     `# ${site.name}`,
     `Traditional Chinese homepage: ${absoluteUrl('/zh-tw')}`,
+    `Image sitemap: ${absoluteUrl('/image-sitemap.xml')}`,
     '',
     `> ${site.description}`,
     '',

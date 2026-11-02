@@ -36,9 +36,14 @@ The production site is `https://www.sshomedesigns.com`, the default for canonica
 
 - `/llms.txt`: plain-text summary for AI agents
 - `/sitemap.xml` and `/robots.txt`
+- `/image-sitemap.xml`: all original listing photos, associated with their listing pages; advertised in robots.txt. Submit it in Search Console after deployment. Image entries help discovery and do not guarantee image-search placement.
 - JSON-LD on every page: `VacationRental`, `FAQPage`, `BreadcrumbList`, `Organization`, `Article`
 
 The rental schema describes occupancy using `value` and deliberately omits approximate coordinates and copied Airbnb review/rating markup. Visible Airbnb reviews retain source links and snapshot dates. This is descriptive schema, not a claim of eligibility for Google's Vacation Rental/Hotel Center program. Do not manufacture precise coordinates or addresses to pass rich-result checks. FAQ content remains useful to guests; FAQ schema is not a promise of a Google rich result.
+
+English and Chinese homepages expose a `CollectionPage` with a two-home `ItemList`; listing `WebPage` markup links to the corresponding rental entity. Page modification dates are maintained in `src/data/page-updates.ts`, separately from `factsCheckedOn` (Airbnb facts/review snapshot). Update only the pages actually edited, not every date on each build.
+
+On 2026-11-02 the production HTTP/canonical/robots audit passed for all nine pages and the three crawler User-Agent probes. IndexNow returned HTTP 202: notification received, key validation pending. This is not confirmation of Bing, Google or ChatGPT indexing; use the verified owner dashboards for that.
 
 ## Search verification and crawl checks
 

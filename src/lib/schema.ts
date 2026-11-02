@@ -1,5 +1,7 @@
-import { airbnbUrl, type Faq, type Stay } from '@/data/stays';
+import { airbnbUrl, stays, type Faq, type Stay } from '@/data/stays';
 import { absoluteUrl, site, siteUrl } from '@/lib/site';
+import { zhStayPath } from '@/lib/locales';
+import { pageUpdates } from '@/data/page-updates';
 
 const organizationId = `${siteUrl}/#organization`;
 
@@ -25,6 +27,42 @@ export const organizationSchema = () => ({
 });
 
 export const stayPath = (stay: Stay) => `/stays/${stay.slug}`;
+
+export const collectionSchema = (language: 'en' | 'zh-Hant') => {
+  const zh = language === 'zh-Hant';
+  const path = zh ? '/zh-tw' : '/';
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${absoluteUrl(path)}#page`,
+    url: absoluteUrl(path),
+    name: zh ? 'SSHOME Visalia 度假住宿' : 'SSHOME Visalia vacation homes',
+    inLanguage: language,
+    dateModified: pageUpdates[path],
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: stays.length,
+      itemListElement: stays.map((stay, index) => ({
+        '@type': 'ListItem', position: index + 1,
+        name: stay.name,
+        url: absoluteUrl(zh ? zhStayPath(stay.slug) : stayPath(stay)),
+      })),
+    },
+  };
+};
+
+export const rentalPageSchema = (stay: Stay, language: 'en' | 'zh-Hant', title: string) => {
+  const path = language === 'en' ? stayPath(stay) : zhStayPath(stay.slug);
+  return {
+    '@context': 'https://schema.org', '@type': 'WebPage',
+    '@id': `${absoluteUrl(path)}#page`, url: absoluteUrl(path), name: title,
+    inLanguage: language,
+    dateModified: pageUpdates[path],
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: { '@id': `${absoluteUrl(path)}#rental` },
+  };
+};
 
 export const staySchema = (stay: Stay) => ({
   '@context': 'https://schema.org',

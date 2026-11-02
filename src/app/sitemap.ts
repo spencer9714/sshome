@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { factsCheckedOn, stays } from '@/data/stays';
+import { stays } from '@/data/stays';
+import { pageUpdates } from '@/data/page-updates';
 import { stayPath } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
@@ -12,10 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return [
     ...pairs.flatMap(([en, zh]) => [en, zh].map((path) => ({
-      url: absoluteUrl(path), lastModified: factsCheckedOn,
+      url: absoluteUrl(path), lastModified: pageUpdates[path],
       alternates: { languages: Object.fromEntries(Object.entries(languageAlternates(en, zh)).map(([locale, path]) => [locale, absoluteUrl(path)])) },
     }))),
-    { url: absoluteUrl('/sequoia-group-lodging'), lastModified: factsCheckedOn },
-    { url: absoluteUrl('/about'), lastModified: factsCheckedOn },
+    { url: absoluteUrl('/sequoia-group-lodging'), lastModified: pageUpdates['/sequoia-group-lodging'] },
+    { url: absoluteUrl('/about'), lastModified: pageUpdates['/about'] },
   ];
 }

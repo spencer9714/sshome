@@ -8,7 +8,7 @@ import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, getHeroPhoto, getStay, stays } from '@/data/stays';
-import { breadcrumbSchema, faqSchema, staySchema, stayPath } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, rentalPageSchema, staySchema, stayPath } from '@/lib/schema';
 import { parkFacts } from '@/lib/site';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
 
@@ -50,6 +50,7 @@ export default async function StayPage({ params }: Props) {
   return (
     <>
       <JsonLd data={staySchema(stay)} />
+      <JsonLd data={rentalPageSchema(stay, 'en', stay.metaTitle)} />
       <JsonLd data={faqSchema(stay.faqs)} />
       <JsonLd
         data={breadcrumbSchema([

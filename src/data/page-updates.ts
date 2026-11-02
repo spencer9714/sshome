@@ -1,0 +1,14 @@
+// Page edits are separate from the Airbnb facts/review snapshot date.
+// Update a path only when its content or descriptive structured data changes.
+export const pageUpdates: Record<string, string> = {
+  '/': '2026-11-02',
+  '/zh-tw': '2026-11-02',
+  '/stays/desert-retreat-pool-hot-tub-visalia': '2026-11-02',
+  '/stays/luxury-family-home-hot-tub-game-room-visalia': '2026-11-02',
+  '/zh-tw/stays/desert-retreat-pool-hot-tub-visalia': '2026-11-02',
+  '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia': '2026-11-02',
+  '/sequoia-kings-canyon-guide': '2026-11-01',
+  '/zh-tw/sequoia-guide': '2026-11-01',
+  '/about': '2026-11-01',
+  '/sequoia-group-lodging': '2026-11-02',
+};

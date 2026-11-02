@@ -46,12 +46,11 @@ export default async function StayPage({ params }: Props) {
   const lead = getHeroPhoto(stay);
   const supporting = stay.photos.filter((photo) => photo.src !== lead.src);
   const wideHero = Boolean(stay.heroPhoto);
-  const followUpFaqs = stay.faqs.filter((faq) => /remotely|pets|charging/i.test(faq.question));
 
   return (
     <>
       <JsonLd data={staySchema(stay)} />
-      <JsonLd data={faqSchema(followUpFaqs)} />
+      <JsonLd data={faqSchema(stay.faqs)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', path: '/' },
@@ -224,7 +223,7 @@ export default async function StayPage({ params }: Props) {
           <aside className="hidden lg:col-span-4 lg:block">
             <div className="sticky top-24 rounded-lg border border-line bg-white p-6 shadow-sm">
               <p className="font-display text-2xl">Check your dates</p>
-              <p className="mb-5 mt-1 text-sm text-stone">Up to {stay.guests} guests</p>
+              {stay.rating && <p className="mb-5 mt-1 text-sm text-stone">★ {stay.rating.value} · {stay.rating.count} Airbnb reviews</p>}
               <BookingForm stay={stay} />
             </div>
           </aside>
@@ -232,7 +231,7 @@ export default async function StayPage({ params }: Props) {
 
         <section id="book" className="mt-14 rounded-lg border border-line bg-white p-6 lg:hidden">
           <h2 className="text-2xl">Check your dates</h2>
-          <p className="mb-5 mt-1 text-sm text-stone">Up to {stay.guests} guests</p>
+          {stay.rating && <p className="mb-5 mt-1 text-sm text-stone">★ {stay.rating.value} · {stay.rating.count} Airbnb reviews</p>}
           <BookingForm stay={stay} />
         </section>
 
@@ -241,7 +240,7 @@ export default async function StayPage({ params }: Props) {
         <section className="mt-16 max-w-4xl">
           <h2 className="text-3xl">Frequently asked questions</h2>
           <div className="mt-6">
-            <FaqList faqs={followUpFaqs} />
+            <FaqList faqs={stay.faqs} />
           </div>
         </section>
 

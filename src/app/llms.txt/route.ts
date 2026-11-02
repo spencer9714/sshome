@@ -28,6 +28,7 @@ export function GET() {
       `- Pets: ${stay.rules.pets}`,
       `- House rules: ${stay.rules.items.join('; ')}`,
       `- Good to know: ${stay.goodToKnow.join(' ')}`,
+      ...stay.faqs.map((faq) => `- ${faq.question} ${faq.answer}`),
       ...stay.reviews.map((review) => `- Guest review (${review.dateLabel}, ${review.rating}/5): "${review.text}"`),
     ].join('\n'),
   );

@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npm ls:*)"
+      "Bash(npm ls:*)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('mockup_worker.py'\\).read\\(\\)\\); print\\('syntax OK'\\)\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Spencer\\OneDrive\\文件\\GitHub\\Runfra\\worker"
     ]
   }
 }

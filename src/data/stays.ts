@@ -187,14 +187,6 @@ export const stays: Stay[] = [
     reviewNote: '4.91 from 103 reviews',
     reviews: [
       {
-        initial: 'N.',
-        date: '2026-02',
-        dateLabel: 'February 2026',
-        context: 'Stayed with kids',
-        rating: 5,
-        text: 'We had the most incredible stay! The home is absolutely beautiful and perfectly kid-friendly, which allowed us to relax and truly enjoy our time. Our kids spent hours playing air hockey in the garage—it was such a hit! We had every amenity needed to cook a full family dinner, but we also loved that the home is located near some fantastic restaurants with stunning mountain views. The best amenity though was the hot tub and it’s always ready so it was perfect at night—the stargazing is spectacular! The host was incredibly easy to work with and made the whole process seamless. We truly had a great time connecting as a family and would love to come back and stay here again sometime!',
-      },
-      {
         initial: 'J.',
         date: '2026-06',
         dateLabel: 'June 2026',
@@ -231,12 +223,12 @@ export const stays: Stay[] = [
       outdoor: '6-person hot tub, BBQ, fenced yard with string lights, cactus garden',
       indoor: 'Pool table, 75-inch TV, loft with board games',
       work: 'None listed',
-      parking: '2 driveway spaces, garage, street parking, EV charging for a fee',
+      parking: '2 driveway spaces, street parking, EV charging for a fee',
     },
     highlights: [
       {
         title: 'Game room with a pool table',
-        body: 'A dedicated room for family nights and friendly competition, whatever the weather.',
+        body: 'Part of the two-car garage has been converted into a game room with a pool table for family nights and friendly competition.',
       },
       {
         title: 'Loft for extra breathing room',
@@ -264,7 +256,7 @@ export const stays: Stay[] = [
       { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
       { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
       { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Coffee maker', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
-      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidets', 'Free driveway parking', 'Garage', 'EV charging (fee)', 'Pets allowed'] },
+      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidets', 'Free driveway parking for 2 cars', 'EV charging (fee)', 'Pets allowed'] },
     ],
     goodToKnow: [
       'First-night hot tub availability is not guaranteed. After full servicing, reheating can take about 20 to 30 hours in winter, so message the host if it matters to you.',

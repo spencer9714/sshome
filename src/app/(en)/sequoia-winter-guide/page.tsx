@@ -12,7 +12,7 @@ const path = '/sequoia-winter-guide';
 const title = 'Sequoia in Winter from Visalia: Snow, Chains and Road Access';
 const description =
   'Plan a winter trip to Sequoia and Kings Canyon from Visalia, CA: tire chains, road closures, snow play areas and what to pack, based on NPS information.';
-const image = '/stays/desert-retreat/backyard-1.jpg';
+const image = '/park/sequoia-winter-snow.jpg';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -149,16 +149,23 @@ export default function WinterGuidePage() {
           up on a clear day and stay in on a stormy one.
         </p>
 
-        <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">
-          <Image
-            src={image}
-            alt="Fire pit lit at dusk with chairs and landscape lighting at Desert Retreat in Visalia"
-            fill
-            priority
-            sizes="(min-width: 768px) 720px, 100vw"
-            className="object-cover"
-          />
-        </div>
+        <figure className="mt-10">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
+            <Image
+              src={image}
+              alt="Giant sequoia with fresh snow around its base beside a wooden fence in Sequoia and Kings Canyon National Parks"
+              fill
+              priority
+              sizes="(min-width: 768px) 720px, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <figcaption className="mt-2 text-xs leading-relaxed text-stone">
+            Photo (cropped):{' '}
+            <a href={npsPages.holidays} className="underline">NPS / Alison Taggart Barone</a>. No protection is claimed in
+            original U.S. Government works.
+          </figcaption>
+        </figure>
 
         <section className="mt-14">
           <h2 className="text-3xl">Before you leave Visalia</h2>

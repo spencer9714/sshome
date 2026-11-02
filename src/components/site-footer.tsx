@@ -32,6 +32,8 @@ export function SiteFooter() {
                 Sequoia and Kings Canyon guide
               </Link>
             </li>
+            <li><Link href="/about" className="hover:text-glow">About SSHOME &amp; contact</Link></li>
+            <li><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="hover:text-glow">繁體中文旅遊指南</Link></li>
             <li>
               <Link href="/#faq" className="hover:text-glow">
                 FAQ

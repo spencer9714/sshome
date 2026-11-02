@@ -4,7 +4,7 @@ const links = [
   { href: '/#homes', label: 'Homes' },
   { href: '/#compare', label: 'Compare' },
   { href: '/sequoia-kings-canyon-guide', label: 'Park guide' },
-  { href: '/#faq', label: 'FAQ' },
+  { href: '/about', label: 'About & contact' },
 ];
 
 export function SiteHeader() {

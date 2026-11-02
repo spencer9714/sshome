@@ -4,7 +4,7 @@ import { CompareTable } from '@/components/compare-table';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
-import { maxGuests, siteFaqs, stays } from '@/data/stays';
+import { airbnbUrl, factsCheckedOn, maxGuests, siteFaqs, stays } from '@/data/stays';
 import { faqSchema, stayPath } from '@/lib/schema';
 import { parkFacts, site } from '@/lib/site';
 
@@ -24,18 +24,19 @@ export default function HomePage() {
         <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-32 sm:px-6 sm:pb-16 lg:px-8">
           <p className="text-sm font-medium tracking-wide">Visalia, California</p>
           <h1 className="mt-3 max-w-4xl text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">
-            Vacation homes near Sequoia &amp; Kings Canyon
+            Sequoia adventures. A home for everyone.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-            Spend the day among the giant trees, then come back to a private home with room for up to {maxGuests}, a
-            hot tub, and a kitchen big enough for everyone.
+            Two private vacation homes in Visalia, near Sequoia &amp; Kings Canyon. Room for up to {maxGuests} guests,
+            full kitchens, and your choice of poolside days or game-room nights. Check dates and prices on Airbnb.
           </p>
           <Link
             href="#homes"
             className="mt-8 inline-block rounded-md bg-ember px-6 py-3.5 font-medium transition-colors hover:bg-ember-dark"
           >
-            See the homes
+            Find your home
           </Link>
+          <Link href="#compare" className="ml-5 inline-block border-b border-white pb-1">Compare the two homes</Link>
         </div>
       </section>
 
@@ -78,6 +79,8 @@ export default function HomePage() {
                 >
                   View {stay.name}
                 </Link>
+                <a href={airbnbUrl(stay)} data-booking-placement="home-card" className="mt-5 block w-fit rounded-md bg-ember px-5 py-3 font-medium text-white hover:bg-ember-dark">Check dates &amp; prices on Airbnb</a>
+                <p className="mt-2 text-xs text-stone">Booking, payment and current availability on Airbnb.</p>
               </div>
             </article>
           ))}
@@ -93,7 +96,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-4 text-xs text-stone">
-            From Airbnb reviews, shown word for word. Names are shortened for privacy.
+            From Airbnb reviews, shown word for word. Names are shortened for privacy. Details checked {factsCheckedOn}.
           </p>
         </section>
       )}
@@ -102,8 +105,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-5xl">Compare the homes</h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
-            The same city and group size, with a different feel. Here is how to choose.
+            Choose Desert Retreat for a private, unheated pool and five bedrooms. Choose Luxury Family Home for a pool table, loft and four bedrooms. Both have a hot tub; only Desert Retreat has a swimming pool.
           </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {stays.map((stay) => (<div key={stay.slug} className="rounded-lg border border-line bg-white p-6"><h3 className="text-2xl">{stay.name}</h3><p className="mt-3 text-stone">{stay.bestFor}</p><p className="mt-3 text-sm text-stone">{stay.extraSleeping}</p><Link href={`${stayPath(stay)}#sleeping`} className="mt-4 inline-block underline">See every sleeping space</Link></div>))}
+          </div>
+          <p className="mt-6 text-sm text-stone">Up to 14 guests includes additional sleeping arrangements, not 14 permanent beds. EV charging and BBQ propane cost extra. First-night hot tub availability is not guaranteed; ask the host before booking if it is essential.</p>
           <div className="mt-10">
             <CompareTable />
           </div>
@@ -147,6 +154,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><p className="text-sm font-medium text-ember">Plan before you book</p><h2 className="mt-3 text-3xl">A better trip starts with the right base</h2><div className="mt-6 flex flex-wrap gap-5"><Link href="/sequoia-kings-canyon-guide#where-to-stay" className="underline">Visalia or Three Rivers?</Link><Link href="/sequoia-kings-canyon-guide#itineraries" className="underline">One- and two-night trip ideas</Link><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="underline">繁體中文旅遊指南</Link><Link href="/about" className="underline">About SSHOME &amp; contact</Link></div></section>
 
       <section id="faq" className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <h2 className="text-3xl sm:text-5xl">Questions about staying with {site.name}</h2>

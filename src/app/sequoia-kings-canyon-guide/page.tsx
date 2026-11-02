@@ -103,6 +103,29 @@ export default function GuidePage() {
           </p>
         </section>
 
+        <section id="where-to-stay" className="mt-14">
+          <h2 className="text-3xl">Visalia or Three Rivers: where should you stay?</h2>
+          <p className="mt-4 leading-relaxed text-stone">Our recommendation: compare Visalia if you want a city base for groceries, meals and time together at the house. Compare Three Rivers if being closer to Sequoia’s Ash Mountain Entrance is your priority: Highway 198 enters the park at Three Rivers. Check the actual location and amenities of each home rather than assuming every rental in either town offers the same experience.</p>
+          <p className="mt-4 leading-relaxed text-stone">SSHOME’s two Visalia homes offer full kitchens and space for up to 14, with additional sleeping arrangements. Three Rivers is closer to the entrance along this approach, but neither town is the same as staying in Giant Forest. For Kings Canyon, plan your route separately via Highway 180.</p>
+          <a href={parkFacts.sourceUrl} className="mt-3 inline-block text-sm underline">Source: National Park Service entrance and route information</a>
+        </section>
+
+        <section id="itineraries" className="mt-14">
+          <h2 className="text-3xl">Two days, one night: focus on Sequoia</h2>
+          <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
+            <li><strong className="font-medium text-ink">Day 1 — arrive and settle in.</strong> Pick up groceries in Visalia and plan your arrival around your confirmed check-in time. Leave room for a shared meal and downtime at the house.</li>
+            <li><strong className="font-medium text-ink">Day 2 — one park day.</strong> Check out at the agreed time and head out early for Giant Forest and the General Sherman Tree, subject to road and trail access. Allow for mountain driving, parking and walking before your onward journey.</li>
+          </ol>
+          <h3 className="mt-8 text-2xl">Three days, two nights: a full day among the trees</h3>
+          <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
+            <li><strong className="font-medium text-ink">Day 1 — arrive in Visalia.</strong> Shop, check in and choose your sleeping spaces before dinner.</li>
+            <li><strong className="font-medium text-ink">Day 2 — explore Sequoia.</strong> Reserve the day for Giant Forest and General Sherman, adding other stops only as access, daylight and your group’s energy allow. Return to your home for dinner.</li>
+            <li><strong className="font-medium text-ink">Day 3 — choose your return route.</strong> If conditions and your onward route allow, consider Grant Grove in Kings Canyon via Highway 180 after checkout. Otherwise, enjoy an unhurried departure. Cedar Grove is a separate, longer canyon excursion with seasonal road access.</li>
+          </ol>
+          <p className="mt-5 text-sm leading-relaxed text-stone">These are suggested itineraries, not guided trips or guaranteed access. Entrance estimates above do not include the drive to the groves, entrance queues, parking or walks. Check current conditions and your Airbnb check-in and checkout times before finalizing plans.</p>
+          <Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="mt-5 inline-block underline">繁體中文：紅杉國家公園自駕與住宿指南</Link>
+        </section>
+
         <section className="mt-14">
           <h2 className="text-3xl">Seasonal road patterns</h2>
           <div className="mt-6 space-y-6">

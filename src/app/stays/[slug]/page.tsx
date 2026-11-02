@@ -141,7 +141,7 @@ export default async function StayPage({ params }: Props) {
             )}
 
             <section className="mt-14">
-              <h2 className="text-3xl">Where everyone sleeps</h2>
+              <h2 id="sleeping" className="text-3xl">Where everyone sleeps</h2>
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {stay.sleeping.map((room) => (
                   <li key={room.room} className="flex flex-col gap-1 py-3.5 sm:flex-row sm:justify-between sm:gap-6">
@@ -265,7 +265,7 @@ export default async function StayPage({ params }: Props) {
       <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-4 border-t border-line bg-bone px-4 py-3 lg:hidden">
         <p className="min-w-0 truncate text-sm font-medium">{stay.name}</p>
         <a href="#book" className="shrink-0 rounded-md bg-ember px-4 py-2.5 text-sm font-medium text-white">
-          Check dates
+          Check dates on Airbnb
         </a>
       </div>
     </>

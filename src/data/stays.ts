@@ -72,7 +72,24 @@ export const stays: Stay[] = [
     baths: 3,
     rating: null,
     reviewNote: 'New on Airbnb',
-    reviews: [],
+    reviews: [
+      {
+        initial: 'Y.',
+        date: '2026-10',
+        dateLabel: 'October 2026',
+        context: 'Group trip',
+        rating: 5,
+        text: "We couldn't have asked for a better setup for our group trip to Sequoia and Kings Canyon National Parks. Great location: the drive to both park entrances is straightforward, and the property delivers true boutique luxury. Everything is brand-new and thoughtfully curated, having Washlets in every bathroom made mornings with a full crew seamless, and the kitchen had every tool we needed, even spices. The backyard is a dream: we spent our evening grilling on the BBQ, dining outside, and lounging by the huge pool after a full day exploring the giant sequoias. An exceptional host with impeccable taste. This is one of the most beautiful homes we've ever stayed in!",
+      },
+      {
+        initial: 'A.',
+        date: '2026-10',
+        dateLabel: 'October 2026',
+        context: 'Group trip',
+        rating: 5,
+        text: 'We absolutely loved our stay! The location is perfect for visiting Sequoia National Park, and we stayed here for one night before heading to the park. The house is brand new, beautiful, and feels like a five star resort! The nearly 30 foot pool is stunning, especially at night with the lights on. The in pool loungers and hot tub made it even better. Soaking in the water with my friends while enjoying a few beers was such a treat! The backyard also has cornhole, a fire pit, and a gas grill, perfect for spending a fun evening together. Inside, the modern design is gorgeous, and the playground and TV games were great for the kids. Honestly, none of us wanted to leave, including the adults! This home has everything you need for a relaxing and memorable getaway. We would absolutely love to come back and highly recommend it!',
+      },
+    ],
     compare: {
       outdoor: 'Private pool, hot tub, fire pit, BBQ, covered patio, lawn games',
       indoor: '98-inch TV, Nex Playground motion games',
@@ -82,7 +99,7 @@ export const stays: Stay[] = [
     highlights: [
       {
         title: 'Private pool with a lounging shelf',
-        body: 'A shallow Baja shelf with in-water loungers, lit after dark. The pool is not heated.',
+        body: 'About 15 by 33 feet, with a shallow Baja shelf and in-water loungers, lit after dark. The pool is not heated.',
       },
       {
         title: 'Hot tub and fire pit',
@@ -104,12 +121,12 @@ export const stays: Stay[] = [
       { room: 'Bedroom 4, 2nd floor', beds: '1 queen bed' },
       { room: 'Bedroom 5, 2nd floor', beds: '2 twin beds' },
     ],
-    extraSleeping: '2 twin and 1 queen air mattresses are provided, within the 14-guest maximum.',
+    extraSleeping: 'Sleeps 14: 1 king, 3 queens and 2 twin beds in five bedrooms sleep 10; 1 queen air mattress and 2 twin air mattresses sleep 4 more.',
     amenities: [
-      { group: 'Outdoors', items: ['Private pool (not heated)', 'Hot tub (can be heated)', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
+      { group: 'Outdoors', items: ['Private pool, about 15 x 33 ft (not heated)', 'Hot tub (can be heated)', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
       { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wifi'] },
       { group: 'Kitchen', items: ['HexClad cookware', 'Instant Pot', 'Blender', 'Electric kettle', 'Brita pitcher', 'K-Cup and drip coffee maker', 'Kid-friendly dinnerware'] },
-      { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Self check-in with smart lock', 'Free driveway parking', 'EV charging (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Self check-in with smart lock', 'Free driveway parking', 'EV charging (fee)'] },
     ],
     goodToKnow: [
       'The pool is not heated. The separate hot tub can be heated.',
@@ -121,7 +138,8 @@ export const stays: Stay[] = [
       'The neighborhood celebrates Halloween, so trick-or-treaters may knock on October 31.',
     ],
     faqs: [
-      { question: 'How many people does the Desert Retreat sleep?', answer: 'Up to 14 guests, in 5 bedrooms with 6 beds. Three air mattresses are also provided within that maximum, and there are 3 bathrooms.' },
+      { question: 'How many people does the Desert Retreat sleep?', answer: 'Up to 14 guests: five bedrooms have 1 king bed, 3 queen beds and a kids’ room with 2 twin beds, sleeping 10. One queen air mattress sleeps 2 and two twin air mattresses sleep 1 each. There are 3 bathrooms.' },
+      { question: 'How big is the pool at the Desert Retreat?', answer: 'The private pool is about 15 by 33 feet, with a shallow Baja shelf and in-water loungers.' },
       { question: 'Is the pool at the Desert Retreat heated?', answer: 'No, the pool is not heated. The separate hot tub can be heated, but first-night availability is not guaranteed.' },
       { question: 'How far is the Desert Retreat from Sequoia National Park?', answer: 'The home is in Visalia, about a 1-hour drive from Sequoia National Park.' },
       { question: 'Does the Desert Retreat have EV charging?', answer: 'Yes, for an additional fee. Contact the host in advance for pricing and arrangements.' },
@@ -244,19 +262,18 @@ export const stays: Stay[] = [
       },
     ],
     sleeping: [
-      { room: 'Bedroom 1, primary suite', beds: '1 king bed, 1 air mattress' },
+      { room: 'Bedroom 1, primary suite', beds: '1 king bed (sleeps 2)' },
       { room: 'Bedroom 2', beds: '1 queen bed' },
       { room: 'Bedroom 3, 1st floor', beds: '1 queen bed' },
       { room: 'Bedroom 4', beds: '2 single beds' },
-      { room: 'Living room', beds: 'Sleeper sectional, 1 air mattress' },
-      { room: 'Loft, 2nd floor', beds: '1 sofa bed, 1 air mattress' },
+      { room: 'Additional sleeping', beds: '1 sofa bed (sleeps 2), 2 queen air mattresses (sleep 2 each)' },
     ],
-    extraSleeping: 'Air mattresses are available for larger groups, within the 14-guest maximum.',
+    extraSleeping: 'Sleeps 14: 1 king, 2 queens and 2 twin beds in four bedrooms sleep 8; 1 sofa bed sleeps 2 and 2 queen air mattresses sleep 4 more.',
     amenities: [
       { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
       { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
       { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Coffee maker', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
-      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidets', 'Free driveway parking for 2 cars', 'EV charging (fee)', 'Pets allowed'] },
+      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Free driveway parking for 2 cars', 'EV charging (fee)', 'Pets allowed'] },
     ],
     goodToKnow: [
       'First-night hot tub availability is not guaranteed. After full servicing, reheating can take about 20 to 30 hours in winter, so message the host if it matters to you.',
@@ -267,7 +284,7 @@ export const stays: Stay[] = [
       'The neighborhood celebrates Halloween, so trick-or-treaters may knock on October 31.',
     ],
     faqs: [
-      { question: 'How many people does the Luxury Family Home sleep?', answer: 'Up to 14 guests, in 4 bedrooms with 6 beds, plus air mattresses and sleeper sofas. There are 3 bathrooms.' },
+      { question: 'What are the Luxury Family Home sleeping arrangements?', answer: 'Up to 14 guests: four bedrooms have 1 king bed, 2 queen beds and 2 twin beds, sleeping 8. One sofa bed sleeps 2 and two queen air mattresses sleep 2 each, for 14 sleeping places in total. There are 3 bathrooms.' },
       { question: 'What is the Luxury Family Home rated on Airbnb?', answer: `It is rated 4.91 out of 5 from 103 Airbnb reviews, as of ${factsCheckedOn}.` },
       { question: 'How far is the Luxury Family Home from the national parks?', answer: 'It is 35 miles to Sequoia National Park, 55 miles to Kings Canyon National Park, and about 3 hours to Yosemite National Park.' },
       { question: 'Are restaurants and grocery stores close to the Luxury Family Home?', answer: "Guests report grocery stores and quick-bite options nearby, plus gas stations and late-night restaurants such as Raising Cane's and In-N-Out about a 5-minute drive away." },
@@ -310,6 +327,18 @@ export const getStay = (slug: string) => stays.find((stay) => stay.slug === slug
 export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 
 export const siteFaqs: Faq[] = [
+  {
+    question: 'Which SSHOME home has a swimming pool?',
+    answer: 'Only Desert Retreat has a private swimming pool, which is not heated. Both Desert Retreat and Luxury Family Home have a hot tub. First-night hot tub availability is not guaranteed; contact the host before booking if it is essential.',
+  },
+  {
+    question: 'How should two families or 10 to 14 guests choose a home?',
+    answer: 'Both homes sleep up to 14 and have three bathrooms. Desert Retreat has five bedrooms with 1 king, 3 queens and 2 twin beds sleeping 10, plus 1 queen and 2 twin air mattresses sleeping 4. Luxury Family Home has four bedrooms with 1 king, 2 queens and 2 twin beds sleeping 8, plus 1 sofa bed sleeping 2 and 2 queen air mattresses sleeping 4. Review every sleeping space before booking; the maximum includes additional sleeping arrangements.',
+  },
+  {
+    question: 'Are EV charging and BBQ propane included?',
+    answer: 'EV charging and BBQ propane cost extra at both homes. Ask the host on Airbnb for current fees and arrangements. Live nightly prices, availability and cancellation terms are on Airbnb.',
+  },
   {
     question: 'Where are SSHOME vacation homes located?',
     answer: 'All SSHOME homes are in Visalia, California, in Tulare County. The exact address is shared by Airbnb after booking.',

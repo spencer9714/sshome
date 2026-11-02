@@ -2,6 +2,16 @@ export type Photo = { src: string; alt: string };
 
 export type Faq = { question: string; answer: string };
 
+// Copied word for word from Airbnb. Names are reduced to an initial for guest privacy.
+export type GuestReview = {
+  initial: string;
+  date: string;
+  dateLabel: string;
+  context: string;
+  rating: number;
+  text: string;
+};
+
 export type Stay = {
   slug: string;
   name: string;
@@ -20,6 +30,7 @@ export type Stay = {
   baths: number;
   rating: { value: number; count: number; categories?: { label: string; score: number }[] } | null;
   reviewNote: string;
+  reviews: GuestReview[];
   compare: { outdoor: string; indoor: string; work: string; parking: string };
   highlights: { title: string; body: string }[];
   sleeping: { room: string; beds: string }[];
@@ -61,6 +72,7 @@ export const stays: Stay[] = [
     baths: 3,
     rating: null,
     reviewNote: 'New on Airbnb',
+    reviews: [],
     compare: {
       outdoor: 'Private pool, hot tub, fire pit, BBQ, covered patio, lawn games',
       indoor: '98-inch TV, Nex Playground motion games',
@@ -173,6 +185,48 @@ export const stays: Stay[] = [
       ],
     },
     reviewNote: '4.91 from 103 reviews',
+    reviews: [
+      {
+        initial: 'N.',
+        date: '2026-02',
+        dateLabel: 'February 2026',
+        context: 'Stayed with kids',
+        rating: 5,
+        text: 'We had the most incredible stay! The home is absolutely beautiful and perfectly kid-friendly, which allowed us to relax and truly enjoy our time. Our kids spent hours playing air hockey in the garage—it was such a hit! We had every amenity needed to cook a full family dinner, but we also loved that the home is located near some fantastic restaurants with stunning mountain views. The best amenity though was the hot tub and it’s always ready so it was perfect at night—the stargazing is spectacular! The host was incredibly easy to work with and made the whole process seamless. We truly had a great time connecting as a family and would love to come back and stay here again sometime!',
+      },
+      {
+        initial: 'J.',
+        date: '2026-06',
+        dateLabel: 'June 2026',
+        context: 'Stayed with a pet',
+        rating: 5,
+        text: 'Couldn’t have asked for a better arrangement and location for a group of us heading into Sequoia and King’s Canyon NP’s! Host was very communicative and helpful as needed.',
+      },
+      {
+        initial: 'Z.',
+        date: '2026-06',
+        dateLabel: 'June 2026',
+        context: 'Stayed one night',
+        rating: 5,
+        text: "We ended up booking after prior plans fell through. The hosts were very responsive from booking. We greatly enjoyed our stay. It was decorated very nicely and was quite spacious. While we got there late and had stopped in a bigger city prior to arriving, we were pleasantly surprised that we were a 5 minute drive from gas stations and restaurants that are open late like Raising Cane's and In-N-Out. Had we done more research, we would have driven straight there. It's close to city amenities while it's still in the suburbs where you're not surrounded by noise. Overall, we all had a great stay there and if we ever need to stay in the area, we'll definitely be booking again.",
+      },
+      {
+        initial: 'J.',
+        date: '2026-08',
+        dateLabel: 'August 2026',
+        context: 'Stayed one night',
+        rating: 5,
+        text: 'Great house super clean 100% recommend it. One of my favorite houses here in Visalia.',
+      },
+      {
+        initial: 'M.',
+        date: '2026-08',
+        dateLabel: 'August 2026',
+        context: 'Group trip',
+        rating: 5,
+        text: "The house was super clean and comfortable. The location was convenient and had lots of grocery stores and quick bite options nearby. Only thing that was a bit confusing was how the central Air conditioning worked, it took a while to cool the house down. But otherwise the host was great, very responsive and accommodating. I'd recommend this place for anyone traveling to the national parks nearby.",
+      },
+    ],
     compare: {
       outdoor: '6-person hot tub, BBQ, fenced yard with string lights, cactus garden',
       indoor: 'Pool table, 75-inch TV, loft with board games',
@@ -224,6 +278,7 @@ export const stays: Stay[] = [
       { question: 'How many people does the Luxury Family Home sleep?', answer: 'Up to 14 guests, in 4 bedrooms with 6 beds, plus air mattresses and sleeper sofas. There are 3 bathrooms.' },
       { question: 'What is the Luxury Family Home rated on Airbnb?', answer: `It is rated 4.91 out of 5 from 103 Airbnb reviews, as of ${factsCheckedOn}.` },
       { question: 'How far is the Luxury Family Home from the national parks?', answer: 'It is 35 miles to Sequoia National Park, 55 miles to Kings Canyon National Park, and about 3 hours to Yosemite National Park.' },
+      { question: 'Are restaurants and grocery stores close to the Luxury Family Home?', answer: "Guests report grocery stores and quick-bite options nearby, plus gas stations and late-night restaurants such as Raising Cane's and In-N-Out about a 5-minute drive away." },
       { question: 'Does the Luxury Family Home have a hot tub?', answer: 'Yes, a private six-person hot tub. First-night availability is not guaranteed, because reheating after servicing can take about 20 to 30 hours in winter.' },
       { question: 'Does the Luxury Family Home allow pets?', answer: 'The Airbnb listing shows pets as allowed. Check the listing for the current pet policy and any fees before booking.' },
       { question: 'Does the Luxury Family Home have EV charging?', answer: 'Yes, in the garage, for an additional fee. Let the host know in advance so it can be activated.' },

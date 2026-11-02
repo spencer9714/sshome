@@ -3,12 +3,16 @@ import Link from 'next/link';
 import { CompareTable } from '@/components/compare-table';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
+import { ReviewCard } from '@/components/review-card';
 import { maxGuests, siteFaqs, stays } from '@/data/stays';
 import { faqSchema, stayPath } from '@/lib/schema';
 import { parkFacts, site } from '@/lib/site';
 
 export default function HomePage() {
   const hero = stays[0].photos[0];
+  const featuredReviews = stays
+    .flatMap((stay) => stay.reviews.map((review) => ({ review, stayName: stay.name })))
+    .slice(0, 3);
 
   return (
     <>
@@ -79,6 +83,20 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {featuredReviews.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+          <h2 className="text-3xl sm:text-5xl">What guests say</h2>
+          <div className="mt-10 grid items-start gap-4 lg:grid-cols-3">
+            {featuredReviews.map(({ review, stayName }) => (
+              <ReviewCard key={review.text} review={review} stayName={stayName} />
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-stone">
+            From Airbnb reviews, shown word for word. Names are shortened for privacy.
+          </p>
+        </section>
+      )}
 
       <section id="compare" className="bg-sand">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">

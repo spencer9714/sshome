@@ -66,6 +66,15 @@ export const staySchema = (stay: Stay) => ({
       bestRating: 5,
     },
   }),
+  ...(stay.reviews.length > 0 && {
+    review: stay.reviews.map((review) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: review.initial },
+      datePublished: review.date,
+      reviewBody: review.text,
+      reviewRating: { '@type': 'Rating', ratingValue: review.rating, bestRating: 5 },
+    })),
+  }),
   potentialAction: {
     '@type': 'ReserveAction',
     name: 'Check availability on Airbnb',

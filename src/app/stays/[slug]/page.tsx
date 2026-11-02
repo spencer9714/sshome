@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { BookingForm } from '@/components/booking-form';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
+import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, getStay, stays } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, staySchema, stayPath } from '@/lib/schema';
 import { parkFacts } from '@/lib/site';
@@ -119,6 +120,23 @@ export default async function StayPage({ params }: Props) {
                   ))}
                 </dl>
                 <p className="mt-4 text-xs text-stone">As shown on Airbnb, checked {factsCheckedOn}.</p>
+              </section>
+            )}
+
+            {stay.reviews.length > 0 && (
+              <section className="mt-14">
+                <h2 className="text-3xl">What guests say</h2>
+                <div className="mt-6 grid items-start gap-4 sm:grid-cols-2">
+                  {stay.reviews.map((review) => (
+                    <ReviewCard key={review.text} review={review} />
+                  ))}
+                </div>
+                <p className="mt-4 text-xs text-stone">
+                  A selection of reviews from Airbnb, shown word for word. Names are shortened for privacy.{' '}
+                  <a href={airbnbUrl(stay)} className="underline hover:text-ember">
+                    Read all reviews on Airbnb.
+                  </a>
+                </p>
               </section>
             )}
 

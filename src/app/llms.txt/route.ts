@@ -20,6 +20,7 @@ export function GET() {
       `- Sleeping: ${stay.sleeping.map((room) => `${room.room}: ${room.beds}`).join('; ')}`,
       ...stay.amenities.map((group) => `- ${group.group}: ${group.items.join(', ')}`),
       `- Good to know: ${stay.goodToKnow.join(' ')}`,
+      ...stay.reviews.map((review) => `- Guest review (${review.dateLabel}, ${review.rating}/5): "${review.text}"`),
     ].join('\n'),
   );
 

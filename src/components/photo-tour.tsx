@@ -48,20 +48,19 @@ export function PhotoTour({ photos: sourcePhotos, language = 'en' }: { photos: P
         {spaces.map((space, index) => {
           const cover = photos.find((photo) => photo.space === space)!;
           return <a key={space} href={`#photo-space-${index}`} aria-current={index === activeSpace ? 'true' : undefined} onClick={(event) => {
-            // Phones swap rooms in place. Larger screens show every room, so the link scrolls there.
-            if (window.matchMedia('(min-width: 768px)').matches) return;
             event.preventDefault();
             showSpace(index);
           }} className="group w-24 shrink-0 rounded-lg focus-visible:outline-offset-4 md:w-40">
-            <div className={`relative aspect-[4/3] overflow-hidden rounded-lg ${index === activeSpace ? 'ring-2 ring-ember ring-offset-2 ring-offset-bone md:ring-0' : ''}`}><Image src={cover.src} alt="" fill sizes="(min-width: 768px) 160px, 96px" className="object-cover transition-transform hover:scale-105" /></div>
-            <span className={`mt-2 block text-sm ${index === activeSpace ? 'font-semibold text-ember md:font-medium md:text-ink' : 'font-medium'}`}>{label(space)}</span>
+            <div className={`relative aspect-[4/3] overflow-hidden rounded-lg ${index === activeSpace ? 'ring-2 ring-ember ring-offset-2 ring-offset-bone' : ''}`}><Image src={cover.src} alt="" fill sizes="(min-width: 768px) 160px, 96px" className="object-cover transition-transform hover:scale-105" /></div>
+            <span className={`mt-2 block text-sm ${index === activeSpace ? 'font-semibold text-ember' : 'font-medium'}`}>{label(space)}</span>
             <span className="text-xs text-stone">{(() => { const count = photos.filter((photo) => photo.space === space).length; return zh ? `${count} 張照片` : `${count} ${count === 1 ? 'photo' : 'photos'}`; })()}</span>
           </a>;
         })}
       </nav>
-      <div className="mt-4 md:mt-8 md:space-y-12">
-        {spaces.map((space, index) => <section key={space} id={`photo-space-${index}`} aria-labelledby={`photo-heading-${index}`} className={index === activeSpace ? '' : 'hidden md:block'}>
-          <div className="flex items-baseline justify-between gap-4"><h3 id={`photo-heading-${index}`} className="text-2xl">{label(space)}</h3><a href="#photo-tour" className="hidden text-xs underline hover:text-ember md:inline">{zh ? '所有空間' : 'All spaces'}</a></div>
+      <div className="mt-4 md:mt-6">
+        {/* Every room stays in the HTML for search engines; only the selected one is shown. */}
+        {spaces.map((space, index) => <section key={space} id={`photo-space-${index}`} aria-labelledby={`photo-heading-${index}`} className={index === activeSpace ? '' : 'hidden'}>
+          <h3 id={`photo-heading-${index}`} className="text-2xl">{label(space)}</h3>
           <div className="mt-4 grid grid-cols-2 gap-2 md:gap-3 lg:grid-cols-3">
             {photos.filter((photo) => photo.space === space).map((photo, roomIndex) => <figure key={photo.src} className={roomIndex === 0 ? 'col-span-2 md:col-span-1' : ''}>
               <button type="button" onClick={() => setSelected(photos.indexOf(photo))} aria-label={zh ? `放大${label(space)}照片 ${roomIndex + 1}` : `Enlarge: ${photo.alt}`} className="group relative block aspect-[3/2] w-full cursor-zoom-in overflow-hidden rounded-lg">
@@ -72,7 +71,7 @@ export function PhotoTour({ photos: sourcePhotos, language = 'en' }: { photos: P
           </div>
         </section>)}
       </div>
-      <div className="mt-4 flex items-center justify-between gap-4 md:hidden">
+      <div className="mt-4 flex items-center justify-between gap-4">
         <button type="button" onClick={() => setSelected(0)} className="py-2 text-sm underline">{zh ? `瀏覽全部 ${photos.length} 張照片` : `View all ${photos.length} photos`}</button>
         <button type="button" onClick={() => showSpace(nextSpace)} className="rounded-md border border-ink px-4 py-2 text-sm font-medium">{zh ? '下一區：' : 'Next: '}{label(spaces[nextSpace])}</button>
       </div>

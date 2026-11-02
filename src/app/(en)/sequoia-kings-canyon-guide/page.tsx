@@ -113,17 +113,23 @@ export default function GuidePage() {
         </section>
 
         <section id="itineraries" className="mt-14">
-          <h2 className="text-3xl">Two days, one night: focus on Sequoia</h2>
+          <h2 className="text-3xl">Two days, one night: settle in, then see Sequoia</h2>
           <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
-            <li><strong className="font-medium text-ink">Day 1 — arrive and settle in.</strong> Pick up groceries in Visalia and plan your arrival around your confirmed check-in time. Leave room for a shared meal and downtime at the house.</li>
+            <li><strong className="font-medium text-ink">Day 1 — make the house part of the trip.</strong> Pick up groceries in Visalia and arrive at your confirmed check-in time. At Desert Retreat, leave time for the private pool when the weather suits, cornhole and a movie on the 98-inch TV. At Luxury Family Home, settle into a pool-table game or board games in the loft. Cook dinner together, or arrange BBQ propane with the host ahead of time.</li>
             <li><strong className="font-medium text-ink">Day 2 — one park day.</strong> Check out at the agreed time and head out early for Giant Forest and the General Sherman Tree, subject to road and trail access. Allow for mountain driving, parking and walking before your onward journey.</li>
           </ol>
-          <h3 className="mt-8 text-2xl">Three days, two nights: a full day among the trees</h3>
+          <h3 className="mt-8 text-2xl">Three days, two nights: giant trees and time at home</h3>
           <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
-            <li><strong className="font-medium text-ink">Day 1 — arrive in Visalia.</strong> Shop, check in and choose your sleeping spaces before dinner.</li>
-            <li><strong className="font-medium text-ink">Day 2 — explore Sequoia.</strong> Reserve the day for Giant Forest and General Sherman, adding other stops only as access, daylight and your group’s energy allow. Return to your home for dinner.</li>
-            <li><strong className="font-medium text-ink">Day 3 — choose your return route.</strong> If conditions and your onward route allow, consider Grant Grove in Kings Canyon via Highway 180 after checkout. Otherwise, enjoy an unhurried departure. Cedar Grove is a separate, longer canyon excursion with seasonal road access.</li>
+            <li><strong className="font-medium text-ink">Day 1 — arrive, shop and unwind.</strong> After check-in, unpack and enjoy your home. Choose poolside downtime and cornhole at Desert Retreat, or a pool-table game and loft board games at Luxury Family Home. Share a home-cooked dinner rather than rushing back out.</li>
+            <li><strong className="font-medium text-ink">Day 2 — explore Sequoia, then relax.</strong> Reserve the day for Giant Forest and General Sherman, adding other stops only as access, daylight and your group’s energy allow. Leave time to return for dinner. If the hot tub is ready, unwind there; at Desert Retreat, gather around the fire pit when permitted by house rules and local conditions. At Family Home, finish with a movie or another game of pool.</li>
+            <li><strong className="font-medium text-ink">Day 3 — a slow breakfast or one more park stop.</strong> Enjoy breakfast together and pack up before your confirmed checkout time. If conditions and your onward route allow, consider Grant Grove in Kings Canyon via Highway 180 after checkout. Otherwise, enjoy an unhurried departure. Cedar Grove is a separate, longer canyon excursion with seasonal road access.</li>
           </ol>
+          <div className="mt-6 rounded-lg bg-sand p-6">
+            <h3 className="text-2xl">Want more time for the amenities?</h3>
+            <p className="mt-3 leading-relaxed text-stone">With a third night, you can make Day 3 a stay-at-home day: cook a leisurely meal, enjoy Desert Retreat’s pool and outdoor space, or spend time in Family Home’s game room and loft. Head home on Day 4 at the agreed checkout time. Both homes offer Wi-Fi; only Desert Retreat has a dedicated workspace.</p>
+            <p className="mt-3 text-sm leading-relaxed text-stone">Only Desert Retreat has a swimming pool, and it is not heated. Both homes have hot tubs, but first-night readiness is not guaranteed; confirm with the host if it is important to your trip. BBQ propane and EV charging cost extra. Use outdoor amenities according to house rules and current conditions.</p>
+            <Link href="/#compare" className="mt-4 inline-block underline">Compare the homes and their amenities</Link>
+          </div>
           <p className="mt-5 text-sm leading-relaxed text-stone">These are suggested itineraries, not guided trips or guaranteed access. Entrance estimates above do not include the drive to the groves, entrance queues, parking or walks. Check current conditions and your Airbnb check-in and checkout times before finalizing plans.</p>
           <Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="mt-5 inline-block underline">繁體中文：紅杉國家公園自駕與住宿指南</Link>
         </section>

@@ -10,6 +10,7 @@ import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, getStay, stays } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, staySchema, stayPath } from '@/lib/schema';
 import { parkFacts } from '@/lib/site';
+import { languageAlternates, zhStayPath } from '@/lib/locales';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: stay.metaTitle },
     description: stay.metaDescription,
-    alternates: { canonical: stayPath(stay) },
+    alternates: { canonical: stayPath(stay), languages: languageAlternates(stayPath(stay), zhStayPath(stay.slug)) },
     openGraph: {
       title: stay.metaTitle,
       description: stay.metaDescription,

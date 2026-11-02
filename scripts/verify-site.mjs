@@ -12,7 +12,7 @@ for (const path of [...paths, '/sitemap.xml', '/llms.txt', '/robots.txt']) {
 
 for (const path of paths) {
   const html = pages.get(path);
-  assert.ok(html.includes(`<html lang="${path.startsWith('/zh-tw/') ? 'zh-Hant' : 'en'}"`), `${path}: document language`);
+  assert.ok(html.includes(`<html lang="${path === '/zh-tw' || path.startsWith('/zh-tw/') ? 'zh-Hant' : 'en'}"`), `${path}: document language`);
   const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*>/)?.[0]?.match(/href="([^"]+)"/)?.[1];
   assert.equal(new URL(canonical).href, new URL(path, canonicalSite).href, `${path}: canonical`);
 }
@@ -30,13 +30,24 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
   assert.ok(html.includes('data-airbnb-intent="reviews"') && html.includes('data-airbnb-intent="amenities"'), 'Distinct outbound intents');
 }
 
-for (const path of ['/sequoia-kings-canyon-guide', '/zh-tw/sequoia-guide']) {
+for (const path of paths.filter((path) => path !== '/about')) {
   const html = pages.get(path);
   for (const language of ['en', 'zh-Hant', 'x-default']) assert.ok(html.includes(`hrefLang="${language}"`), `${path}: ${language} alternate`);
 }
 assert.ok(pages.get('/zh-tw/sequoia-guide').includes('五張臥室床'));
 assert.ok(pages.get('/llms.txt').includes('5 bedroom beds'));
 assert.ok(pages.get('/about').includes('data-airbnb-intent="contact"'));
+for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
+  const path = `/zh-tw/stays/${slug}`;
+  const html = pages.get(path);
+  assert.ok(html.includes('入住日期') && html.includes('成人（13歲以上）') && html.includes('name="children"'), 'Chinese booking form is rendered');
+  const rental = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1])).find((item) => item['@type'] === 'VacationRental');
+  assert.ok(rental.name.includes('度假屋'));
+  assert.equal(rental.containsPlace.occupancy.value, 14);
+  assert.equal(new URL(rental.url).pathname, path, 'Chinese rental schema uses Chinese page URL');
+  assert.ok(pages.get('/sitemap.xml').includes(path), 'Chinese listing is in sitemap');
+}
+assert.ok(pages.get('/zh-tw').includes('zh-home-card'));
 assert.equal((await fetch(new URL('/this-page-does-not-exist', base))).status, 404);
 
 // Regression: an origin-only canonical is equivalent to a root URL ending in /.

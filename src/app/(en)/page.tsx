@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
+import { languageAlternates } from '@/lib/locales';
 import Link from 'next/link';
 import { CompareTable } from '@/components/compare-table';
 import { FaqList } from '@/components/faq-list';
@@ -7,6 +9,8 @@ import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, maxGuests, siteFaqs, stays } from '@/data/stays';
 import { faqSchema, stayPath } from '@/lib/schema';
 import { parkFacts, site } from '@/lib/site';
+
+export const metadata: Metadata = { alternates: { canonical: '/', languages: languageAlternates('/', '/zh-tw') } };
 
 export default function HomePage() {
   const hero = stays[0].photos[0];

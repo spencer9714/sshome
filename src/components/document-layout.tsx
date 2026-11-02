@@ -37,9 +37,9 @@ export function DocumentLayout({ children, language }: { children: React.ReactNo
       <body>
         <Analytics />
         <JsonLd data={organizationSchema()} />
-        <SiteHeader />
+        <SiteHeader language={language} />
         <main>{children}</main>
-        <SiteFooter />
+        <SiteFooter language={language} />
       </body>
     </html>
   );

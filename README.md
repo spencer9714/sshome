@@ -15,6 +15,8 @@ Everything about a home lives in [src/data/stays.ts](src/data/stays.ts). Pages, 
 
 English pages use the `(en)` route group; the Chinese guide uses `(zh)`. Both use `DocumentLayout`, with server-rendered document language `en` or `zh-Hant`. These internal folders do not change public URLs. The two guides publish reciprocal language alternates and self-canonicals.
 
+Traditional Chinese SEO pages: `/zh-tw`, `/zh-tw/stays/<slug>` and `/zh-tw/sequoia-guide`. Homepage, listing and guide pairs have self-canonicals, reciprocal `en`/`zh-Hant`/`x-default` alternates, sitemap entries and language-switch links. Chinese listing copy lives in `src/data/stays-zh.ts`; factual sleeping summaries remain in `stays.ts`. Chinese listings have localized metadata, descriptive rental schema, booking controls and navigation. The complete interactive photo tour is linked with its English labels explicitly identified. Keep English and Chinese amenities synchronized when facts change. Publishing these pages does not guarantee indexing or rankings.
+
 After building, start a local production server (`npm run start -- --port 3100`) and run `npm run test:seo`. If the build intentionally uses a different `NEXT_PUBLIC_SITE_URL`, pass the serving origin and expected canonical origin explicitly, e.g. `npm run test:seo -- http://localhost:3100 http://localhost:3000`. The checks cover rendered routes, languages, canonicals, guide alternates, sleeping counts, descriptive schema, adult/child fields, click intent markers, 404s and canonical audit regression cases. They do not replace browser testing of date pickers, Airbnb's live UI, or GA4 event receipt.
 
 To add a home:

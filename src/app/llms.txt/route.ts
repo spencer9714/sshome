@@ -1,6 +1,7 @@
 import { airbnbUrl, factsCheckedOn, siteFaqs, stays } from '@/data/stays';
 import { stayPath } from '@/lib/schema';
 import { absoluteUrl, parkFacts, site } from '@/lib/site';
+import { zhStayPath } from '@/lib/locales';
 
 export const dynamic = 'force-static';
 
@@ -12,6 +13,8 @@ export function GET() {
       stay.lead,
       '',
       `- Page: ${absoluteUrl(stayPath(stay))}`,
+      `- Traditional Chinese listing: ${absoluteUrl(zhStayPath(stay.slug))}`,
+      `- 繁中介紹: ${stay.summaryZh}`,
       `- Book on Airbnb: ${airbnbUrl(stay)}`,
       `- Type: entire home in Visalia, California`,
       `- Capacity: up to ${stay.guests} guests, ${stay.bedrooms} bedrooms, ${stay.beds} bedroom beds, ${stay.baths} baths`,
@@ -31,6 +34,7 @@ export function GET() {
 
   const body = [
     `# ${site.name}`,
+    `Traditional Chinese homepage: ${absoluteUrl('/zh-tw')}`,
     '',
     `> ${site.description}`,
     '',

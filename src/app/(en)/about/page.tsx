@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { airbnbUrl, stays } from '@/data/stays';
 import { stayPath } from '@/lib/schema';
+import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About SSHOME & Contact',
   description: 'Meet SSHOME: two design-led vacation homes in Visalia for family and group trips. Compare homes and contact the host through Airbnb.',
   alternates: { canonical: '/about' },
-  openGraph: { title: 'About SSHOME & Contact', url: '/about' },
+  openGraph: { title: 'About SSHOME & Contact', url: '/about', images: [{ url: site.ogImage }] },
 };
 
 export default function AboutPage() {

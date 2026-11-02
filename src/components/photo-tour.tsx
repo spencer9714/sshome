@@ -39,7 +39,7 @@ export function PhotoTour({ photos: sourcePhotos }: { photos: Photo[] }) {
           return <a key={space} href={`#photo-space-${index}`} className="w-32 shrink-0 rounded-lg focus-visible:outline-offset-4 sm:w-40">
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg"><Image src={cover.src} alt="" fill sizes="160px" className="object-cover transition-transform hover:scale-105" /></div>
             <span className="mt-2 block text-sm font-medium">{space}</span>
-            <span className="text-xs text-stone">{photos.filter((photo) => photo.space === space).length} photos</span>
+            <span className="text-xs text-stone">{(() => { const count = photos.filter((photo) => photo.space === space).length; return `${count} ${count === 1 ? 'photo' : 'photos'}`; })()}</span>
           </a>;
         })}
       </nav>

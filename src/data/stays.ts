@@ -35,6 +35,7 @@ export type Stay = {
   highlights: { title: string; body: string }[];
   sleeping: { room: string; beds: string }[];
   extraSleeping: string;
+  rules: { checkIn: string; checkOut: string; checkInTime: string; checkOutTime: string; pets: string; items: string[] };
   amenities: { group: string; items: string[] }[];
   goodToKnow: string[];
   faqs: Faq[];
@@ -76,7 +77,7 @@ export const stays: Stay[] = [
     tagline: 'A private pool, a fire pit, and five bedrooms for the whole group.',
     metaTitle: '5-Bedroom Visalia Rental for 14 with Pool | SSHOME',
     metaDescription:
-      'Entire 5-bedroom home in Visalia, CA sleeping 14, with a private pool, hot tub, fire pit and EV charging, a Visalia base for Sequoia National Park. Book on Airbnb.',
+      'Entire 5-bedroom Visalia, CA home sleeping 14, with a private pool, hot tub, fire pit and EV charging. A base for Sequoia National Park. Book on Airbnb.',
     bestFor: 'Groups who want a pool and a backyard to come home to',
     lead: 'A desert-inspired home in Visalia with a private pool, a separate hot tub and a fire pit circle out back. Inside, there is a 98-inch TV for movie night, a kitchen with HexClad cookware, and a Smart TV in each of the five bedrooms.',
     guests: 14,
@@ -137,14 +138,25 @@ export const stays: Stay[] = [
       { room: 'Bedroom 5, 2nd floor', beds: '2 twin beds' },
     ],
     extraSleeping: 'Sleeps 14: 1 king, 3 queens and 2 twin beds in five bedrooms sleep 10; 1 queen air mattress and 2 twin air mattresses sleep 4 more.',
+    rules: {
+      checkIn: '4:00 PM',
+      checkOut: '10:00 AM',
+      checkInTime: '16:00',
+      checkOutTime: '10:00',
+      pets: 'Up to 3 pets allowed. Assistance animals are always allowed. Check Airbnb for any pet fee.',
+      items: ['Up to 14 overnight guests', 'No parties or events', 'No smoking, including vaping and e-cigarettes', 'Quiet hours from 9:00 PM to 8:00 AM', 'No commercial photography or filming'],
+    },
     amenities: [
       { group: 'Outdoors', items: ['Private pool, about 15 x 33 ft (not heated)', 'Hot tub (can be heated)', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
       { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wifi'] },
       { group: 'Kitchen', items: ['HexClad cookware', 'Instant Pot', 'Blender', 'Electric kettle', 'Brita pitcher', 'K-Cup and drip coffee maker', 'Kid-friendly dinnerware'] },
-      { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Self check-in with smart lock', 'Free driveway parking', 'EV charging (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'Level 2 Tesla EV charger (fee)', 'Pets allowed (up to 3)'] },
     ],
     goodToKnow: [
       'The pool is not heated. The separate hot tub can be heated.',
+      'Families: the backyard is reached through a sliding glass door and is not fully fenced. The pool has its own fence with two gates, but the hot tub sits outside it with no separate fence. Children must be supervised at all times.',
+      'Exterior security cameras cover the area above the garage, the yard (fire pit, pool and lawn) and the front door. There are no cameras inside the home.',
+      'The home has stairs.',
       'First-night hot tub availability is not guaranteed. After a full water change, reheating can take about 20 to 30 hours in winter, so message the host before booking if it matters to you.',
       'The home is in a developing neighborhood, and nearby construction may cause daytime noise.',
       'Routine yard maintenance happens during the day, and staff may access outdoor areas.',
@@ -157,7 +169,9 @@ export const stays: Stay[] = [
       { question: 'How big is the pool at the Desert Retreat?', answer: 'The private pool is about 15 by 33 feet, with a shallow Baja shelf and in-water loungers.' },
       { question: 'Is the pool at the Desert Retreat heated?', answer: 'No, the pool is not heated. The separate hot tub can be heated, but first-night availability is not guaranteed.' },
       { question: 'How far is the Desert Retreat from Sequoia National Park?', answer: 'The home is in Visalia. NPS estimates about 1 hour from Visalia Municipal Airport to Sequoia’s Ash Mountain Entrance, not from this home to the giant sequoia groves. Allow extra time for park roads, traffic, parking and walking.' },
-      { question: 'Does the Desert Retreat have EV charging?', answer: 'Yes, for an additional fee. Contact the host in advance for pricing and arrangements.' },
+      { question: 'Does the Desert Retreat have EV charging?', answer: 'Yes, a Level 2 Tesla charger is available for an additional fee. Contact the host in advance for pricing and arrangements.' },
+      { question: 'Does the Desert Retreat allow pets?', answer: 'Yes, up to 3 pets are allowed, and assistance animals are always allowed. Check the Airbnb listing for any pet fee before booking.' },
+      { question: 'Is the Desert Retreat pool safe for young children?', answer: 'The pool has its own fence with two gates, but the backyard is not fully fenced and the hot tub sits outside the pool fence with no separate fence. Children must be supervised at all times.' },
       { question: 'Can I work remotely from the Desert Retreat?', answer: 'Yes. Bedroom 2 has a desk, chair, monitor and lamp, and the home has Wifi. Nearby construction may cause daytime noise.' },
     ],
     photos: [
@@ -203,8 +217,8 @@ export const stays: Stay[] = [
     guests: 14,
     bedrooms: 4,
     beds: 5,
-    bedSummary: '5 bedroom beds + 1 double sofa bed + 2 queen air mattresses',
-    summaryZh: '四房、五張臥室床、三間衛浴，附撞球桌、閣樓與熱水池；沒有泳池。臥室有一張 King、兩張 Queen 及兩張 Twin，可睡 8 人；另有一張雙人沙發床和兩張 Queen 氣墊床，可再睡 6 人，合計 14 人。車道可停兩台車，部分車庫已改為遊戲室。',
+    bedSummary: '5 bedroom beds + 1 sofa bed + 1 couch + 3 air mattresses',
+    summaryZh: '四房、五張臥室床、三間衛浴，附撞球桌、閣樓與熱水池；沒有泳池。臥室有一張 King、兩張 Queen 及兩張 Twin，可睡 8 人；另有沙發床、沙發及三張氣墊床，最多可住 14 人。車道可停兩台車，部分車庫已改為遊戲室。',
     baths: 3,
     rating: familyRating,
     reviewNote: `${familyRating.value} from ${familyRating.count} Airbnb reviews`,
@@ -271,20 +285,31 @@ export const stays: Stay[] = [
       },
     ],
     sleeping: [
-      { room: 'Bedroom 1, primary suite', beds: '1 king bed (sleeps 2)' },
+      { room: 'Bedroom 1, primary suite', beds: '1 king bed, 1 air mattress' },
       { room: 'Bedroom 2', beds: '1 queen bed' },
       { room: 'Bedroom 3, 1st floor', beds: '1 queen bed' },
       { room: 'Bedroom 4', beds: '2 single beds' },
-      { room: 'Additional sleeping', beds: '1 sofa bed (sleeps 2), 2 queen air mattresses (sleep 2 each)' },
+      { room: 'Living room', beds: '1 couch, 1 air mattress' },
+      { room: 'Loft, 2nd floor', beds: '1 sofa bed, 1 air mattress' },
     ],
-    extraSleeping: 'Sleeps 14: 1 king, 2 queens and 2 twin beds in four bedrooms sleep 8; 1 sofa bed sleeps 2 and 2 queen air mattresses sleep 4 more.',
+    extraSleeping: 'Up to 14 overnight guests, using the beds, sofa bed, couch and air mattresses above. Air mattress sizes are not listed, so message the host on Airbnb to confirm the setup for your group.',
+    rules: {
+      checkIn: '4:00 PM',
+      checkOut: '10:00 AM',
+      checkInTime: '16:00',
+      checkOutTime: '10:00',
+      pets: 'Up to 3 pets allowed, with a $75 fee per pet, per stay. Unapproved pets may incur a fee of at least $150. Assistance animals are always allowed.',
+      items: ['Up to 14 overnight guests', 'No parties or events', 'No smoking, including vaping and e-cigarettes', 'Quiet hours from 9:00 PM to 8:00 AM'],
+    },
     amenities: [
-      { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
+      { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fully fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
       { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
-      { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Coffee maker', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
-      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Free driveway parking for 2 cars', 'EV charging (fee)', 'Pets allowed'] },
+      { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Drip and Keurig coffee makers', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
+      { group: 'Practical', items: ['Washer and dryer', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'Level 2 Tesla-only EV charger (fee)', 'Pets allowed (up to 3, $75 each per stay)'] },
     ],
     goodToKnow: [
+      'Exterior security cameras cover the area above the garage, the yard (including the hot tub) and the front door.',
+      'Keep the hot tub lid covered when it is not in use. The home has stairs.',
       'First-night hot tub availability is not guaranteed. After full servicing, reheating can take about 20 to 30 hours in winter, so message the host if it matters to you.',
       'EV charging and BBQ propane cost extra. Let the host know in advance if you need charging.',
       'Early check-in and late checkout may be available for a fee.',
@@ -293,13 +318,13 @@ export const stays: Stay[] = [
       'The neighborhood celebrates Halloween, so trick-or-treaters may knock on October 31.',
     ],
     faqs: [
-      { question: 'What are the Luxury Family Home sleeping arrangements?', answer: 'Up to 14 guests: four bedrooms have 1 king bed, 2 queen beds and 2 twin beds, sleeping 8. One sofa bed sleeps 2 and two queen air mattresses sleep 2 each, for 14 sleeping places in total. There are 3 bathrooms.' },
+      { question: 'What are the Luxury Family Home sleeping arrangements?', answer: 'Up to 14 overnight guests. The four bedrooms have 1 king bed, 2 queen beds and 2 single beds. The loft has a sofa bed, the living room has a couch, and there are 3 air mattresses. There are 3 bathrooms.' },
       { question: 'What is the Luxury Family Home rated on Airbnb?', answer: `It is rated ${familyRating.value} out of 5 from ${familyRating.count} Airbnb reviews, as of ${factsCheckedOn}.` },
       { question: 'How far is the Luxury Family Home from the national parks?', answer: 'NPS estimates about 1 hour from Visalia Municipal Airport to Sequoia’s Ash Mountain Entrance and about 1.5 hours to Kings Canyon’s Big Stump Entrance. These are airport-to-entrance references, not measured drives from the home or times to the main sights.' },
       { question: 'Are restaurants and grocery stores close to the Luxury Family Home?', answer: "Guests report grocery stores and quick-bite options nearby, plus gas stations and late-night restaurants such as Raising Cane's and In-N-Out about a 5-minute drive away." },
       { question: 'Does the Luxury Family Home have a hot tub?', answer: 'Yes, a private six-person hot tub. First-night availability is not guaranteed, because reheating after servicing can take about 20 to 30 hours in winter.' },
-      { question: 'Does the Luxury Family Home allow pets?', answer: 'The Airbnb listing shows pets as allowed. Check the listing for the current pet policy and any fees before booking.' },
-      { question: 'Does the Luxury Family Home have EV charging?', answer: 'Yes, in the garage, for an additional fee. Let the host know in advance so it can be activated.' },
+      { question: 'Does the Luxury Family Home allow pets?', answer: 'Yes, up to 3 pets are allowed, with a $75 fee per pet, per stay. Unapproved pets may incur a fee of at least $150. Assistance animals are always allowed.' },
+      { question: 'Does the Luxury Family Home have EV charging?', answer: 'Yes, a Level 2 Tesla-only charger in the garage, for an additional fee. Let the host know in advance so it can be activated.' },
     ],
     photos: [
       family('living-room-1', 'Sunlit living room with a tan leather sectional at the Luxury Family Home in Visalia', 'Living room'),
@@ -350,11 +375,11 @@ export const siteFaqs: Faq[] = [
   },
   {
     question: 'How should two families or 10 to 14 guests choose a home?',
-    answer: 'Both homes sleep up to 14 and have three bathrooms. Desert Retreat has five bedrooms with 1 king, 3 queens and 2 twin beds sleeping 10, plus 1 queen and 2 twin air mattresses sleeping 4. Luxury Family Home has four bedrooms with 1 king, 2 queens and 2 twin beds sleeping 8, plus 1 sofa bed sleeping 2 and 2 queen air mattresses sleeping 4. Review every sleeping space before booking; the maximum includes additional sleeping arrangements.',
+    answer: 'Both homes sleep up to 14 and have three bathrooms. Desert Retreat has five bedrooms with 1 king, 3 queens and 2 twin beds sleeping 10, plus 1 queen and 2 twin air mattresses sleeping 4. Luxury Family Home has four bedrooms with 1 king, 2 queens and 2 twin beds sleeping 8, plus a sofa bed, a couch and 3 air mattresses. Review every sleeping space before booking; the maximum includes additional sleeping arrangements.',
   },
   {
     question: 'Are EV charging and BBQ propane included?',
-    answer: 'EV charging and BBQ propane cost extra at both homes. Ask the host on Airbnb for current fees and arrangements. Live nightly prices, availability and cancellation terms are on Airbnb.',
+    answer: 'EV charging and BBQ propane cost extra at both homes. Both have a Level 2 Tesla charger, and the Luxury Family Home charger is Tesla only. Ask the host on Airbnb for current fees and arrangements. Live nightly prices, availability and cancellation terms are on Airbnb.',
   },
   {
     question: 'Where are SSHOME vacation homes located?',
@@ -365,15 +390,11 @@ export const siteFaqs: Faq[] = [
     answer: 'The National Park Service lists about 1 hour from Visalia Municipal Airport to the Sequoia entrance on Highway 198, and about 1.5 hours to the Kings Canyon entrance. Roads beyond the entrances are narrow and winding, so allow extra time.',
   },
   {
-    question: 'Which SSHOME home is best for a large group?',
-    answer: `Both homes sleep up to ${maxGuests}. Choose the Desert Retreat for a private pool, fire pit and five bedrooms. Choose the Luxury Family Home for a pool table, loft and hot tub.`,
-  },
-  {
     question: 'How do I book an SSHOME stay?',
     answer: 'All bookings are made on Airbnb, where you can see live availability, pricing, house rules and cancellation terms. Each home page links to its Airbnb listing.',
   },
   {
-    question: 'Do SSHOME homes have EV charging?',
-    answer: 'Yes, both homes offer EV charging for an additional fee. Contact the host in advance to arrange it.',
+    question: 'What are the check-in and checkout times at SSHOME homes?',
+    answer: 'Check-in is at 4:00 PM and checkout is at 10:00 AM at both homes. Early check-in or late checkout may be available for a fee, subject to availability.',
   },
 ];

@@ -8,7 +8,7 @@ import { absoluteUrl, parkFacts, site } from '@/lib/site';
 const path = '/sequoia-kings-canyon-guide';
 const title = 'Visiting Sequoia & Kings Canyon from Visalia: Drive Times and Tips';
 const description =
-  'Plan a Sequoia and Kings Canyon trip from Visalia, CA: park entrances, drive times, vehicle length limits, winter chains and seasonal road closures, based on National Park Service information.';
+  'Plan Sequoia and Kings Canyon from Visalia, CA: park entrances, drive times, vehicle limits, winter chains and seasonal road closures, using NPS information.';
 
 export const metadata: Metadata = {
   title: { absolute: title },

@@ -189,7 +189,26 @@ export default async function StayPage({ params }: Props) {
             </section>
 
             <section className="mt-14">
-              <h2 className="text-3xl">Good to know before you book</h2>
+              <h2 className="text-3xl">Check-in and house rules</h2>
+              <dl className="mt-5 grid grid-cols-2 gap-4 border-b border-line pb-5">
+                <div>
+                  <dt className="text-sm text-stone">Check-in</dt>
+                  <dd className="font-display text-2xl">{stay.rules.checkIn}</dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-stone">Checkout</dt>
+                  <dd className="font-display text-2xl">{stay.rules.checkOut}</dd>
+                </div>
+              </dl>
+              <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed text-stone marker:text-ember">
+                <li>{stay.rules.pets}</li>
+                {stay.rules.items.map((rule) => (
+                  <li key={rule}>{rule}</li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-stone">Cancellation terms depend on your dates and appear on Airbnb before you book.</p>
+
+              <h2 className="mt-14 text-3xl">Good to know before you book</h2>
               <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed text-stone marker:text-ember">
                 {stay.goodToKnow.map((note) => (
                   <li key={note}>{note}</li>

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { airbnbUrl, factsCheckedOn, stays } from '@/data/stays';
-import { parkFacts } from '@/lib/site';
+import { parkFacts, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: '紅杉國家公園自駕住宿指南｜Visalia 家庭與團體住宿',
   description: '比較 Visalia 與 Three Rivers 住宿，規劃 Sequoia、Kings Canyon 兩天一夜及三天兩夜行程，了解 SSHOME 兩間房源的床位、泳池與訂房方式。',
   alternates: { canonical: '/zh-tw/sequoia-guide', languages: { en: '/sequoia-kings-canyon-guide', 'zh-Hant': '/zh-tw/sequoia-guide', 'x-default': '/sequoia-kings-canyon-guide' } },
-  openGraph: { title: '紅杉國家公園自駕住宿指南', url: '/zh-tw/sequoia-guide', locale: 'zh_TW', type: 'article' },
+  openGraph: { title: '紅杉國家公園自駕住宿指南', url: '/zh-tw/sequoia-guide', locale: 'zh_TW', type: 'article', images: [{ url: site.ogImage }] },
 };
 
 export default function ChineseGuide() {

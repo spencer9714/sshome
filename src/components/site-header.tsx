@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 const links = [
-  { href: '/#homes', label: 'Homes' },
-  { href: '/#compare', label: 'Compare' },
-  { href: '/sequoia-kings-canyon-guide', label: 'Park guide' },
-  { href: '/about', label: 'About & contact' },
+  { href: '/#homes', label: 'Homes', short: 'Homes', phone: 'block' },
+  { href: '/#compare', label: 'Compare', short: 'Compare', phone: 'hidden min-[360px]:block' },
+  { href: '/sequoia-kings-canyon-guide', label: 'Park guide', short: 'Guide', phone: 'block' },
+  { href: '/about', label: 'About & contact', short: 'About', phone: 'block' },
 ];
 
 export function SiteHeader() {
@@ -14,22 +14,17 @@ export function SiteHeader() {
         <Link href="/" className="font-display text-xl tracking-[0.12em]">
           SSHOME
         </Link>
-        <nav aria-label="Main" className="flex items-center gap-4 text-sm sm:gap-7">
+        <nav aria-label="Main" className="flex items-center gap-3 text-sm sm:gap-7">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`transition-colors hover:text-ember ${link.label === 'Homes' ? '' : 'hidden sm:block'}`}
+              className={`py-2 transition-colors hover:text-ember sm:block ${link.phone}`}
             >
-              {link.label}
+              <span className="sm:hidden">{link.short}</span>
+              <span className="hidden sm:inline">{link.label}</span>
             </Link>
           ))}
-          <Link
-            href="/sequoia-kings-canyon-guide"
-            className="transition-colors hover:text-ember sm:hidden"
-          >
-            Guide
-          </Link>
         </nav>
       </div>
     </header>

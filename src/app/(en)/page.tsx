@@ -155,7 +155,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><p className="text-sm font-medium text-ember">Plan before you book</p><h2 className="mt-3 text-3xl">A little planning. A lot to look forward to.</h2><div className="mt-6 flex flex-wrap gap-5"><Link href="/sequoia-group-lodging" className="underline">Group lodging for 10 to 14 guests</Link><Link href="/sequoia-winter-guide" className="underline">Visiting Sequoia in winter</Link><Link href="/visalia-crew-housing" className="underline">Housing for work crews</Link><Link href="/sequoia-kings-canyon-guide#where-to-stay" className="underline">Why choose Visalia?</Link><Link href="/sequoia-kings-canyon-guide#itineraries" className="underline">One- and two-night trip ideas</Link><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="underline">繁體中文旅遊指南</Link><Link href="/about" className="underline">About &amp; contact</Link></div></section>
+      <section aria-labelledby="trip-planning-title" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-ember">Make the most of your stay</p>
+          <h2 id="trip-planning-title" className="mt-3 text-3xl sm:text-4xl">A little planning goes a long way.</h2>
+          <p className="mt-4 leading-relaxed text-stone">Work out the beds, pick a park day, and leave a little time to enjoy the house.</p>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {[
+            { href: '/sequoia-group-lodging', title: 'Bringing the whole group?', description: 'See the sleeping arrangements for 8 to 14 guests.', action: 'Find room for everyone' },
+            { href: '/sequoia-kings-canyon-guide#itineraries', title: 'A park day, at your pace', description: 'Ideas for one or two nights, with time for the house, too.', action: 'Explore trip ideas' },
+            { href: '/sequoia-winter-guide', title: 'Heading up in winter?', description: 'What to know about snow, tire chains, and seasonal road access.', action: 'Read the winter guide' },
+            { href: '/sequoia-kings-canyon-guide#where-to-stay', title: 'Why stay in Visalia?', description: 'Easy grocery runs, meals out, and a home to come back to.', action: 'Get to know the area' },
+          ].map((guide) => (
+            <Link key={guide.href} href={guide.href} className="group flex flex-col rounded-lg border border-line bg-white p-6 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember sm:p-7">
+              <h3 className="text-2xl group-hover:text-ember">{guide.title}</h3>
+              <p className="mt-3 flex-1 leading-relaxed text-stone">{guide.description}</p>
+              <span className="mt-6 flex items-center justify-between gap-4 text-sm font-medium">
+                {guide.action}<span aria-hidden="true" className="text-lg text-ember">→</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-col gap-5 border-t border-line pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <Link href="/visalia-crew-housing" className="w-fit py-1 text-sm underline underline-offset-4 hover:text-ember">Traveling for work? Explore crew stays</Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="py-1 underline underline-offset-4 hover:text-ember">繁體中文指南</Link>
+            <Link href="/about" className="py-1 underline underline-offset-4 hover:text-ember">Questions? Get in touch</Link>
+          </div>
+        </div>
+      </section>
 
       <section id="faq" className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <h2 className="text-3xl sm:text-5xl">Frequently asked questions</h2>

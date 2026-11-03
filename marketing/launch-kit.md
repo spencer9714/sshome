@@ -141,4 +141,4 @@ English: Explore Sequoia by day. Play a round back at the house. Four bedrooms, 
 
 `airbnb_date_search` 表示有人選日期前往 Airbnb，不代表訂房成功。Airbnb 實際訂單另外核對；目前不承諾能逐筆對回某篇貼文。先累積資料再比較，不用少數幾次點擊判斷哪間房或哪種語言一定比較好。
 
-素材依目前房源資料製作，發布前若 Airbnb 設施、床位或規則有變更，先同步修正文案。SSHOME 屋主：Spencer 與 Sylvia；管理團隊：Janson 與 Miyu。
+素材依目前房源資料製作，發布前若 Airbnb 設施、床位或規則有變更，先同步修正文案。SSHOME 屋主：Spencer 與 Sylvia；管理團隊：Jansen 與 Miyu。

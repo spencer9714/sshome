@@ -12,7 +12,7 @@ import { absoluteUrl } from '@/lib/site';
 const path = '/visalia-crew-housing';
 const title = 'Visalia Crew Housing for Contractors & Work Teams | SSHOME';
 const description =
-  'Entire Visalia homes for contractors and work crews: a bed for each of 5 or 6 people, a full kitchen, laundry and street parking. Stay up to 29 days on Airbnb.';
+  'Visalia homes for contractors and crews: a bed each for 5 or 6, full kitchen, laundry and off-street parking for 3 to 6 vehicles. Up to 29 days on Airbnb.';
 const image = '/stays/desert-retreat/kitchen-1.jpg';
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ const homes = [
 const tips = [
   {
     title: 'Trucks and parking',
-    body: 'Each home has free driveway parking for 2 vehicles, and there is plenty of free street parking nearby for the rest of the crew. Please avoid blocking neighbors’ driveways and follow posted signs.',
+    body: 'Each home above lists its garage, driveway and street spaces. Please avoid blocking neighbors’ driveways and follow posted signs.',
   },
   {
     title: 'Work boots and tools',
@@ -75,7 +75,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Can we bring a trailer or a large work vehicle?',
-    answer: 'Extra vehicles can park on the street. If you are bringing a trailer or an oversized vehicle, message the host before booking.',
+    answer: 'Street parking has room for 4 to 5 vehicles at Desert Retreat and 1 at Luxury Family Home. If you are bringing a trailer or an oversized vehicle, message the host before booking.',
   },
   {
     question: 'How close are the homes to our job site?',
@@ -112,7 +112,7 @@ export default function CrewHousingPage() {
         <h1 className="mt-3 text-4xl leading-tight sm:text-6xl">Housing for contractors and work crews in Visalia</h1>
         <p className="mt-6 text-xl leading-relaxed">
           Have a crew working in Visalia, Tulare or elsewhere in the Central Valley? SSHOME has two entire homes with a
-          bed for each of 5 or 6 people, a full kitchen, a washer and dryer, Wi-Fi and plenty of street parking nearby.
+          bed for each of 5 or 6 people, a full kitchen, a washer and dryer, Wi-Fi and off-street parking for 3 to 6 vehicles.
           Stay up to 29 days and book on Airbnb.
         </p>
 
@@ -141,6 +141,7 @@ export default function CrewHousingPage() {
                   {stay.beds} people, one bed each · {stay.baths} baths
                 </p>
                 <p className="mt-3 leading-relaxed text-stone">{rooms}. {work}</p>
+                <p className="mt-3 text-sm leading-relaxed"><span className="font-medium">Parking:</span> {stay.compare.parking}</p>
                 <a href={airbnbUrl(stay)} data-airbnb-intent="booking" data-booking-placement="crew-page" className="mt-4 inline-block py-1 text-sm font-medium underline hover:text-ember">
                   Check dates on Airbnb
                 </a>

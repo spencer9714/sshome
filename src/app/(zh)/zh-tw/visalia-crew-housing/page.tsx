@@ -5,13 +5,14 @@ import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { pageUpdates } from '@/data/page-updates';
 import { airbnbUrl, factsCheckedOn, stays, type Faq } from '@/data/stays';
+import { staysZh } from '@/data/stays-zh';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 const path = '/zh-tw/visalia-crew-housing';
 const title = 'Visalia 工程團隊與承包商住宿｜整棟住宿最長29天';
-const description = '在 Visalia 施工或出差？SSHOME 兩間整棟住宿可讓 5～6 人每人一張床，有完整廚房、洗衣間與路邊停車，透過 Airbnb 訂房，最長可住29天。';
+const description = '在 Visalia 施工或出差？SSHOME 兩間整棟住宿可讓 5～6 人每人一張床，有完整廚房、洗衣間，車庫和車道可停 3～6 台車，透過 Airbnb 訂房，最長可住29天。';
 const image = '/stays/desert-retreat/kitchen-1.jpg';
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ const homes = [
 ];
 
 const tips = [
-  { title: '工程車與停車', body: '每間的車道可免費停兩台車，附近也有很多免費路邊車位，其他車輛可以停路邊。請避免擋到鄰居車道，並遵守現場告示。' },
+  { title: '工程車與停車', body: '每間的車庫、車道和路邊車位都列在上方。請避免擋到鄰居車道，並遵守現場告示。' },
   { title: '工作靴與工具', body: '工作靴和工具請保持乾淨，並放在車庫，不要帶進屋內。抵達前請先傳訊息給房東，安排車庫使用方式。' },
   { title: '清晨出門', body: '安靜時段是晚上 9:00 到早上 8:00。清晨出門上工時，請放低音量，也避免讓車輛長時間怠速。' },
   { title: '入住與退房', body: '下午 4:00 入住，早上 10:00 退房。如果需要調整，可以詢問房東，提早入住或延後退房可能可以安排，需另外付費。' },
@@ -40,7 +41,7 @@ const faqs: Faq[] = [
   { question: '公司可以直接訂房，用發票付款嗎？', answer: '不行。所有訂房和付款都透過 Airbnb 進行，收據也可以在 Airbnb 取得。' },
   { question: '訂房的人沒有要入住，可以幫團隊訂嗎？', answer: '請在訂房前透過 Airbnb 傳訊息給房東，說明人數、日期和實際入住的人，先確認安排。' },
   { question: '團隊超過 6 人怎麼辦？', answer: `每間最多 14 位過夜旅客，但 ${desert.name} 超過 ${desert.beds} 人、${family.name} 超過 ${family.beds} 人時，多出來的人要睡沙發床、沙發或氣墊床。如果兩間都有空房，一起訂共有 ${desert.beds + family.beds} 張臥室床位。兩間位在 Visalia 不同地點，不是隔壁鄰居。` },
-  { question: '可以帶拖車或大型工程車嗎？', answer: '其他車輛可以停路邊。如果要帶拖車或超大型車輛，請在訂房前先傳訊息給房東。' },
+  { question: '可以帶拖車或大型工程車嗎？', answer: '路邊可停車輛：Desert Retreat 四到五台，Luxury Family Home 一台。如果要帶拖車或超大型車輛，請在訂房前先傳訊息給房東。' },
   { question: '住宿離工地多近？', answer: 'Airbnb 在訂房前會顯示大略區域，訂房後才提供完整地址。如果距離很重要，可以把工地位置傳給房東詢問。' },
 ];
 
@@ -68,7 +69,7 @@ export default function ChineseCrewHousingPage() {
         <p className="text-sm font-medium text-ember">工作住宿</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-5xl">Visalia 工程團隊與承包商住宿</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          團隊要到 Visalia、Tulare 或中央谷地其他地方施工？SSHOME 有兩間整棟住宿，可讓 5～6 人每人一張床，附完整廚房、洗衣機與烘衣機、Wi-Fi，附近也有很多路邊車位。最長可住 29 天，透過 Airbnb 訂房。
+          團隊要到 Visalia、Tulare 或中央谷地其他地方施工？SSHOME 有兩間整棟住宿，可讓 5～6 人每人一張床，附完整廚房、洗衣機與烘衣機、Wi-Fi，車庫和車道可停 3～6 台車。最長可住 29 天，透過 Airbnb 訂房。
         </p>
 
         <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">
@@ -85,6 +86,7 @@ export default function ChineseCrewHousingPage() {
                 </h3>
                 <p className="mt-2 text-sm font-medium">{stay.beds} 人每人一張床・{stay.baths} 間衛浴</p>
                 <p className="mt-3 leading-relaxed text-stone">{rooms}。{work}</p>
+                <p className="mt-3 text-sm leading-relaxed"><span className="font-medium">停車：</span>{staysZh[stay.slug].compare.parking}</p>
                 <a href={airbnbUrl(stay)} data-airbnb-intent="booking" data-booking-placement="zh-crew-page" className="mt-4 inline-block py-1 text-sm font-medium underline hover:text-ember">到 Airbnb 查日期</a>
               </div>
             ))}

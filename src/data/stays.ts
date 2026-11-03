@@ -114,7 +114,7 @@ export const stays: Stay[] = [
       outdoor: 'Private fenced pool, hot tub, fire pit, BBQ, covered patio, lawn games',
       indoor: '98-inch TV, Nex Playground motion games',
       work: 'Desk, chair, monitor and lamp in Bedroom 2',
-      parking: '2 driveway spaces, street parking, EV charging for a fee',
+      parking: '3 in the garage, 3 in the driveway, 4 to 5 on the street; EV charging for a fee',
     },
     highlights: [
       {
@@ -154,7 +154,7 @@ export const stays: Stay[] = [
       { group: 'Outdoors', items: ['Private pool (not heated)', 'Hot tub', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
       { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wifi'] },
       { group: 'Kitchen', items: ['HexClad cookware', 'Instant Pot', 'Blender', 'Electric kettle', 'Brita pitcher', 'K-Cup and drip coffee maker', 'Kid-friendly dinnerware'] },
-      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Garage parking for 3 cars', 'Free driveway parking for 3 cars', 'Free street parking for 4 to 5 cars', 'EV charger (fee)'] },
     ],
     goodToKnow: [
       'Families: the pool has its own fence with two self-closing, self-latching gates, and the latches are out of young children’s reach. The hot tub is outside the pool fence, with a heavy cover that does not lock. The backyard opens from a sliding glass door and is not fully fenced, so children must be supervised at all times.',
@@ -238,7 +238,7 @@ export const stays: Stay[] = [
     bedrooms: 4,
     beds: 5,
     bedSummary: '5 bedroom beds + 1 sofa bed + 1 couch + 3 air mattresses',
-    summaryZh: '四房、五張臥室床、三間衛浴，附撞球桌、閣樓與熱水池；沒有泳池。臥室有一張 King、兩張 Queen 及兩張 Twin，可睡 8 人；另有沙發床、沙發及三張氣墊床，最多可住 14 人。車道可停兩台車，部分車庫已改為遊戲室。',
+    summaryZh: '四房、五張臥室床、三間衛浴，附撞球桌、閣樓與熱水池；沒有泳池。臥室有一張 King、兩張 Queen 及兩張 Twin，可睡 8 人；另有沙發床、沙發及三張氣墊床，最多可住 14 人。車庫可停一台、車道兩台、路邊一台，部分車庫已改為遊戲室。',
     baths: 3,
     rating: familyRating,
     reviewNote: `${familyRating.value} from ${familyRating.count} Airbnb reviews`,
@@ -280,7 +280,7 @@ export const stays: Stay[] = [
       outdoor: '6-person hot tub, BBQ, fenced yard with string lights, cactus garden',
       indoor: 'Pool table, 75-inch TV, loft with board games',
       work: 'Wi-Fi; no dedicated workspace',
-      parking: '2 driveway spaces, street parking, EV charging for a fee',
+      parking: '1 in the garage, 2 in the driveway, 1 on the street; EV charging for a fee',
     },
     highlights: [
       {
@@ -325,7 +325,7 @@ export const stays: Stay[] = [
       { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fully fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
       { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
       { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Drip and Keurig coffee makers', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
-      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Free driveway parking for 2 cars', 'Free street parking', 'EV charger (fee)'] },
+      { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Garage parking for 1 car', 'Free driveway parking for 2 cars', 'Free street parking for 1 car', 'EV charger (fee)'] },
     ],
     goodToKnow: [
       'Exterior security cameras cover the area above the garage, the yard (including the hot tub) and the front door.',
@@ -420,7 +420,7 @@ export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 export const siteFaqs: Faq[] = [
   {
     question: 'Who owns and manages SSHOME?',
-    answer: 'SSHOME is owned by Spencer and Sylvia. The management team includes Janson and Miyu. Contact the team through the relevant Airbnb listing.',
+    answer: 'SSHOME is owned by Spencer and Sylvia. The management team includes Jansen and Miyu. Contact the team through the relevant Airbnb listing.',
   },
   {
     question: 'Do both SSHOME homes have Wi-Fi and a workspace?',

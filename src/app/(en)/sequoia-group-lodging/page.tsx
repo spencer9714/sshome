@@ -50,7 +50,7 @@ const sleepingPlans = [
 const tips = [
   {
     title: 'Cars',
-    body: 'Each home has free driveway parking for 2 cars, plus street parking. Please avoid blocking neighbors’ driveways.',
+    body: 'Desert Retreat has room for 3 cars in the garage, 3 in the driveway and 4 to 5 on the street. Luxury Family Home has room for 1 in the garage, 2 in the driveway and 1 on the street. Please avoid blocking neighbors’ driveways.',
   },
   {
     title: 'Grandparents and stairs',

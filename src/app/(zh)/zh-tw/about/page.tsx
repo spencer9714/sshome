@@ -22,7 +22,7 @@ export default function ChineseAboutPage() {
     <p className="mt-6 text-xl leading-relaxed">SSHOME 在加州 Visalia 有兩間用心佈置的度假住宿。我們想提供的很簡單：讓家庭和團體在探險之間，有空間一起煮飯、放鬆、相處。</p>
     <section className="mt-10 rounded-lg bg-sand p-6 sm:p-8">
       <h2 className="text-3xl">SSHOME 背後的人</h2>
-      <p className="mt-4 leading-relaxed">我們是 SSHOME 的屋主 Spencer 與 Sylvia，管理團隊包括 Janson 和 Miyu，一起照顧這兩間 Visalia 度假住宿。</p>
+      <p className="mt-4 leading-relaxed">我們是 SSHOME 的屋主 Spencer 與 Sylvia，管理團隊包括 Jansen 和 Miyu，一起照顧這兩間 Visalia 度假住宿。</p>
     </section>
     <p className="mt-5 leading-relaxed text-stone">可以選附私人泳池和火坑的五房住宿，或有撞球桌和閣樓的四房家庭住宿。兩間都有完整廚房和熱水池，使用所列的床位最多可住 14 人。</p>
     <section className="mt-12"><h2 className="text-3xl">訂房前有問題？</h2><p className="mt-4 leading-relaxed text-stone">請在 Airbnb 打開想住的房源，選擇「聯絡房東」或「傳訊息給房東」，詢問床位、熱水池狀況、EV 充電或目前的費用。訂房前也請在 Airbnb 查看空房、房屋規則和取消條款。</p>

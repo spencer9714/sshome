@@ -59,6 +59,7 @@ export function GET() {
     `- Traditional Chinese winter guide: ${absoluteUrl('/zh-tw/sequoia-winter-guide')}`,
     `- Traditional Chinese crew housing guide: ${absoluteUrl('/zh-tw/visalia-crew-housing')}`,
     `- About SSHOME and contacting the host on Airbnb: ${absoluteUrl('/about')}`,
+    `- Privacy policy: ${absoluteUrl('/privacy')}`,
     '',
     '## FAQ',
     '',

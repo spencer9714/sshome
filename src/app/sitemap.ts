@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/sequoia-winter-guide', '/zh-tw/sequoia-winter-guide'],
     ['/visalia-crew-housing', '/zh-tw/visalia-crew-housing'],
     ['/about', '/zh-tw/about'],
+    ['/privacy', '/zh-tw/privacy'],
   ];
   return [
     ...pairs.flatMap(([en, zh]) => [en, zh].map((path) => ({

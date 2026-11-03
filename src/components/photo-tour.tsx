@@ -80,7 +80,7 @@ export function PhotoTour({ photos: sourcePhotos, language = 'en' }: { photos: P
       }} aria-labelledby="photo-viewer-title" className="fixed inset-0 m-auto max-h-[95svh] w-[min(96vw,80rem)] max-w-none rounded-xl bg-bone p-4 text-ink shadow-xl backdrop:bg-black/85 sm:p-6">
         {active && <>
           <div className="mb-4 flex items-center justify-between gap-4"><h2 id="photo-viewer-title" className="text-xl">{label(active.space)} <span className="font-sans text-sm text-stone">{selected! + 1} / {photos.length}</span></h2><button type="button" autoFocus onClick={close} className="rounded-md border border-line px-4 py-2 text-sm">{zh ? '關閉' : 'Close'}</button></div>
-          <div className="relative h-[60svh]"><Image src={active.src} alt={active.alt} fill sizes="96vw" className="object-contain" /></div>
+          <div className="relative h-[min(60svh,65vw)] sm:h-[60svh]"><Image src={active.src} alt={active.alt} fill sizes="96vw" className="object-contain" /></div>
           <p lang="en" className="mt-3 text-sm">{active.alt}</p>
           <div className="mt-4 flex justify-between gap-4"><button type="button" onClick={() => move(-1)} className="rounded-md border border-line px-4 py-2">{zh ? '上一張' : 'Previous'}</button><button type="button" onClick={() => move(1)} className="rounded-md border border-line px-4 py-2">{zh ? '下一張' : 'Next'}</button></div>
         </>}

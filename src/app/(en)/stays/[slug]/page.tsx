@@ -254,8 +254,8 @@ export default async function StayPage({ params }: Props) {
                 <Link key={other.slug} href={stayPath(other)} className="group block">
                   <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
                     <Image
-                      src={other.photos[0].src}
-                      alt={other.photos[0].alt}
+                      src={getHeroPhoto(other).src}
+                      alt={getHeroPhoto(other).alt}
                       fill
                       sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

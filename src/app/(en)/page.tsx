@@ -6,7 +6,7 @@ import { CompareTable } from '@/components/compare-table';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
-import { airbnbUrl, factsCheckedOn, maxGuests, siteFaqs, stays } from '@/data/stays';
+import { airbnbUrl, factsCheckedOn, getHeroPhoto, maxGuests, siteFaqs, stays } from '@/data/stays';
 import { collectionSchema, faqSchema, stayPath } from '@/lib/schema';
 import { parkFacts, site } from '@/lib/site';
 
@@ -59,8 +59,8 @@ export default function HomePage() {
                 className={`group relative block aspect-[3/2] overflow-hidden rounded-lg lg:col-span-7 ${index % 2 ? 'lg:order-2' : ''}`}
               >
                 <Image
-                  src={stay.photos[index === 0 ? 2 : 0].src}
-                  alt={stay.photos[index === 0 ? 2 : 0].alt}
+                  src={getHeroPhoto(stay).src}
+                  alt={getHeroPhoto(stay).alt}
                   fill
                   sizes="(min-width: 1024px) 58vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

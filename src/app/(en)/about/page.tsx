@@ -19,7 +19,7 @@ export default function AboutPage() {
     <p className="mt-6 text-xl leading-relaxed">SSHOME brings together two design-led vacation homes in Visalia, California. Our focus is simple: space for families and groups to cook, unwind and spend time together between adventures.</p>
     <section className="mt-10 rounded-lg bg-sand p-6 sm:p-8">
       <h2 className="text-3xl">Meet the people behind SSHOME</h2>
-      <p className="mt-4 leading-relaxed">We are Spencer and Sylvia, the owners of SSHOME. Our management team includes Jansen and Miyu. Together, we look after our two Visalia vacation homes.</p>
+      <p className="mt-4 leading-relaxed">The SSHOME owners and management team look after our two Visalia vacation homes.</p>
       <p className="mt-4 leading-relaxed text-stone">Both homes have Wi-Fi. Desert Retreat also has a dedicated workspace with a desk and monitor in Bedroom 2; Luxury Family Home does not have a dedicated workspace.</p>
     </section>
     <p className="mt-5 leading-relaxed text-stone">Choose a five-bedroom home with a private pool and fire pit, or a four-bedroom family home with a pool table and loft. Each home has a full kitchen and hot tub, with room for up to 14 guests using the listed sleeping arrangements.</p>

@@ -420,7 +420,7 @@ export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 export const siteFaqs: Faq[] = [
   {
     question: 'Who owns and manages SSHOME?',
-    answer: 'SSHOME is owned by Spencer and Sylvia. The management team includes Jansen and Miyu. Contact the team through the relevant Airbnb listing.',
+    answer: 'SSHOME is owner-operated. The SSHOME management team looks after the homes. Contact the team through the relevant Airbnb listing.',
   },
   {
     question: 'Do both SSHOME homes have Wi-Fi and a workspace?',

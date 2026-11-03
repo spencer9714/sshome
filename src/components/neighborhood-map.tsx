@@ -17,8 +17,8 @@ export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; langu
     }
   }
   const categories = zh
-    ? { shopping: '採買', 'shopping-gas': '採買・加油', charging: '公共 EV 充電' }
-    : { shopping: 'Shopping', 'shopping-gas': 'Shopping + gas', charging: 'Public EV charging' };
+    ? { shopping: '採買', 'shopping-gas': '採買・加油', charging: '公共 EV 充電', supercharging: 'Tesla 超級充電站' }
+    : { shopping: 'Shopping', 'shopping-gas': 'Shopping + gas', charging: 'Public EV charging', supercharging: 'Tesla Supercharger' };
   function travelLabel(travel: { miles: number; minutes: number }) {
     const low = Math.max(0.5, Math.floor((travel.miles - 0.75) * 2) / 2);
     const high = Math.ceil((travel.miles + 0.75) * 2) / 2;
@@ -39,7 +39,7 @@ export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; langu
           {places.map((place, index) => {
             const point = mapPoint(place.latitude, place.longitude);
             return <a key={place.name} href={publicPlaceMapUrl(place)} target="_blank" rel="noopener noreferrer" aria-label={`${place.name} — ${zh ? '在地圖開啟（新分頁）' : 'open in maps (new tab)'}`}>
-              <circle cx={point.x - topLeft.x} cy={point.y - topLeft.y} r="14" fill={place.category === 'charging' ? '#285f52' : '#252c42'} stroke="white" strokeWidth="2" />
+              <circle cx={point.x - topLeft.x} cy={point.y - topLeft.y} r="14" fill={place.category === 'supercharging' ? '#b33d32' : place.category === 'charging' ? '#285f52' : '#252c42'} stroke="white" strokeWidth="2" />
               <text x={point.x - topLeft.x} y={point.y - topLeft.y + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill="white">{index + 1}</text>
             </a>;
           })}
@@ -56,6 +56,6 @@ export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; langu
         <div className="min-w-0 flex-1"><p className="text-xs font-medium text-ember">{categories[place.category]}</p><p className="mt-1 font-medium">{place.name}</p>{place.travel && <p className="mt-2 text-sm font-medium">{travelLabel(place.travel)}</p>}<p className="mt-1 text-xs leading-relaxed text-stone">{place.address}</p><div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href={publicPlaceMapUrl(place)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '在地圖開啟 ↗' : 'Open in maps ↗'}</a><a href={place.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '官方地點資訊 ↗' : 'Location details ↗'}</a></div></div>
       </li>)}
     </ol>
-    <p className="mt-3 text-xs leading-relaxed text-stone">{zh ? '商家資訊查核：' : 'Locations checked: '}{neighborhoodCheckedOn}{zh ? '。出發前請確認營業時間、Costco 會員規定與充電站車輛相容性、費用及即時狀態。公共充電站與住宿內另計費的充電器不同。' : '. Check opening hours, Costco membership requirements, and charger compatibility, pricing, and availability before heading out. Public charging is separate from the charger at the house, which carries an additional fee.'}</p>
+    <p className="mt-3 text-xs leading-relaxed text-stone">{zh ? '商家資訊查核：' : 'Locations checked: '}{neighborhoodCheckedOn}{zh ? '。出發前請確認營業時間、Costco 會員規定與充電站車輛相容性、費用及即時狀態。Tesla Supercharger 是公共快速充電站，與住宿內另計費的 Level 2 充電器不同。請在 Tesla App 確認車輛資格、轉接頭、費用與即時狀態。' : '. Check opening hours, Costco membership requirements, and charger compatibility, pricing, and availability before heading out. Tesla Superchargers are public fast chargers, separate from the Level 2 charger at the house. Charging at the house costs extra. Check the Tesla app for vehicle eligibility, adapters, pricing, and live availability.'}</p>
   </section>;
 }

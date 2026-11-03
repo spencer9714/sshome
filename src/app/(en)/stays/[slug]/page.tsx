@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PhotoTour } from '@/components/photo-tour';
 import { BookingForm } from '@/components/booking-form';
+import { MobileStayBooking, StayOverview } from '@/components/stay-overview';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
@@ -83,6 +84,9 @@ export default async function StayPage({ params }: Props) {
 
         <a href="#photo-tour" className="mt-4 inline-block rounded-md border border-ink px-4 py-2 text-sm font-medium hover:bg-sand">Explore all {stay.photos.length} photos by room</a>
 
+        <StayOverview stay={stay} />
+        <MobileStayBooking stay={stay} />
+
         <div className="mt-12 grid gap-14 lg:grid-cols-12">
           <div className="min-w-0 lg:col-span-8">
             <dl className="flex flex-wrap gap-x-8 gap-y-3 border-b border-line pb-6">
@@ -148,7 +152,7 @@ export default async function StayPage({ params }: Props) {
             )}
 
             <section className="mt-14">
-              <h2 id="sleeping" className="text-3xl">Where everyone sleeps</h2>
+              <h2 id="sleeping" className="scroll-mt-24 text-3xl">Where everyone sleeps</h2>
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {stay.sleeping.map((room) => (
                   <li key={room.room} className="flex flex-col gap-1 py-3.5 sm:flex-row sm:justify-between sm:gap-6">
@@ -162,7 +166,7 @@ export default async function StayPage({ params }: Props) {
             </section>
 
             <section className="mt-14">
-              <h2 className="text-3xl">Amenities</h2>
+              <h2 id="amenities" className="scroll-mt-24 text-3xl">Amenities</h2>
               <div className="mt-6 grid gap-8 sm:grid-cols-2">
                 {stay.amenities.map((group) => (
                   <div key={group.group}>
@@ -181,7 +185,7 @@ export default async function StayPage({ params }: Props) {
             </section>
 
             <section className="mt-14">
-              <h2 className="text-3xl">Getting to the parks</h2>
+              <h2 id="location" className="scroll-mt-24 text-3xl">Getting to the parks</h2>
               <p className="mt-4 leading-relaxed text-stone">
                 From Visalia Municipal Airport, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
                 {parkFacts.drives[0].entrance} into {parkFacts.drives[0].place}, and{' '}
@@ -194,7 +198,7 @@ export default async function StayPage({ params }: Props) {
             </section>
 
             <section className="mt-14">
-              <h2 className="text-3xl">Check-in and house rules</h2>
+              <h2 id="house-rules" className="scroll-mt-24 text-3xl">Check-in and house rules</h2>
               <dl className="mt-5 grid grid-cols-2 gap-4 border-b border-line pb-5">
                 <div>
                   <dt className="text-sm text-stone">Check-in</dt>
@@ -223,19 +227,13 @@ export default async function StayPage({ params }: Props) {
           </div>
 
           <aside className="hidden lg:col-span-4 lg:block">
-            <div className="sticky top-24 rounded-lg border border-line bg-white p-6 shadow-sm">
+            <div id="book-desktop" className="sticky top-24 scroll-mt-24 rounded-lg border border-line bg-white p-6 shadow-sm">
               <p className="font-display text-2xl">Check your dates</p>
               {stay.rating && <p className="mb-5 mt-1 text-sm text-stone">★ {stay.rating.value} · {stay.rating.count} Airbnb reviews</p>}
               <BookingForm stay={stay} />
             </div>
           </aside>
         </div>
-
-        <section id="book" className="mt-14 rounded-lg border border-line bg-white p-6 lg:hidden">
-          <h2 className="text-2xl">Check your dates</h2>
-          {stay.rating && <p className="mb-5 mt-1 text-sm text-stone">★ {stay.rating.value} · {stay.rating.count} Airbnb reviews</p>}
-          <BookingForm stay={stay} />
-        </section>
 
         <PhotoTour photos={stay.photos} />
 

@@ -19,6 +19,13 @@ export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; langu
   const categories = zh
     ? { shopping: '採買', 'shopping-gas': '採買・加油', charging: '公共 EV 充電' }
     : { shopping: 'Shopping', 'shopping-gas': 'Shopping + gas', charging: 'Public EV charging' };
+  function travelLabel(travel: { miles: number; minutes: number }) {
+    const low = Math.max(0.5, Math.floor((travel.miles - 0.75) * 2) / 2);
+    const high = Math.ceil((travel.miles + 0.75) * 2) / 2;
+    const km = `${Math.round(low * 1.609)}–${Math.round(high * 1.609)}`;
+    const minutes = `${Math.max(3, Math.floor((travel.minutes - 2) / 5) * 5)}–${Math.ceil((travel.minutes + 4) / 5) * 5}`;
+    return zh ? `區域參考車程：約 ${minutes} 分鐘・${km} 公里（${low}–${high} 英里）` : `Area estimate: ${minutes} min drive · ${low}–${high} mi (${km} km)`;
+  }
   return <section aria-labelledby={`${key}-neighborhood-title`} className="mt-8 rounded-lg border border-line bg-white p-4 sm:p-6">
     <h3 id={`${key}-neighborhood-title`} className="text-2xl">{zh ? '看看附近有什麼' : 'A few useful stops nearby'}</h3>
     <p className="mt-3 text-sm leading-relaxed text-stone">{zh ? '採買、加油，再出發。陰影只表示住宿的大概區域；確切地址會在訂房後透過 Airbnb 提供。' : 'Pick up groceries, fuel up, and get on with your day. The shaded circle shows the general area only; Airbnb provides the exact address after booking.'}</p>
@@ -42,10 +49,11 @@ export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; langu
       </div>
       <figcaption className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-stone"><span>{zh ? '概略位置，非住宅邊界' : 'Approximate area, not a property boundary'}</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline">© OpenStreetMap contributors</a></figcaption>
     </figure>
+    <p className="mt-4 rounded-md bg-sand px-3 py-2 text-xs leading-relaxed text-stone">{zh ? '以下為從地圖概略區域估算的道路距離與車程範圍，不是從住宅門口測量，也不含即時路況；實際車程依出發位置與交通而異。' : 'Distances and drive times are broad road-route estimates from the approximate area shown, not the front door. They exclude live traffic and vary with your starting point and route.'}</p>
     <ol className="mt-5 divide-y divide-line">
       {places.map((place, index) => <li key={place.name} className="flex items-start gap-3 py-4 first:pt-0">
         <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dusk text-sm font-medium text-white">{index + 1}</span>
-        <div className="min-w-0 flex-1"><p className="text-xs font-medium text-ember">{categories[place.category]}</p><p className="mt-1 font-medium">{place.name}</p><p className="mt-1 text-xs leading-relaxed text-stone">{place.address}</p><div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href={publicPlaceMapUrl(place)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '在地圖開啟 ↗' : 'Open in maps ↗'}</a><a href={place.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '官方地點資訊 ↗' : 'Location details ↗'}</a></div></div>
+        <div className="min-w-0 flex-1"><p className="text-xs font-medium text-ember">{categories[place.category]}</p><p className="mt-1 font-medium">{place.name}</p>{place.travel && <p className="mt-2 text-sm font-medium">{travelLabel(place.travel)}</p>}<p className="mt-1 text-xs leading-relaxed text-stone">{place.address}</p><div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href={publicPlaceMapUrl(place)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '在地圖開啟 ↗' : 'Open in maps ↗'}</a><a href={place.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{zh ? '官方地點資訊 ↗' : 'Location details ↗'}</a></div></div>
       </li>)}
     </ol>
     <p className="mt-3 text-xs leading-relaxed text-stone">{zh ? '商家資訊查核：' : 'Locations checked: '}{neighborhoodCheckedOn}{zh ? '。出發前請確認營業時間、Costco 會員規定與充電站車輛相容性、費用及即時狀態。公共充電站與住宿內另計費的充電器不同。' : '. Check opening hours, Costco membership requirements, and charger compatibility, pricing, and availability before heading out. Public charging is separate from the charger at the house, which carries an additional fee.'}</p>

@@ -6,12 +6,12 @@ import { PhotoTour } from '@/components/photo-tour';
 import { BookingForm } from '@/components/booking-form';
 import { MobileStayBooking, StayOverview } from '@/components/stay-overview';
 import { NeighborhoodMap } from '@/components/neighborhood-map';
+import { ParkTravel } from '@/components/park-travel';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, getHeroPhoto, getStay, stays } from '@/data/stays';
 import { breadcrumbSchema, faqSchema, rentalPageSchema, staySchema, stayPath } from '@/lib/schema';
-import { parkFacts } from '@/lib/site';
 import { languageAlternates, zhStayPath } from '@/lib/locales';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -189,11 +189,8 @@ export default async function StayPage({ params }: Props) {
               <h2 id="location" className="scroll-mt-24 text-3xl">The neighborhood &amp; getting around</h2>
               <NeighborhoodMap slug={stay.slug} />
               <h3 className="mt-8 text-2xl">Getting to the parks</h3>
+              <ParkTravel />
               <p className="mt-4 leading-relaxed text-stone">
-                From Visalia Municipal Airport, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
-                {parkFacts.drives[0].entrance} into {parkFacts.drives[0].place}, and{' '}
-                {parkFacts.drives[1].time.toLowerCase()} to the {parkFacts.drives[1].entrance} into{' '}
-                {parkFacts.drives[1].place}. These estimates are from the airport to each entrance, not from the house to the main sights. Allow extra time to reach the giant sequoia groves.{' '}
                 <Link href="/sequoia-kings-canyon-guide" className="text-ink underline hover:text-ember">
                   Plan your days with our park guide.
                 </Link>

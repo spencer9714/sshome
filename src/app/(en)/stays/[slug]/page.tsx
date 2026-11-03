@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { PhotoTour } from '@/components/photo-tour';
 import { BookingForm } from '@/components/booking-form';
 import { MobileStayBooking, StayOverview } from '@/components/stay-overview';
+import { NeighborhoodMap } from '@/components/neighborhood-map';
 import { FaqList } from '@/components/faq-list';
 import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
@@ -185,7 +186,9 @@ export default async function StayPage({ params }: Props) {
             </section>
 
             <section className="mt-14">
-              <h2 id="location" className="scroll-mt-24 text-3xl">Getting to the parks</h2>
+              <h2 id="location" className="scroll-mt-24 text-3xl">The neighborhood &amp; getting around</h2>
+              <NeighborhoodMap slug={stay.slug} />
+              <h3 className="mt-8 text-2xl">Getting to the parks</h3>
               <p className="mt-4 leading-relaxed text-stone">
                 From Visalia Municipal Airport, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
                 {parkFacts.drives[0].entrance} into {parkFacts.drives[0].place}, and{' '}

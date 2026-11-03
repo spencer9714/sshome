@@ -41,7 +41,7 @@ const faqs: Faq[] = [
   { question: '公司可以直接訂房，用發票付款嗎？', answer: '不行。所有訂房和付款都透過 Airbnb 進行，收據也可以在 Airbnb 取得。' },
   { question: '訂房的人沒有要入住，可以幫團隊訂嗎？', answer: '請在訂房前透過 Airbnb 傳訊息給房東，說明人數、日期和實際入住的人，先確認安排。' },
   { question: '團隊超過 6 人怎麼辦？', answer: `每間最多 14 位過夜旅客，但 ${desert.name} 超過 ${desert.beds} 人、${family.name} 超過 ${family.beds} 人時，多出來的人要睡沙發床、沙發或氣墊床。如果兩間都有空房，一起訂共有 ${desert.beds + family.beds} 張臥室床位。兩間位在 Visalia 不同地點，不是隔壁鄰居。` },
-  { question: '可以帶拖車或大型工程車嗎？', answer: '路邊可停車輛：Desert Retreat 四到五台，Luxury Family Home 一台。如果要帶拖車或超大型車輛，請在訂房前先傳訊息給房東。' },
+  { question: '可以帶拖車或大型工程車嗎？', answer: 'Desert Retreat 車道可停三台，Luxury Family Home 車道可停兩台，附近另有路邊停車，但路邊車位不保留。如果要帶額外車輛、拖車或超大型車輛，請在訂房前先傳訊息給房東。' },
   { question: '住宿離工地多近？', answer: 'Airbnb 在訂房前會顯示大略區域，訂房後才提供完整地址。如果距離很重要，可以把工地位置傳給房東詢問。' },
 ];
 

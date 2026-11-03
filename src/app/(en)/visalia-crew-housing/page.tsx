@@ -75,7 +75,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Can we bring a trailer or a large work vehicle?',
-    answer: 'Street parking has room for 4 to 5 vehicles at Desert Retreat and 1 at Luxury Family Home. If you are bringing a trailer or an oversized vehicle, message the host before booking.',
+    answer: 'Desert Retreat offers 3 driveway spaces and Luxury Family Home offers 2, with additional street parking nearby. Street spaces are not reserved. If you are bringing extra vehicles, a trailer or an oversized vehicle, message the host before booking.',
   },
   {
     question: 'How close are the homes to our job site?',

@@ -50,7 +50,7 @@ const sleepingPlans = [
 const tips = [
   {
     title: 'Cars',
-    body: 'Desert Retreat has room for 3 cars in the garage, 3 in the driveway and 4 to 5 on the street. Luxury Family Home has room for 1 in the garage, 2 in the driveway and 1 on the street. Please avoid blocking neighbors’ driveways.',
+    body: 'Desert Retreat offers 3 driveway spaces and Luxury Family Home offers 2, with additional street parking nearby. Luxury Family Home also has 1 garage parking space; part of its garage is a game room. Confirm arrangements for extra vehicles with the host and avoid blocking neighbors’ driveways.',
   },
   {
     title: 'Grandparents and stairs',

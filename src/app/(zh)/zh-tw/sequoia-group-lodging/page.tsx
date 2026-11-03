@@ -31,7 +31,7 @@ const sleepingPlans = [
 ];
 
 const tips = [
-  { title: '停車', body: 'Desert Retreat 車庫可停三台、車道三台、路邊四到五台；Luxury Family Home 車庫可停一台、車道兩台、路邊一台。請避免擋到鄰居車道。' },
+  { title: '停車', body: 'Desert Retreat 車道可停三台，Luxury Family Home 車道可停兩台，附近另有路邊停車。Luxury Family Home 車庫另可停一台，部分車庫已改成遊戲室。額外車輛請先向房東確認安排，並避免擋到鄰居車道。' },
   { title: '長輩與樓梯', body: '兩間都有樓梯。不方便爬樓梯的家人，可以安排在一樓臥室：Desert Retreat 的第二間臥室，或 Luxury Family Home 的第三間臥室；後者一樓也有衛浴。' },
   { title: '吃飯與採買', body: '下午 4:00 才能入住，可以先派一台車到 Visalia 採買。玩了一整天，回住宿一起煮飯，常常是餵飽一大群人最輕鬆的方式。' },
   { title: '洗衣', body: '每間都有自己的二樓洗衣間，附洗衣機與烘衣機，住得久或走完步道後都很方便。' },

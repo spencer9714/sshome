@@ -11,7 +11,7 @@ export function SiteFooter({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
         <div>
           <p className="font-display text-2xl tracking-[0.12em]">SSHOME</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone/75">
-            Vacation homes in Visalia, California, near Sequoia and Kings Canyon National Parks.
+            Two private homes in Visalia, California, for park adventures and time together.
           </p>
         </div>
         <nav aria-label="Homes" className="text-sm">
@@ -47,7 +47,7 @@ export function SiteFooter({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
             </li>
             <li>
               <a href="/llms.txt" className="hover:text-glow">
-                Summary for AI agents
+                Site summary
               </a>
             </li>
           </ul>
@@ -56,7 +56,7 @@ export function SiteFooter({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
       <div className="border-t border-bone/15">
         <p className="mx-auto max-w-7xl px-4 py-5 text-xs leading-relaxed text-bone/65 sm:px-6 lg:px-8">
           Bookings are made on Airbnb. SSHOME is not affiliated with Airbnb or the National Park Service. Listing
-          details checked {factsCheckedOn}; Airbnb has the current information.
+          details last checked {factsCheckedOn}. Check Airbnb for current prices, availability, and policies.
         </p>
       </div>
     </footer>

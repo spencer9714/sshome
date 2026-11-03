@@ -28,12 +28,12 @@ const homes = [
   {
     stay: desert,
     rooms: '4 private bedrooms, plus a room with 2 twin beds',
-    work: 'Has a desk, chair, monitor and lamp in Bedroom 2 for paperwork and calls.',
+    work: 'Bedroom 2 has a desk, chair, monitor, and lamp for catching up on paperwork.',
   },
   {
     stay: family,
     rooms: '3 private bedrooms, plus a room with 2 single beds',
-    work: 'Has Wi-Fi but no dedicated workspace.',
+    work: 'Wi-Fi is available; there is no dedicated workspace.',
   },
 ];
 
@@ -48,7 +48,7 @@ const tips = [
   },
   {
     title: 'Early starts',
-    body: `Quiet hours run from 9:00 PM to 8:00 AM, so please keep voices and engines down when leaving for an early shift.`,
+    body: `Heading out for an early shift? Quiet hours are 9:00 PM to 8:00 AM, so please keep conversations quiet and avoid idling vehicles.`,
   },
   {
     title: 'Arrival and checkout',
@@ -67,7 +67,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Can someone book for a crew without staying at the home?',
-    answer: 'Message the host on Airbnb before booking with your crew size and dates, and mention who will be staying, so you can confirm the arrangement first.',
+    answer: 'Before booking, message the host on Airbnb with your dates, crew size, and the names of the people staying. Confirm that the booking arrangement is suitable first.',
   },
   {
     question: 'What if our crew has more than 6 people?',
@@ -79,7 +79,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'How close are the homes to our job site?',
-    answer: 'Airbnb shows each home’s approximate area before booking and shares the exact address afterward. Message the host with your job site’s location if the distance matters.',
+    answer: 'You can see the approximate location on Airbnb before booking; the exact address is shared afterward. Send the host your job site location if you need help assessing the commute.',
   },
 ];
 

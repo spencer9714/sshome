@@ -125,7 +125,7 @@ export default function GuidePage() {
             <li><strong className="font-medium text-ink">Day 3 — a slow breakfast or one more park stop.</strong> Enjoy breakfast together and pack up before your confirmed checkout time. If conditions and your onward route allow, consider Grant Grove in Kings Canyon via Highway 180 after checkout. Otherwise, enjoy an unhurried departure. Cedar Grove is a separate, longer canyon excursion with seasonal road access.</li>
           </ol>
           <div className="mt-6 rounded-lg bg-sand p-6">
-            <h3 className="text-2xl">Leave a day deliciously unplanned.</h3>
+            <h3 className="text-2xl">Leave a day for doing very little.</h3>
             <p className="mt-3 leading-relaxed text-stone">With a third night, you can make Day 3 a stay-at-home day: cook a leisurely meal, enjoy Desert Retreat’s pool and outdoor space, or spend time in Family Home’s game room and loft. Head home on Day 4 at the agreed checkout time. Both homes offer Wi-Fi; only Desert Retreat has a dedicated workspace.</p>
             <p className="mt-3 text-sm leading-relaxed text-stone">Only Desert Retreat has a swimming pool, and it is not heated. Both homes have hot tubs, but availability on your first night is not guaranteed; confirm with the host if it is important to your trip. BBQ propane and EV charging cost extra. Use outdoor amenities according to house rules and current conditions.</p>
             <Link href="/#compare" className="mt-4 inline-block underline">Compare the homes and their amenities</Link>
@@ -135,7 +135,7 @@ export default function GuidePage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">Seasonal road patterns</h2>
+          <h2 className="text-3xl">What changes with the seasons</h2>
           <div className="mt-6 space-y-6">
             {seasons.map((season) => (
               <div key={season.name}>
@@ -150,7 +150,7 @@ export default function GuidePage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">Top sights to plan around</h2>
+          <h2 className="text-3xl">A few stops worth planning for</h2>
           <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed text-stone marker:text-ember">
             <li>
               <strong className="font-medium text-ink">General Sherman Tree, Giant Forest:</strong> the largest tree on
@@ -161,12 +161,12 @@ export default function GuidePage() {
               wide views.
             </li>
             <li>
-              <strong className="font-medium text-ink">General Grant Tree, Grant Grove:</strong> the giant sequoia grove
+              <strong className="font-medium text-ink">General Grant Tree, Grant Grove:</strong> a giant sequoia in Grant Grove,
               near the Big Stump Entrance in Kings Canyon.
             </li>
             <li>
               <strong className="font-medium text-ink">Cedar Grove:</strong> the deep canyon section of Kings Canyon,
-              reachable only while its road is open.
+              accessible when the seasonal road is open.
             </li>
           </ul>
         </section>

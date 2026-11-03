@@ -5,7 +5,7 @@ import { site } from '@/lib/site';
 
 const path = '/privacy';
 const title = 'Privacy Policy';
-const description = 'How the SSHOME website uses cookies, Google Analytics and the OpenAI Ads Pixel, what goes to Airbnb, and your choices and California privacy rights.';
+const description = 'Learn how this site uses cookies, Google Analytics, and the OpenAI Ads Pixel, what information is sent to Airbnb, and what privacy choices you have.';
 
 export const metadata: Metadata = {
   title: { absolute: `${title} | ${site.name}` },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const providers = [
   {
     name: 'Google Analytics',
-    purpose: 'Shows us how visitors find and use the site, including pages viewed, the site or campaign that sent them, clicks through to Airbnb, approximate location and device type.',
+    purpose: 'Helps us understand how visitors find and use the site, including pages viewed, referral sources, clicks to Airbnb, approximate location, and device type.',
     storage: 'Cookies named _ga and _ga_FR9GRK5P0E, kept for up to about 400 days.',
     policy: 'https://policies.google.com/technologies/partner-sites',
     policyLabel: 'How Google uses data from sites that use its services',
@@ -72,8 +72,8 @@ export default function PrivacyPage() {
       <section className="mt-12">
         <h2 className="text-3xl">Booking on Airbnb</h2>
         <p className="mt-4 leading-relaxed text-stone">
-          Bookings, payments and messages with the host happen on Airbnb, not on this site. If you use a date form here,
-          your dates and guest count go to Airbnb in the link that opens. Airbnb handles what you do there under its{' '}
+          Bookings, payments, and host messages are handled on Airbnb. When you select dates on this site,
+          the link to Airbnb includes your dates and guest count. Your activity on Airbnb is covered by its{' '}
           <a href="https://www.airbnb.com/help/article/2855" className={linkClass}>Privacy Policy</a>.
         </p>
       </section>
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
       <section className="mt-12">
         <h2 className="text-3xl">How we use information</h2>
         <p className="mt-4 leading-relaxed text-stone">
-          We use it to understand which pages and marketing work, to improve the site and to measure our ads. We do not
+          We use this information to understand which pages and marketing campaigns are effective, improve the site, and measure advertising performance. We do not
           sell information for money. Our use of the OpenAI Ads Pixel may count as sharing for advertising under some
           privacy laws, including California’s. Each provider keeps data according to its own settings and policies.
         </p>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
           <li>Block or delete cookies in your browser settings. Blocking cookies or tracking scripts limits these tools, and the site still works.</li>
           <li>Install Google’s <a href="https://tools.google.com/dlpage/gaoptout" className={linkClass}>Google Analytics opt-out add-on</a>.</li>
           <li>This site does not currently offer its own cookie controls or respond to browser signals such as Do Not Track or Global Privacy Control.</li>
-          <li>Depending on where you live, you may have other privacy rights. We do not keep visitor accounts, so providers’ policies explain how to reach the data they hold. You can also send us a request, and we will help where we can.</li>
+          <li>Depending on where you live, you may have other privacy rights. We do not keep visitor accounts, so the providers’ policies explain how to request access to the data they hold. You can also send us a request, and we will help where we can.</li>
         </ul>
       </section>
 
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="text-3xl">Changes and contact</h2>
+        <h2 className="text-3xl">Updates and contact details</h2>
         <p className="mt-4 leading-relaxed text-stone">
           We will update this page and its date when our practices change. For privacy questions or requests, email{' '}
           <a href="mailto:business@sshomedesigns.com" className={linkClass}>business@sshomedesigns.com</a>. This address is

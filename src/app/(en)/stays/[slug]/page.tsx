@@ -106,7 +106,7 @@ export default async function StayPage({ params }: Props) {
             <p className="mt-8 text-xl leading-relaxed">{stay.lead}</p>
 
             <section className="mt-14">
-              <h2 className="text-3xl">What makes this home special</h2>
+              <h2 className="text-3xl">A few things to look forward to</h2>
               <div className="mt-6 grid gap-x-8 gap-y-7 sm:grid-cols-2">
                 {stay.highlights.map((highlight) => (
                   <div key={highlight.title}>
@@ -143,7 +143,7 @@ export default async function StayPage({ params }: Props) {
                   ))}
                 </div>
                 <p className="mt-4 text-xs text-stone">
-                  A selection of reviews from Airbnb, shown word for word. Names are shortened for privacy.{' '}
+                  Selected Airbnb reviews, shared in the guests’ own words. Names are abbreviated for privacy.{' '}
                   <a href={airbnbUrl(stay)} data-airbnb-intent="reviews" data-booking-placement="stay-reviews" className="underline hover:text-ember">
                     Read all reviews on Airbnb.
                   </a>
@@ -161,8 +161,8 @@ export default async function StayPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-sm text-stone">{stay.slug.startsWith('desert-') ? 'Also provided: 1 queen and 2 twin air mattresses. Total capacity is 14 guests, including these extra sleeping spaces.' : stay.extraSleeping}</p>
-              <Link href="/sequoia-group-lodging#sleeping-plans" className="mt-3 inline-block py-1 text-sm underline hover:text-ember">See how groups of 8 to 14 can sleep</Link>
+              <p className="mt-4 text-sm text-stone">{stay.slug.startsWith('desert-') ? 'Need the extra sleeping space? We provide 1 queen and 2 twin air mattresses, bringing the total capacity to 14 guests.' : stay.extraSleeping}</p>
+              <Link href="/sequoia-group-lodging#sleeping-plans" className="mt-3 inline-block py-1 text-sm underline hover:text-ember">Plan the sleeping arrangements for 8 to 14 guests</Link>
             </section>
 
             <section className="mt-14">
@@ -215,9 +215,9 @@ export default async function StayPage({ params }: Props) {
                   <li key={rule}>{rule}</li>
                 ))}
               </ul>
-              <p className="mt-4 text-sm text-stone">Cancellation terms depend on your dates and appear on Airbnb before you book.</p>
+              <p className="mt-4 text-sm text-stone">Check the cancellation policy for your dates on Airbnb before booking.</p>
 
-              <h2 className="mt-14 text-3xl">Good to know before you book</h2>
+              <h2 className="mt-14 text-3xl">A few things to know before you book</h2>
               <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed text-stone marker:text-ember">
                 {stay.goodToKnow.map((note) => (
                   <li key={note}>{note}</li>

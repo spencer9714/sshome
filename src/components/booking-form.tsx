@@ -68,7 +68,7 @@ export function BookingForm({ stay, language = 'en' }: { stay: Stay; language?: 
           {Array.from({ length: stay.guests - adults + 1 }, (_, count) => <option key={count} value={count}>{zh ? `${count} 位兒童` : `${count} ${count === 1 ? 'child' : 'children'}`}</option>)}
         </select>
       </label>
-      <p className="text-xs text-stone">{zh ? '攜帶未滿2歲嬰兒？請在 Airbnb 加入嬰兒人數，並向房東確認合適的安排。' : 'Traveling with infants under 2? Add them on Airbnb and confirm suitable arrangements with the host.'}</p>
+      <p className="text-xs text-stone">{zh ? '攜帶未滿2歲嬰兒？請在 Airbnb 加入嬰兒人數，並向房東確認合適的安排。' : 'Bringing a child under 2? Add infants on Airbnb and ask the host about sleeping arrangements.'}</p>
       <input type="hidden" name="guests" value={guests} />
       <p aria-live="polite" className="text-sm text-stone">
         {zh ? (nights > 0 ? `${nights} 晚 / ${guests} 位旅客` : '請選擇入住與退房日期。') : (nights > 0 ? `${nights} ${nights === 1 ? 'night' : 'nights'} / ${guests} ${guests === 1 ? 'guest' : 'guests'}` : 'Choose your check-in and checkout dates.')}
@@ -77,9 +77,9 @@ export function BookingForm({ stay, language = 'en' }: { stay: Stay; language?: 
         type="submit"
         className="w-full rounded-md bg-ember px-4 py-3 font-medium text-white transition-colors hover:bg-ember-dark"
       >
-        {zh ? (nights > 0 ? `到 Airbnb 查看 ${nights} 晚價格` : '前往 Airbnb') : (nights > 0 ? `View ${nights} ${nights === 1 ? 'night' : 'nights'} on Airbnb` : 'Continue to Airbnb')}
+        {zh ? (nights > 0 ? `到 Airbnb 查看 ${nights} 晚價格` : '前往 Airbnb') : (nights > 0 ? `Check ${nights} ${nights === 1 ? 'night' : 'nights'} on Airbnb` : 'Continue to Airbnb')}
       </button>
-      <p className="text-center text-xs text-stone">{zh ? '日期與人數會帶入 Airbnb，實際空房及最終價格請在 Airbnb 確認。' : 'Your dates and guest count will be sent to Airbnb. Check availability and your total price there.'}</p>
+      <p className="text-center text-xs text-stone">{zh ? '日期與人數會帶入 Airbnb，實際空房及最終價格請在 Airbnb 確認。' : 'We will carry your dates and guest count over to Airbnb, where you can confirm availability and the total price.'}</p>
     </form>
   );
 }

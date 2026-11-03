@@ -81,7 +81,7 @@ export const stays: Stay[] = [
     tagline: 'Poolside afternoons. Fireside evenings. Five bedrooms to settle into.',
     metaTitle: '5-Bedroom Visalia Rental for 14 with Pool | SSHOME',
     metaDescription:
-      'Entire 5-bedroom Visalia, CA home sleeping 14, with a private pool, hot tub, fire pit and EV charging. A base for Sequoia National Park. Book on Airbnb.',
+      'A five-bedroom Visalia home for up to 14, with a private pool, hot tub, and fire pit. Plan your Sequoia trip and check dates on Airbnb.',
     bestFor: 'Families and groups looking for a private pool and outdoor space',
     lead: 'Pick up groceries, unpack, and let the afternoon unfold. There is room for cornhole on the lawn, dinner on the patio, and a movie on the 98-inch TV. With five bedrooms, a private pool, and a hot tub, this Visalia home gives your group plenty of reasons to linger. Up to 14 guests can stay, including those using the provided air mattresses.',
     guests: 14,
@@ -152,7 +152,7 @@ export const stays: Stay[] = [
     },
     amenities: [
       { group: 'Outdoors', items: ['Private pool (not heated)', 'Hot tub', 'BBQ grill', 'Fire pit with seating', 'Covered patio', 'Outdoor dining area', 'Turf area with cornhole'] },
-      { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wifi'] },
+      { group: 'Living', items: ['98-inch TV', 'Smart TV in every bedroom', 'Nex Playground', 'Dining table and kitchen island', 'Wi-Fi'] },
       { group: 'Kitchen', items: ['HexClad cookware', 'Instant Pot', 'Blender', 'Electric kettle', 'Brita pitcher', 'K-Cup and drip coffee maker', 'Kid-friendly dinnerware'] },
       { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Detergent and dryer sheets', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Air conditioning and heating', 'Self check-in with smart lock', 'Free driveway parking for 3 cars', 'Nearby street parking', 'EV charger (fee)'] },
     ],
@@ -231,7 +231,7 @@ export const stays: Stay[] = [
     tagline: 'One more game of pool. One less reason to rush out.',
     metaTitle: 'Visalia Family Rental for 14 near Sequoia | SSHOME',
     metaDescription:
-      'Four-bedroom Visalia vacation home for up to 14 with a hot tub, pool table, loft, Wi-Fi and EV charging. Explore Sequoia and book on Airbnb.',
+      'Make yourself at home in Visalia: four bedrooms, a pool table, a loft, and a private hot tub. Sleeps up to 14 with extra sleeping spaces. Book on Airbnb.',
     bestFor: 'Families and groups looking for a game room and separate living areas',
     lead: 'Call the next game of pool, spread out in the loft, or get dinner going while everyone swaps stories from the day. With four bedrooms, a full kitchen, and a private hot tub, this Visalia home makes time together easy. Sleeps up to 14 with the sofa bed, couch, and air mattresses included in the sleeping setup.',
     guests: 14,
@@ -323,7 +323,7 @@ export const stays: Stay[] = [
     },
     amenities: [
       { group: 'Outdoors', items: ['Private 6-person hot tub', 'BBQ grill', 'Fully fenced backyard', 'Outdoor seating', 'Cactus and succulent garden', 'Ring toss'] },
-      { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wifi'] },
+      { group: 'Living', items: ['75-inch TV', 'Pool table', 'Loft with Smart TV', 'Board games and puzzles', 'Nintendo Switch games', 'Wi-Fi'] },
       { group: 'Kitchen', items: ['Stove, microwave and refrigerator', 'Dishwasher', 'Island with breakfast bar', 'Drip and Keurig coffee makers', 'Rice cooker and blender', 'Spices and chopsticks', "Children's dinnerware"] },
       { group: 'Practical', items: ['Washer and dryer in a second-floor laundry room', 'Iron and drying rack', 'Toto bidet in every bathroom', 'Central air and heating', 'Self check-in with smart lock', 'Garage parking for 1 car', 'Free driveway parking for 2 cars', 'Free street parking for 1 car', 'EV charger (fee)'] },
     ],
@@ -420,11 +420,11 @@ export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 export const siteFaqs: Faq[] = [
   {
     question: 'Do both homes have Wi-Fi and a workspace?',
-    answer: 'Both homes have Wi-Fi. Only Desert Retreat has a dedicated workspace, with a desk, chair, monitor and lamp in Bedroom 2. Luxury Family Home does not have a dedicated workspace.',
+    answer: 'Yes, both have Wi-Fi. If you need a dedicated workspace, choose Desert Retreat: Bedroom 2 has a desk, chair, monitor, and lamp. Luxury Family Home has no dedicated workspace.',
   },
   {
     question: 'Which home has a swimming pool?',
-    answer: 'Only Desert Retreat has a private swimming pool, which is not heated. Both Desert Retreat and Luxury Family Home have a hot tub. First-night hot tub availability is not guaranteed; contact the host before booking if it is essential.',
+    answer: 'Desert Retreat has a private, unheated swimming pool. Both homes have hot tubs, but availability on the first night is not guaranteed. If a soak is a must for your trip, check with the host before booking.',
   },
   {
     question: 'How should two families or 10 to 14 guests choose a home?',
@@ -444,7 +444,7 @@ export const siteFaqs: Faq[] = [
   },
   {
     question: 'How do I book a stay?',
-    answer: 'All bookings are made on Airbnb, where you can see live availability, pricing, house rules and cancellation terms. Each home page links to its Airbnb listing.',
+    answer: 'Choose a home, then follow its Airbnb link to check dates, prices, house rules, and cancellation terms. All bookings and payments take place on Airbnb.',
   },
   {
     question: 'What are the check-in and checkout times?',

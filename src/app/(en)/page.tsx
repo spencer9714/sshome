@@ -99,7 +99,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-4 text-xs text-stone">
-            Reviews reproduced from Airbnb. Guest names are abbreviated for privacy. Listing details checked {factsCheckedOn}.
+            Reviews from Airbnb, shared in the guests’ own words. Names are abbreviated for privacy. Listing details checked {factsCheckedOn}.
           </p>
         </section>
       )}
@@ -108,7 +108,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-5xl">Compare the homes</h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
-            Choose Desert Retreat for a private, unheated pool and five bedrooms. Choose Luxury Family Home for a pool table, loft and four bedrooms. Both have a hot tub; only Desert Retreat has a swimming pool.
+            Five bedrooms and a private pool, or four bedrooms with a pool table and loft? Both homes have a hot tub and a full kitchen. The swimming pool is exclusive to Desert Retreat and is not heated.
           </p>
           <p className="mt-4 text-sm text-stone">The 14-guest capacity includes extra sleeping spaces. Review the bed arrangements before booking.</p>
           <div className="mt-10">
@@ -122,8 +122,8 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl sm:text-5xl">Giant trees. Wide-open days.</h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-bone/80">
-              Visalia sits in the valley below the Sierra Nevada, with Highway 198 running up through Three Rivers to
-              Sequoia&apos;s Ash Mountain Entrance.
+              Stay in Visalia, down in the valley below the Sierra Nevada. Take Highway 198 to Sequoia&apos;s Ash Mountain
+              Entrance or Highway 180 to Kings Canyon, then leave time for the mountain roads beyond.
             </p>
             <Link
               href="/sequoia-kings-canyon-guide"

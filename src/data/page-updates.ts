@@ -15,7 +15,7 @@ export const pageUpdates: Record<string, string> = {
   '/about': '2026-11-03',
   '/sequoia-group-lodging': '2026-11-03',
   '/sequoia-winter-guide': '2026-11-03',
-  '/privacy': '2026-11-02',
+  '/privacy': '2026-11-03',
   '/zh-tw/privacy': '2026-11-02',
   '/visalia-crew-housing': '2026-11-03',
   '/zh-tw/visalia-crew-housing': '2026-11-02',

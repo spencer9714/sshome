@@ -43,8 +43,8 @@ export function PhotoTour({ photos: sourcePhotos, language = 'en' }: { photos: P
   return (
     <section id="photo-tour" className="mt-16">
       <h2 className="text-3xl">{zh ? '依空間看照片' : 'Photo tour'}</h2>
-      <p className="mt-3 text-stone">{zh ? '選擇空間，再點照片放大瀏覽。照片詳細說明保留英文原文。' : 'Choose a room, then tap any photo for a closer look.'}</p>
-      <nav ref={roomNav} aria-label={zh ? '相簿空間分類' : 'Photo tour rooms'} className="-mx-1 mt-5 flex gap-3 overflow-x-auto px-1 pb-4 pt-1">
+      <p className="mt-3 text-stone">{zh ? '選擇空間，再點照片放大瀏覽。照片詳細說明保留英文原文。' : 'Take a look around. Choose a space, then open a photo to see the details.'}</p>
+      <nav ref={roomNav} aria-label={zh ? '相簿空間分類' : 'Browse photos by room'} className="-mx-1 mt-5 flex gap-3 overflow-x-auto px-1 pb-4 pt-1">
         {spaces.map((space, index) => {
           const cover = photos.find((photo) => photo.space === space)!;
           return <a key={space} href={`#photo-space-${index}`} aria-current={index === activeSpace ? 'true' : undefined} onClick={(event) => {

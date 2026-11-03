@@ -9,10 +9,10 @@ const rows = [
     label: 'Rooms',
     value: (stay: (typeof stays)[number]) => `${stay.bedrooms} bedrooms, ${stay.beds} bedroom beds, ${stay.baths} baths`,
   },
-  { label: 'Sleeping setup', value: (stay: (typeof stays)[number]) => stay.bedSummary },
+  { label: 'Beds & extra sleeping spaces', value: (stay: (typeof stays)[number]) => stay.bedSummary },
   { label: 'Airbnb reviews', value: (stay: (typeof stays)[number]) => stay.reviewNote },
   { label: 'Outdoors', value: (stay: (typeof stays)[number]) => stay.compare.outdoor },
-  { label: 'Indoor fun', value: (stay: (typeof stays)[number]) => stay.compare.indoor },
+  { label: 'Time indoors', value: (stay: (typeof stays)[number]) => stay.compare.indoor },
   { label: 'Workspace', value: (stay: (typeof stays)[number]) => stay.compare.work },
   { label: 'Parking', value: (stay: (typeof stays)[number]) => stay.compare.parking },
 ];

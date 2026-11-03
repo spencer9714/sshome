@@ -53,12 +53,12 @@ const tips = [
     body: 'Desert Retreat offers 3 driveway spaces and Luxury Family Home offers 2, with additional street parking nearby. Luxury Family Home also has 1 garage parking space; part of its garage is a game room. Confirm arrangements for extra vehicles with the host and avoid blocking neighbors’ driveways.',
   },
   {
-    title: 'Grandparents and stairs',
-    body: 'Both homes have stairs. Give anyone who prefers one level the first-floor bedroom: Bedroom 2 at Desert Retreat or Bedroom 3 at Luxury Family Home, which also has a first-floor bathroom.',
+    title: 'Bedrooms and stairs',
+    body: 'Both homes have stairs, but each has a first-floor bedroom: Bedroom 2 at Desert Retreat and Bedroom 3 at Luxury Family Home. Family Home also has a first-floor bathroom. Ask the host about the layout if stairs are a concern.',
   },
   {
     title: 'Meals',
-    body: 'Check-in is at 4:00 PM, so some of your group can pick up groceries in Visalia before arrival. Cooking at the house is often the easiest way to feed a big group after a park day.',
+    body: 'Pick up groceries before the 4:00 PM check-in, then let dinner be the easy part of the day. Both homes have full kitchens, so there is no need to find a restaurant table for the whole group.',
   },
   {
     title: 'Laundry',
@@ -81,7 +81,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Will all 14 guests have a bedroom bed?',
-    answer: 'No. Both homes accommodate 14 guests with additional sleeping arrangements, as shown in the table above. Most groups of 14 should plan on some guests using air mattresses.',
+    answer: 'No. Both homes use extra sleeping spaces to accommodate 14 guests, including air mattresses. Check the room-by-room arrangements with your group before booking.',
   },
 ];
 
@@ -133,8 +133,8 @@ export default function GroupLodgingPage() {
           <h2 className="text-3xl">Which home suits your group?</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {[
-              { stay: desert, reason: 'Choose it for more bedrooms and a private pool, with a fire pit for evenings.' },
-              { stay: family, reason: 'Choose it for a game room and loft, so kids and adults have their own spaces.' },
+              { stay: desert, reason: 'Five bedrooms, a private unheated pool, and a fire pit for catching up after dinner.' },
+              { stay: family, reason: 'Four bedrooms, a pool table, and an upstairs loft for games or a quiet break.' },
             ].map(({ stay, reason }) => (
               <div key={stay.slug} className="rounded-lg border border-line bg-white p-6">
                 <h3 className="text-2xl">

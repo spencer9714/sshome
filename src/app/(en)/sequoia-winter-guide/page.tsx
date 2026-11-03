@@ -42,10 +42,10 @@ const checklist = [
   },
   {
     title: 'Warm layers, water and food',
-    body: 'Snow in the groves can mean rain in the foothills, so dress for both. Pack emergency water and food as well, and expect to lose cell service soon after the entrance station.',
+    body: 'Pack for snow in the groves and rain in the foothills. Bring extra food and water, and be prepared for limited cell service beyond the entrance station.',
   },
   {
-    title: 'Today’s road status',
+    title: 'Check the roads before you go',
     body: 'Check before you leave, because storms can close roads with little warning. In-park road conditions are available 24 hours a day at (559) 565-3341: press 1, then 1 again.',
   },
 ];
@@ -54,12 +54,12 @@ const access = [
   {
     place: 'Giant Forest and the General Sherman Tree',
     route: 'Highway 198',
-    status: 'The main winter destination, though it may close during storms. NPS has listed the main Sherman Tree lot as closed in winter, with very limited parking at the accessible lot.',
+    status: 'A popular winter destination, weather permitting. NPS winter guidance lists the main Sherman Tree parking lot as closed, with very limited parking at the accessible lot.',
   },
   {
     place: 'Grant Grove and the General Grant Tree',
     route: 'Highway 180',
-    status: 'Winter destination in Kings Canyon, with snow play and marked winter trails. NPS notes storms may change which entrance works best.',
+    status: 'Winter destination in Kings Canyon, with snow play and marked winter trails. Storms can affect which entrance is the best option; check NPS updates before setting out.',
   },
   {
     place: 'Generals Highway between the parks',
@@ -215,7 +215,7 @@ export default function WinterGuidePage() {
           </div>
           <p className="mt-5 leading-relaxed text-stone">
             NPS safety advice: slide feet first, consider a helmet, keep clear of rocks and trees, and never slide
-            toward roads or parking lots. If the snow is poor or you can’t see, don’t sled. Watch for children getting
+            toward roads or parking lots. Skip sledding when snow conditions or visibility are poor. Watch for children getting
             wet or cold.
           </p>
         </section>

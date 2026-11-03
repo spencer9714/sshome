@@ -9,6 +9,8 @@
     "lint": "eslint",
     "seo:audit": "node scripts/seo-audit.mjs",
     "test:seo": "node scripts/verify-site.mjs",
+    "test:tracking": "node --test scripts/tracking.test.mjs",
+    "campaign:links": "node scripts/campaign-links.mjs",
     "indexnow:submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {

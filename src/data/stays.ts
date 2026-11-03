@@ -1,3 +1,5 @@
+import trackingConfig from './tracking-config.json';
+
 export type Photo = { src: string; alt: string; space: string };
 
 export type Faq = { question: string; answer: string };
@@ -74,7 +76,7 @@ export const stays: Stay[] = [
     slug: 'desert-retreat-pool-hot-tub-visalia',
     heroPhoto: '/stays/desert-retreat/pool-baja-shelf.jpg',
     name: 'Desert Retreat',
-    airbnbId: '1800164576342497106',
+    airbnbId: trackingConfig.listings.desert.id,
     airbnbTitle: 'Desert Retreat near Sequoia | Pool, hot tub & EV',
     tagline: 'A private pool, a fire pit, and five bedrooms for the whole group.',
     metaTitle: '5-Bedroom Visalia Rental for 14 with Pool | SSHOME',
@@ -224,7 +226,7 @@ export const stays: Stay[] = [
   {
     slug: 'luxury-family-home-hot-tub-game-room-visalia',
     name: 'Luxury Family Home',
-    airbnbId: '1291019377672253246',
+    airbnbId: trackingConfig.listings.family.id,
     airbnbTitle: 'Luxury family home | Hot Tub | EV | BBQ',
     tagline: 'A game room, a loft, and a hot tub under string lights.',
     metaTitle: 'Visalia Family Rental for 14 near Sequoia | SSHOME',

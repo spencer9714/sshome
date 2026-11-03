@@ -4,8 +4,8 @@ export const defaultSite = 'https://www.sshomedesigns.com';
 export const paths = [
   '/', '/stays/desert-retreat-pool-hot-tub-visalia',
   '/stays/luxury-family-home-hot-tub-game-room-visalia',
-  '/sequoia-kings-canyon-guide', '/sequoia-group-lodging', '/sequoia-winter-guide', '/zh-tw/sequoia-guide', '/about',
-  '/zh-tw', '/zh-tw/sequoia-group-lodging', '/zh-tw/sequoia-winter-guide', '/zh-tw/about',
+  '/sequoia-kings-canyon-guide', '/sequoia-group-lodging', '/sequoia-winter-guide', '/visalia-crew-housing', '/zh-tw/sequoia-guide', '/about',
+  '/zh-tw', '/zh-tw/sequoia-group-lodging', '/zh-tw/sequoia-winter-guide', '/zh-tw/visalia-crew-housing', '/zh-tw/about',
   '/zh-tw/stays/desert-retreat-pool-hot-tub-visalia',
   '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia',
 ];

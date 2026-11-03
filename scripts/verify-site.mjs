@@ -52,7 +52,7 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
 
 for (const path of paths) {
   const html = pages.get(path);
-  const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/(?:stays\/|sequoia-group-lodging$|sequoia-winter-guide$|about$))/, '');
+  const en = path === '/zh-tw' ? '/' : path === '/zh-tw/sequoia-guide' ? '/sequoia-kings-canyon-guide' : path.replace(/^\/zh-tw(?=\/(?:stays\/|sequoia-group-lodging$|sequoia-winter-guide$|visalia-crew-housing$|about$))/, '');
   const zh = en === '/' ? '/zh-tw' : en === '/sequoia-kings-canyon-guide' ? '/zh-tw/sequoia-guide' : `/zh-tw${en}`;
   if (!pages.has(zh)) continue; // Single-language pages must not invent translated counterparts.
   const alternateTags = html.match(/<link\b[^>]*>/g) || [];

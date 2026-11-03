@@ -64,11 +64,35 @@ Official references: [Google sitemap submission](https://developers.google.com/w
 ## Airbnb links and measurement
 
 - `/go/desert` and `/go/family` are temporary redirects to the corresponding clean Airbnb URLs. Use them for QR codes or social posts; home pages remain available for comparison. Next.js forwards incoming query parameters, so do not add fixed travel dates to evergreen campaign links.
-- Optional GA4: set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` in the hosting environment and rebuild. Without a valid ID, the site loads no analytics script and sends no analytics events.
+- GA4 defaults to the owner's public measurement ID `G-FR9GRK5P0E`. `NEXT_PUBLIC_GA_MEASUREMENT_ID` can override it at build time; an explicitly empty or invalid value disables tracking. Analytics runs only on `www.sshomedesigns.com` and `sshomedesigns.com`, not localhost or Vercel preview domains. Deploy the change, then confirm actual event receipt in GA4 Realtime/DebugView; a successful build alone does not verify receipt.
 - Once configured, GA4 receives `airbnb_click` for Airbnb links and valid date-form submissions, with `listing_id`, `placement`, and `page_path`. These include review/contact links as well as booking links: they measure outbound interest, not confirmed bookings. Travel dates and guest counts are not included in the custom event.
 - `intent` distinguishes `availability`, `reviews`, `amenities`, `contact` and general `listing` visits. Report availability separately from review and contact clicks. The booking form sends separate `adults` (13+) and `children` (2–12), plus their combined `guests` count; combined guests cannot exceed the home's limit. Infants are added on Airbnb.
 - Tag links **into the website** with campaign parameters, e.g. `/?utm_source=instagram&utm_medium=social&utm_campaign=desert_pool#homes`. GA4 handles source attribution and page views. Link to the home page or an individual home page when website engagement matters: a direct visit to `/go/*` redirects before the analytics script runs, so it is not measured by this client-side integration.
 - Compare traffic source and `airbnb_click` by listing/placement in GA4. Confirm event receipt in DebugView/Realtime after configuring the real property; then separately compare Airbnb reservations. Analytics integration is not a cross-domain booking attribution system.
+
+### GA4 reporting setup
+
+Public tracking configuration and the three dimension definitions live in `src/data/tracking-config.json`. The measurement ID does not grant access to GA4 Admin. The owner must register these in GA4 **Admin → Data display → Custom definitions → Create custom dimension** (Editor/Administrator access):
+
+| Dimension name | Scope | Event parameter |
+| --- | --- | --- |
+| Listing ID | Event | `listing_id` |
+| Click placement | Event | `placement` |
+| Click intent | Event | `intent` |
+
+Enter parameter names exactly; they can be typed even if the dropdown has not populated. Allow 24–48 hours for custom-dimension reporting after registration and data collection. Use the existing **Session source / medium** and **Session campaign** dimensions for attribution; do not create custom UTM dimensions. The tracking code does not override GA4's native campaign attribution or put UTMs on internal links.
+
+Listing IDs are sent as `airbnb_<room ID>` so GA4 does not interpret the long numeric ID as a number. Direct Airbnb links and `/go/*` clicks resolve to the same value. Older raw numeric values, if collected, remain a separate historical value.
+
+Every outbound action sends `airbnb_click`. Valid date-form submissions additionally send `airbnb_date_search`, with the same listing, placement and intent parameters. Reviews/contact/amenity links do not send this second event. Date search is an intent proxy, not an Airbnb reservation: do not sum the two event counts as separate leads or send a `purchase` event. An optional GA4 key event can use `airbnb_date_search` once it has been verified.
+
+Generate campaign links with `npm run campaign:links -- --source chatgpt --medium cpc --campaign sshome_launch`. The command outputs each home's English and Traditional Chinese landing-page URL. Change `--source` and `--medium` for other platforms and keep names lowercase. `--content` distinguishes ad variations. These are only tagged links, not running ad campaigns.
+
+For testing: `npm run campaign:links -- --campaign tracking_test --debug`. After deployment, open a generated URL with blockers disabled, submit a valid date range, and inspect `airbnb_click` and `airbnb_date_search` in GA4 DebugView/Realtime. Confirm `listing_id`, `placement`, and `intent`. After processing, check Traffic acquisition using Session source / medium `chatgpt / cpc` and campaign `tracking_test`. Do not use the debug/test campaign links in real advertisements. Production links omit `analytics_debug=1`.
+
+`npm run test:tracking` checks production-only initialization, event distinctions, stable listing IDs, ignored destinations, omitted destination dates, UTM links and debug-mode handling. This tests website logic without sending test events to Google; actual GA4 receipt and dashboard setup still need the owner's account.
+
+References: [Google custom-dimension setup](https://support.google.com/analytics/answer/14239696), [Google campaign tagging](https://support.google.com/analytics/answer/10917952).
 
 ## Launch and promotion
 

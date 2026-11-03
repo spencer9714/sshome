@@ -156,6 +156,8 @@ export default function ChineseGroupLodgingPage() {
           <p className="mt-6 leading-relaxed text-stone">
             要開休旅車、RV 或拖車，或正在安排公園行程？
             <Link href="/zh-tw/sequoia-guide" className="text-ink underline hover:text-ember">到繁中自駕指南看車長限制、車程與行程範例。</Link>
+            來工作出差？
+            <Link href="/zh-tw/visalia-crew-housing" className="text-ink underline hover:text-ember">看工程團隊與承包商住宿。</Link>
           </p>
         </section>
 

@@ -221,6 +221,10 @@ export default function GroupLodgingPage() {
             Bringing a van, RV or trailer, or planning your park days?{' '}
             <Link href="/sequoia-kings-canyon-guide" className="text-ink underline hover:text-ember">
               See vehicle limits, drive times and trip ideas in our park guide.
+            </Link>{' '}
+            Traveling for work?{' '}
+            <Link href="/visalia-crew-housing" className="text-ink underline hover:text-ember">
+              See housing for contractors and work crews.
             </Link>
           </p>
         </section>

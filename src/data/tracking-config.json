@@ -1,0 +1,13 @@
+{
+  "measurementId": "G-FR9GRK5P0E",
+  "siteUrl": "https://www.sshomedesigns.com",
+  "listings": {
+    "desert": { "id": "1800164576342497106", "slug": "desert-retreat-pool-hot-tub-visalia", "name": "Desert Retreat" },
+    "family": { "id": "1291019377672253246", "slug": "luxury-family-home-hot-tub-game-room-visalia", "name": "Luxury Family Home" }
+  },
+  "customDimensions": [
+    { "displayName": "Listing ID", "parameterName": "listing_id", "scope": "EVENT" },
+    { "displayName": "Click placement", "parameterName": "placement", "scope": "EVENT" },
+    { "displayName": "Click intent", "parameterName": "intent", "scope": "EVENT" }
+  ]
+}

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/sequoia-kings-canyon-guide', '/zh-tw/sequoia-guide'],
     ['/sequoia-group-lodging', '/zh-tw/sequoia-group-lodging'],
     ['/sequoia-winter-guide', '/zh-tw/sequoia-winter-guide'],
+    ['/visalia-crew-housing', '/zh-tw/visalia-crew-housing'],
     ['/about', '/zh-tw/about'],
   ];
   return [

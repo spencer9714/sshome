@@ -126,7 +126,7 @@ export default function ChinesePrivacyPage() {
       <section className="mt-12">
         <h2 className="text-3xl">政策變更與聯絡方式</h2>
         <p className="mt-4 leading-relaxed text-stone">
-          如果我們的做法有所改變，會更新本頁和日期。隱私相關問題，請透過 Airbnb 上任一間房源傳訊息給房東；連結在<a href="/zh-tw/about" className={linkClass}>關於與聯絡頁面</a>。
+          如果我們的做法有所改變，會更新本頁和日期。隱私相關問題或請求，請寄信到 <a href="mailto:business@sshomedesigns.com" className={linkClass}>business@sshomedesigns.com</a>。這個信箱僅受理隱私事務；訂房和房源問題，請從<a href="/zh-tw/about" className={linkClass}>關於與聯絡頁面</a>前往 Airbnb 傳訊息給房東。
         </p>
       </section>
     </article>

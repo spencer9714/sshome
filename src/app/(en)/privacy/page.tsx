@@ -135,8 +135,10 @@ export default function PrivacyPage() {
       <section className="mt-12">
         <h2 className="text-3xl">Changes and contact</h2>
         <p className="mt-4 leading-relaxed text-stone">
-          We will update this page and its date when our practices change. For privacy questions, message the host
-          through either listing on Airbnb. Links are on our <a href="/about" className={linkClass}>About and contact page</a>.
+          We will update this page and its date when our practices change. For privacy questions or requests, email{' '}
+          <a href="mailto:business@sshomedesigns.com" className={linkClass}>business@sshomedesigns.com</a>. This address is
+          for privacy matters only. For booking and listing questions, message the host on Airbnb through our{' '}
+          <a href="/about" className={linkClass}>About and contact page</a>.
         </p>
       </section>
     </article>

@@ -8,13 +8,13 @@ import { JsonLd } from '@/components/json-ld';
 import { ReviewCard } from '@/components/review-card';
 import { airbnbUrl, factsCheckedOn, getHeroPhoto, maxGuests, siteFaqs, stays } from '@/data/stays';
 import { collectionSchema, faqSchema, stayPath } from '@/lib/schema';
-import { parkFacts, site } from '@/lib/site';
+import { parkFacts } from '@/lib/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/', languages: languageAlternates('/', '/zh-tw') } };
 
 export default function HomePage() {
   const hero = stays[0].photos[0];
-  const homeFaqs = siteFaqs.filter((faq) => !['Which SSHOME home has a swimming pool?', 'How should two families or 10 to 14 guests choose a home?', 'How far is Visalia from Sequoia and Kings Canyon National Parks?'].includes(faq.question));
+  const homeFaqs = siteFaqs.filter((faq) => !['Which home has a swimming pool?', 'How should two families or 10 to 14 guests choose a home?', 'How far is Visalia from Sequoia and Kings Canyon National Parks?'].includes(faq.question));
   const featuredReviews = stays
     .flatMap((stay) => stay.reviews.map((review) => ({ review, stayName: stay.name })))
     .slice(0, 3);
@@ -30,10 +30,10 @@ export default function HomePage() {
         <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-32 sm:px-6 sm:pb-16 lg:px-8">
           <p className="text-sm font-medium tracking-wide">Visalia, California</p>
           <h1 className="mt-3 max-w-4xl text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">
-            Visalia vacation homes for up to {maxGuests} guests
+            Big park days. A place to call your own.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-            Your base for Sequoia &amp; Kings Canyon, with full kitchens and a choice of poolside days or game-room nights.
+            Spend the day among the giant sequoias. Come back for dinner together, a game of pool, or a quiet evening outside. Two private Visalia homes, each welcoming up to {maxGuests} guests.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
             <Link
@@ -50,7 +50,7 @@ export default function HomePage() {
       </section>
 
       <section id="homes" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <h2 className="max-w-2xl text-3xl sm:text-5xl">Find your home base</h2>
+        <h2 className="max-w-2xl text-3xl sm:text-5xl">Pool days or game nights?</h2>
         <div className="mt-12 space-y-16 lg:mt-16 lg:space-y-24">
           {stays.map((stay, index) => (
             <article key={stay.slug} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
@@ -99,7 +99,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-4 text-xs text-stone">
-            From Airbnb reviews, shown word for word. Names are shortened for privacy. Details checked {factsCheckedOn}.
+            Reviews reproduced from Airbnb. Guest names are abbreviated for privacy. Listing details checked {factsCheckedOn}.
           </p>
         </section>
       )}
@@ -110,7 +110,7 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
             Choose Desert Retreat for a private, unheated pool and five bedrooms. Choose Luxury Family Home for a pool table, loft and four bedrooms. Both have a hot tub; only Desert Retreat has a swimming pool.
           </p>
-          <p className="mt-4 text-sm text-stone">Guest capacity includes additional sleeping arrangements. Check each room layout before booking.</p>
+          <p className="mt-4 text-sm text-stone">The 14-guest capacity includes extra sleeping spaces. Review the bed arrangements before booking.</p>
           <div className="mt-10">
             <CompareTable />
           </div>
@@ -120,7 +120,7 @@ export default function HomePage() {
       <section className="bg-dusk text-bone">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
           <div>
-            <h2 className="text-3xl sm:text-5xl">Your base for two national parks</h2>
+            <h2 className="text-3xl sm:text-5xl">Giant trees. Wide-open days.</h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-bone/80">
               Visalia sits in the valley below the Sierra Nevada, with Highway 198 running up through Three Rivers to
               Sequoia&apos;s Ash Mountain Entrance.
@@ -155,10 +155,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><p className="text-sm font-medium text-ember">Plan before you book</p><h2 className="mt-3 text-3xl">A better trip starts with the right base</h2><div className="mt-6 flex flex-wrap gap-5"><Link href="/sequoia-group-lodging" className="underline">Group lodging for 10 to 14 guests</Link><Link href="/sequoia-winter-guide" className="underline">Visiting Sequoia in winter</Link><Link href="/visalia-crew-housing" className="underline">Housing for work crews</Link><Link href="/sequoia-kings-canyon-guide#where-to-stay" className="underline">Visalia or Three Rivers?</Link><Link href="/sequoia-kings-canyon-guide#itineraries" className="underline">One- and two-night trip ideas</Link><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="underline">繁體中文旅遊指南</Link><Link href="/about" className="underline">About SSHOME &amp; contact</Link></div></section>
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><p className="text-sm font-medium text-ember">Plan before you book</p><h2 className="mt-3 text-3xl">A little planning. A lot to look forward to.</h2><div className="mt-6 flex flex-wrap gap-5"><Link href="/sequoia-group-lodging" className="underline">Group lodging for 10 to 14 guests</Link><Link href="/sequoia-winter-guide" className="underline">Visiting Sequoia in winter</Link><Link href="/visalia-crew-housing" className="underline">Housing for work crews</Link><Link href="/sequoia-kings-canyon-guide#where-to-stay" className="underline">Why choose Visalia?</Link><Link href="/sequoia-kings-canyon-guide#itineraries" className="underline">One- and two-night trip ideas</Link><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="underline">繁體中文旅遊指南</Link><Link href="/about" className="underline">About &amp; contact</Link></div></section>
 
       <section id="faq" className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <h2 className="text-3xl sm:text-5xl">Questions about staying with {site.name}</h2>
+        <h2 className="text-3xl sm:text-5xl">Frequently asked questions</h2>
         <div className="mt-10">
           <FaqList faqs={homeFaqs} />
         </div>

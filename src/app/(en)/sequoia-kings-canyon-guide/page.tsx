@@ -8,7 +8,7 @@ import { absoluteUrl, parkFacts, site } from '@/lib/site';
 const path = '/sequoia-kings-canyon-guide';
 const title = 'Visiting Sequoia & Kings Canyon from Visalia: Drive Times and Tips';
 const description =
-  'Plan Sequoia and Kings Canyon from Visalia, CA: park entrances, drive times, vehicle limits, winter chains and seasonal road closures, using NPS information.';
+  'Plan a trip to Sequoia and Kings Canyon from Visalia, CA: park entrances, drive times, vehicle limits, winter chains and seasonal road closures, using NPS information.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -104,30 +104,30 @@ export default function GuidePage() {
         </section>
 
         <section id="where-to-stay" className="mt-14">
-          <h2 className="text-3xl">Visalia or Three Rivers: where should you stay?</h2>
+          <h2 className="text-3xl">Why choose Visalia?</h2>
           <p className="mt-4 leading-relaxed text-stone">Visalia has two Costco warehouses: <a href="https://www.costco.com/warehouse-locations/warehouse-1017.html" className="underline">Visalia</a> and <a href="https://www.costco.com/warehouse-locations/warehouse-1741.html" className="underline">North Visalia</a>. For a group trip, that gives you options for stocking the kitchen before your park days. Check the official store pages for current details.</p>
-          <p className="mt-4 leading-relaxed text-stone">For the SSHOME owners, Visalia’s everyday shopping convenience is a reason to choose a city base. Luxury Family Home is less than a five-minute drive from Target according to their local estimate; traffic can change the journey time. Stock up before heading into the mountains, then return to a full kitchen for a shared meal.</p>
-          <p className="mt-4 leading-relaxed text-stone">Our recommendation: compare Visalia if you want a city base for groceries, meals and time together at the house. Compare Three Rivers if being closer to Sequoia’s Ash Mountain Entrance is your priority: Highway 198 enters the park at Three Rivers. Check the actual location and amenities of each home rather than assuming every rental in either town offers the same experience.</p>
-          <p className="mt-4 leading-relaxed text-stone">SSHOME’s two Visalia homes offer full kitchens and space for up to 14, with additional sleeping arrangements. Three Rivers is closer to the entrance along this approach, but neither town is the same as staying in Giant Forest. For Kings Canyon, plan your route separately via Highway 180.</p>
+          <p className="mt-4 leading-relaxed text-stone">The practical side of a vacation matters, too. In Visalia, picking up groceries or finding dinner can be part of the day, without making it the whole plan. Luxury Family Home is less than a five-minute drive from Target according to our local driving estimate; travel time varies with traffic. Stock up before heading into the mountains, then return to a full kitchen for a shared meal.</p>
+          <p className="mt-4 leading-relaxed text-stone">You do not have to fill every day with stops. Stock the kitchen, head into the mountains, and leave some room in the schedule for dinner together or an afternoon at the house.</p>
+          <p className="mt-4 leading-relaxed text-stone">Both homes have full kitchens and accommodate up to 14 guests with additional sleeping arrangements. Choose Desert Retreat for its private pool and outdoor space, or Luxury Family Home for its pool table and loft. The homes are outside the parks: take Highway 198 toward Sequoia or Highway 180 toward Kings Canyon, and allow extra time beyond the entrances to reach the main sights.</p>
           <a href={parkFacts.sourceUrl} className="mt-3 inline-block text-sm underline">Source: National Park Service entrance and route information</a>
         </section>
 
         <section id="itineraries" className="mt-14">
           <h2 className="text-3xl">Two days, one night: settle in, then see Sequoia</h2>
           <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
-            <li><strong className="font-medium text-ink">Day 1 — make the house part of the trip.</strong> Pick up groceries in Visalia and arrive at your confirmed check-in time. At Desert Retreat, leave time for the private pool when the weather suits, cornhole and a movie on the 98-inch TV. At Luxury Family Home, settle into a pool-table game or board games in the loft. Cook dinner together, or arrange BBQ propane with the host ahead of time.</li>
+            <li><strong className="font-medium text-ink">Day 1 — make the house part of the trip.</strong> Pick up groceries in Visalia and arrive at your confirmed check-in time. At Desert Retreat, leave time for the private pool when the weather allows, cornhole and a movie on the 98-inch TV. At Luxury Family Home, play a game of pool or board games in the loft. Cook dinner together, or arrange BBQ propane with the host ahead of time.</li>
             <li><strong className="font-medium text-ink">Day 2 — one park day.</strong> Check out at the agreed time and head out early for Giant Forest and the General Sherman Tree, subject to road and trail access. Allow for mountain driving, parking and walking before your onward journey.</li>
           </ol>
           <h3 className="mt-8 text-2xl">Three days, two nights: giant trees and time at home</h3>
           <ol className="mt-5 list-decimal space-y-4 pl-5 leading-relaxed text-stone">
-            <li><strong className="font-medium text-ink">Day 1 — arrive, shop and unwind.</strong> After check-in, unpack and enjoy your home. Choose poolside downtime and cornhole at Desert Retreat, or a pool-table game and loft board games at Luxury Family Home. Share a home-cooked dinner rather than rushing back out.</li>
+            <li><strong className="font-medium text-ink">Day 1 — arrive, shop and unwind.</strong> After check-in, unpack and enjoy your home. Choose poolside downtime and cornhole at Desert Retreat, or a game of pool and board games in the loft at Luxury Family Home. Share a home-cooked dinner rather than rushing back out.</li>
             <li><strong className="font-medium text-ink">Day 2 — explore Sequoia, then relax.</strong> Reserve the day for Giant Forest and General Sherman, adding other stops only as access, daylight and your group’s energy allow. Leave time to return for dinner. If the hot tub is ready, unwind there; at Desert Retreat, gather around the fire pit when permitted by house rules and local conditions. At Family Home, finish with a movie or another game of pool.</li>
             <li><strong className="font-medium text-ink">Day 3 — a slow breakfast or one more park stop.</strong> Enjoy breakfast together and pack up before your confirmed checkout time. If conditions and your onward route allow, consider Grant Grove in Kings Canyon via Highway 180 after checkout. Otherwise, enjoy an unhurried departure. Cedar Grove is a separate, longer canyon excursion with seasonal road access.</li>
           </ol>
           <div className="mt-6 rounded-lg bg-sand p-6">
-            <h3 className="text-2xl">Want more time for the amenities?</h3>
+            <h3 className="text-2xl">Leave a day deliciously unplanned.</h3>
             <p className="mt-3 leading-relaxed text-stone">With a third night, you can make Day 3 a stay-at-home day: cook a leisurely meal, enjoy Desert Retreat’s pool and outdoor space, or spend time in Family Home’s game room and loft. Head home on Day 4 at the agreed checkout time. Both homes offer Wi-Fi; only Desert Retreat has a dedicated workspace.</p>
-            <p className="mt-3 text-sm leading-relaxed text-stone">Only Desert Retreat has a swimming pool, and it is not heated. Both homes have hot tubs, but first-night readiness is not guaranteed; confirm with the host if it is important to your trip. BBQ propane and EV charging cost extra. Use outdoor amenities according to house rules and current conditions.</p>
+            <p className="mt-3 text-sm leading-relaxed text-stone">Only Desert Retreat has a swimming pool, and it is not heated. Both homes have hot tubs, but availability on your first night is not guaranteed; confirm with the host if it is important to your trip. BBQ propane and EV charging cost extra. Use outdoor amenities according to house rules and current conditions.</p>
             <Link href="/#compare" className="mt-4 inline-block underline">Compare the homes and their amenities</Link>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-stone">These are suggested itineraries, not guided trips or guaranteed access. Entrance estimates above do not include the drive to the groves, entrance queues, parking or walks. Check current conditions and your Airbnb check-in and checkout times before finalizing plans.</p>
@@ -157,7 +157,7 @@ export default function GuidePage() {
               Earth by volume, in Sequoia National Park.
             </li>
             <li>
-              <strong className="font-medium text-ink">Moro Rock:</strong> a granite dome in Sequoia with a stairway to
+              <strong className="font-medium text-ink">Moro Rock:</strong> a granite dome in Sequoia with a stairway leading to
               wide views.
             </li>
             <li>

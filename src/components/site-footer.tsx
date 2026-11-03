@@ -37,7 +37,7 @@ export function SiteFooter({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
             <li><Link href="/sequoia-group-lodging" className="hover:text-glow">Group lodging near Sequoia</Link></li>
             <li><Link href="/sequoia-winter-guide" className="hover:text-glow">Sequoia in winter</Link></li>
             <li><Link href="/visalia-crew-housing" className="hover:text-glow">Contractor and crew housing</Link></li>
-            <li><Link href="/about" className="hover:text-glow">About SSHOME &amp; contact</Link></li>
+            <li><Link href="/about" className="hover:text-glow">About &amp; contact</Link></li>
             <li><Link href="/privacy" className="hover:text-glow">Privacy Policy</Link></li>
             <li><Link href="/zh-tw/sequoia-guide" lang="zh-Hant" className="hover:text-glow">繁體中文旅遊指南</Link></li>
             <li>

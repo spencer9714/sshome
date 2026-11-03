@@ -79,7 +79,7 @@ export function BookingForm({ stay, language = 'en' }: { stay: Stay; language?: 
       >
         {zh ? (nights > 0 ? `到 Airbnb 查看 ${nights} 晚價格` : '前往 Airbnb') : (nights > 0 ? `View ${nights} ${nights === 1 ? 'night' : 'nights'} on Airbnb` : 'Continue to Airbnb')}
       </button>
-      <p className="text-center text-xs text-stone">{zh ? '日期與人數會帶入 Airbnb，實際空房及最終價格請在 Airbnb 確認。' : 'Your dates and guest count carry over to Airbnb. Confirm availability and the final price there.'}</p>
+      <p className="text-center text-xs text-stone">{zh ? '日期與人數會帶入 Airbnb，實際空房及最終價格請在 Airbnb 確認。' : 'Your dates and guest count will be sent to Airbnb. Check availability and your total price there.'}</p>
     </form>
   );
 }

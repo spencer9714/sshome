@@ -78,12 +78,12 @@ export const stays: Stay[] = [
     name: 'Desert Retreat',
     airbnbId: trackingConfig.listings.desert.id,
     airbnbTitle: 'Desert Retreat near Sequoia | Pool, hot tub & EV',
-    tagline: 'A private pool, a fire pit, and five bedrooms for the whole group.',
+    tagline: 'Poolside afternoons. Fireside evenings. Five bedrooms to settle into.',
     metaTitle: '5-Bedroom Visalia Rental for 14 with Pool | SSHOME',
     metaDescription:
       'Entire 5-bedroom Visalia, CA home sleeping 14, with a private pool, hot tub, fire pit and EV charging. A base for Sequoia National Park. Book on Airbnb.',
-    bestFor: 'Groups who want a pool and a backyard to come home to',
-    lead: 'Make room for shared meals, time by the pool and evenings outside. This five-bedroom Visalia home is designed for groups who want to spend time together between park days.',
+    bestFor: 'Families and groups looking for a private pool and outdoor space',
+    lead: 'Pick up groceries, unpack, and let the afternoon unfold. There is room for cornhole on the lawn, dinner on the patio, and a movie on the 98-inch TV. With five bedrooms, a private pool, and a hot tub, this Visalia home gives your group plenty of reasons to linger. Up to 14 guests can stay, including those using the provided air mattresses.',
     guests: 14,
     bedrooms: 5,
     beds: 6,
@@ -118,20 +118,20 @@ export const stays: Stay[] = [
     },
     highlights: [
       {
-        title: 'Private fenced pool with a lounging shelf',
-        body: 'A shallow Baja shelf with in-water loungers, lit after dark.',
+        title: 'Your own pool, your own pace',
+        body: 'Stretch out on the in-water loungers or cool off after a day out. The pool has a shallow Baja shelf and its own fence. It is not heated.',
       },
       {
-        title: 'Hot tub and fire pit',
-        body: 'A soak after a park day, plus Adirondack chairs around a fire pit for evenings under the stars.',
+        title: 'Save a seat by the fire',
+        body: 'Pull up an Adirondack chair and catch up around the fire pit. There is a separate hot tub, too; check with the host if you are counting on a soak on your first night.',
       },
       {
-        title: 'A kitchen built for big meals',
-        body: 'Everything you need to cook for the whole group, down to the kid-friendly dinnerware.',
+        title: 'Breakfast before the trail. Dinner when you get back.',
+        body: 'HexClad cookware, an Instant Pot, and dinnerware for the kids make eating in an easy part of the trip. Bring groceries and your favorite K-Cup pods.',
       },
       {
-        title: 'Play and work, both covered',
-        body: 'Motion games for the family, and a dedicated workspace when someone needs to log in.',
+        title: 'A little screen time, your way',
+        body: 'Get everyone moving with Nex Playground, settle in for a movie, or catch up on work at the desk and monitor in Bedroom 2.',
       },
     ],
     sleeping: [
@@ -228,12 +228,12 @@ export const stays: Stay[] = [
     name: 'Luxury Family Home',
     airbnbId: trackingConfig.listings.family.id,
     airbnbTitle: 'Luxury family home | Hot Tub | EV | BBQ',
-    tagline: 'A game room, a loft, and a hot tub under string lights.',
+    tagline: 'One more game of pool. One less reason to rush out.',
     metaTitle: 'Visalia Family Rental for 14 near Sequoia | SSHOME',
     metaDescription:
       'Four-bedroom Visalia vacation home for up to 14 with a hot tub, pool table, loft, Wi-Fi and EV charging. Explore Sequoia and book on Airbnb.',
-    bestFor: 'Families and groups who want rainy-day space and proven reviews',
-    lead: 'A four-bedroom Visalia home with separate spaces to play, unwind and spend time together. A good fit for families who want an evening at home after exploring the parks.',
+    bestFor: 'Families and groups looking for a game room and separate living areas',
+    lead: 'Call the next game of pool, spread out in the loft, or get dinner going while everyone swaps stories from the day. With four bedrooms, a full kitchen, and a private hot tub, this Visalia home makes time together easy. Sleeps up to 14 with the sofa bed, couch, and air mattresses included in the sleeping setup.',
     guests: 14,
     bedrooms: 4,
     beds: 5,
@@ -284,23 +284,23 @@ export const stays: Stay[] = [
     },
     highlights: [
       {
-        title: 'Game room with a pool table',
-        body: 'Part of the two-car garage has been converted into a game room with a pool table for family nights and friendly competition.',
+        title: 'Who has the next shot?',
+        body: 'Part of the two-car garage is now a game room with a pool table. Bring a little friendly competition to your evening.',
       },
       {
-        title: 'Loft for extra breathing room',
-        body: 'A second-floor loft with a Smart TV, sleeper sofa, board games, puzzles and Nintendo Switch games.',
+        title: 'An upstairs spot to spread out',
+        body: 'Head to the loft for board games, puzzles, or something on the Smart TV. The sleeper sofa adds another place to settle in.',
       },
       {
-        title: 'Backyard made for evenings',
-        body: 'A six-person hot tub, BBQ grill, ambient lighting, and a succulent and cactus garden.',
+        title: 'Take the evening outside',
+        body: 'String lights, a succulent and cactus garden, and a six-person hot tub set the scene. Planning to grill? Arrange BBQ propane with the host before your stay.',
       },
       {
-        title: 'Thoughtful family details',
-        body: "A kids' room, plus children's plates and utensils in the kitchen.",
+        title: 'Little guests, thoughtfully included',
+        body: "A room for the kids and their own plates and utensils help everyone feel at home.",
       },
       {
-        title: 'Easy everyday shopping',
+        title: 'Forgot something? No big trip needed.',
         body: 'Target is less than a five-minute drive away, according to the owners’ local driving estimate. Actual travel time varies with traffic.',
       },
     ],
@@ -312,7 +312,7 @@ export const stays: Stay[] = [
       { room: 'Living room', beds: '1 couch, 1 air mattress' },
       { room: 'Loft, 2nd floor', beds: '1 sofa bed, 1 air mattress' },
     ],
-    extraSleeping: 'Air mattress sizes are not listed, so confirm them with the host on Airbnb if needed.',
+    extraSleeping: 'Airbnb does not specify the air mattress sizes. Ask the host to confirm if the sizes matter for your group.',
     rules: {
       checkIn: '4:00 PM',
       checkOut: '10:00 AM',
@@ -419,15 +419,11 @@ export const maxGuests = Math.max(...stays.map((stay) => stay.guests));
 
 export const siteFaqs: Faq[] = [
   {
-    question: 'Who owns and manages SSHOME?',
-    answer: 'SSHOME is owner-operated. The SSHOME management team looks after the homes. Contact the team through the relevant Airbnb listing.',
-  },
-  {
-    question: 'Do both SSHOME homes have Wi-Fi and a workspace?',
+    question: 'Do both homes have Wi-Fi and a workspace?',
     answer: 'Both homes have Wi-Fi. Only Desert Retreat has a dedicated workspace, with a desk, chair, monitor and lamp in Bedroom 2. Luxury Family Home does not have a dedicated workspace.',
   },
   {
-    question: 'Which SSHOME home has a swimming pool?',
+    question: 'Which home has a swimming pool?',
     answer: 'Only Desert Retreat has a private swimming pool, which is not heated. Both Desert Retreat and Luxury Family Home have a hot tub. First-night hot tub availability is not guaranteed; contact the host before booking if it is essential.',
   },
   {
@@ -436,22 +432,22 @@ export const siteFaqs: Faq[] = [
   },
   {
     question: 'Are EV charging and BBQ propane included?',
-    answer: 'EV charging and BBQ propane cost extra at both homes. Both have a Level 2 Tesla charger, and the Luxury Family Home charger is Tesla only. Ask the host on Airbnb for current fees and arrangements. Live nightly prices, availability and cancellation terms are on Airbnb.',
+    answer: 'EV charging and BBQ propane cost extra at both homes. Both have a Level 2 Tesla charger, and the Luxury Family Home charger is Tesla only. Ask the host on Airbnb for current fees and arrangements. Check Airbnb for current nightly rates, availability, and cancellation terms.',
   },
   {
-    question: 'Where are SSHOME vacation homes located?',
-    answer: 'All SSHOME homes are in Visalia, California, in Tulare County. The exact address is shared by Airbnb after booking.',
+    question: 'Where are the homes located?',
+    answer: 'Both homes are in Visalia, California, in Tulare County. The exact address is shared by Airbnb after booking.',
   },
   {
     question: 'How far is Visalia from Sequoia and Kings Canyon National Parks?',
     answer: 'The National Park Service lists about 1 hour from Visalia Municipal Airport to the Sequoia entrance on Highway 198, and about 1.5 hours to the Kings Canyon entrance. Roads beyond the entrances are narrow and winding, so allow extra time.',
   },
   {
-    question: 'How do I book an SSHOME stay?',
+    question: 'How do I book a stay?',
     answer: 'All bookings are made on Airbnb, where you can see live availability, pricing, house rules and cancellation terms. Each home page links to its Airbnb listing.',
   },
   {
-    question: 'What are the check-in and checkout times at SSHOME homes?',
+    question: 'What are the check-in and checkout times?',
     answer: 'Check-in is at 4:00 PM and checkout is at 10:00 AM at both homes. Early check-in or late checkout may be available for a fee, subject to availability.',
   },
 ];

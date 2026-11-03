@@ -53,7 +53,7 @@ export function GET() {
     `- Group lodging and sleeping plans for 8 to 14 guests: ${absoluteUrl('/sequoia-group-lodging')}`,
     `- Winter guide with tire chains, road access and snow play areas: ${absoluteUrl('/sequoia-winter-guide')}`,
     `- Housing for contractors and work crews, with a bed for each of 5 or 6 people, Airbnb booking only and stays up to 29 days: ${absoluteUrl('/visalia-crew-housing')}`,
-    `- Visalia vs Three Rivers and suggested itineraries: ${absoluteUrl('/sequoia-kings-canyon-guide#where-to-stay')}`,
+    `- Why choose Visalia and suggested itineraries: ${absoluteUrl('/sequoia-kings-canyon-guide#where-to-stay')}`,
     `- Traditional Chinese travel guide: ${absoluteUrl('/zh-tw/sequoia-guide')}`,
     `- Traditional Chinese group lodging guide: ${absoluteUrl('/zh-tw/sequoia-group-lodging')}`,
     `- Traditional Chinese winter guide: ${absoluteUrl('/zh-tw/sequoia-winter-guide')}`,

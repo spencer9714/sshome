@@ -94,8 +94,8 @@ export const reviewContextZh: Record<string, string> = {
 };
 
 export const siteFaqsZh: Faq[] = [
-  { question: 'SSHOME 的房子在哪裡？', answer: '都在加州 Tulare 郡的 Visalia。確切地址會在訂房後由 Airbnb 提供。' },
-  { question: '如何預訂 SSHOME？', answer: '全部透過 Airbnb 預訂，可在 Airbnb 查看即時空房、價格、房屋規則與取消條款。每間房源頁都有 Airbnb 連結。' },
+  { question: '住宿在哪裡？', answer: '都在加州 Tulare 郡的 Visalia。確切地址會在訂房後由 Airbnb 提供。' },
+  { question: '如何預訂住宿？', answer: '全部透過 Airbnb 預訂，可在 Airbnb 查看即時空房、價格、房屋規則與取消條款。每間房源頁都有 Airbnb 連結。' },
   { question: '入住與退房時間是幾點？', answer: '兩間都是下午 4:00 入住、上午 10:00 退房。提前入住或延後退房需視情況而定，也可能另收費。' },
   { question: 'EV 充電和烤肉瓦斯有包含嗎？', answer: '兩間都需另外付費。兩間都有 Tesla Level 2 充電器，其中 Luxury Family Home 僅限 Tesla。費用與安排請透過 Airbnb 詢問房東。' },
   { question: '兩間都有 Wi-Fi 和工作區嗎？', answer: '兩間都有 Wi-Fi。只有 Desert Retreat 有專用工作區，位於第二間臥室；Luxury Family Home 沒有專用工作區。' },

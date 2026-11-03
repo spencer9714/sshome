@@ -6,7 +6,7 @@ export function StayOverview({ stay, language = 'en' }: { stay: Stay; language?:
   const desert = stay.slug.startsWith('desert-');
   const facts = zh
     ? [`${stay.bedrooms} 間臥室`, `最多 ${stay.guests} 人（含加床）`, desert ? '私人泳池・不加熱' : '撞球桌與閣樓遊戲', '私人熱水池', '完整廚房']
-    : [`${stay.bedrooms} bedrooms`, `Up to ${stay.guests} incl. extra sleeping spaces`, desert ? 'Private unheated pool' : 'Pool table & game loft', 'Private hot tub', 'Full kitchen'];
+    : [`${stay.bedrooms} bedrooms`, `Up to ${stay.guests} guests, including extra beds`, desert ? 'Private unheated pool' : 'Pool table & loft games', 'Private hot tub', 'Full kitchen'];
   const links = [
     ['photo-tour', zh ? '照片' : 'Photos'],
     ['sleeping', zh ? '床位' : 'Sleeping'],

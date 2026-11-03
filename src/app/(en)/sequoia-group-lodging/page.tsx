@@ -12,7 +12,7 @@ import { pageUpdates } from '@/data/page-updates';
 const path = '/sequoia-group-lodging';
 const title = 'Group Lodging near Sequoia: Visalia Homes for 10 to 14 Guests';
 const description =
-  'Two entire Visalia homes for groups of 10 to 14 near Sequoia National Park. Compare the homes and see how each group size sleeps, then book on Airbnb.';
+  'Compare two private Visalia homes for groups of 10 to 14 visiting Sequoia National Park. Review sleeping arrangements and check dates on Airbnb.';
 const image = '/stays/desert-retreat/dining.jpg';
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ const [desert, family] = stays;
 const sleepingPlans = [
   {
     guests: 8,
-    desert: 'King and 3 queen bedrooms',
+    desert: '1 king bed and 3 queen beds across 4 bedrooms',
     family: 'All 4 bedrooms: king, 2 queens and 2 singles',
   },
   {
@@ -49,7 +49,7 @@ const sleepingPlans = [
 
 const tips = [
   {
-    title: 'Cars',
+    title: 'Parking',
     body: 'Desert Retreat offers 3 driveway spaces and Luxury Family Home offers 2, with additional street parking nearby. Luxury Family Home also has 1 garage parking space; part of its garage is a game room. Confirm arrangements for extra vehicles with the host and avoid blocking neighbors’ driveways.',
   },
   {
@@ -58,7 +58,7 @@ const tips = [
   },
   {
     title: 'Meals',
-    body: 'Check-in is at 4:00 PM, so one car can shop in Visalia on the way in. Cooking at the house is often the easiest way to feed a big group after a park day.',
+    body: 'Check-in is at 4:00 PM, so some of your group can pick up groceries in Visalia before arrival. Cooking at the house is often the easiest way to feed a big group after a park day.',
   },
   {
     title: 'Laundry',
@@ -72,7 +72,7 @@ const faqs: Faq[] = [
     answer: 'No. Each listing allows up to 14 overnight guests.',
   },
   {
-    question: 'Can a larger group book both SSHOME homes?',
+    question: 'Can a larger group book both homes?',
     answer: 'You can book each home separately on Airbnb if both are available. They are separate homes at different locations in Visalia, not next door to each other, so plan on driving between them.',
   },
   {
@@ -80,8 +80,8 @@ const faqs: Faq[] = [
     answer: 'Parties and events are not allowed at either home. A family staying together is welcome, but message the host on Airbnb before inviting anyone who is not staying overnight.',
   },
   {
-    question: 'Does every guest get a real bed at 14 people?',
-    answer: 'No. Both homes reach 14 using additional sleeping spaces, as shown in the table above. Most groups of 14 should plan on some guests using air mattresses.',
+    question: 'Will all 14 guests have a bedroom bed?',
+    answer: 'No. Both homes accommodate 14 guests with additional sleeping arrangements, as shown in the table above. Most groups of 14 should plan on some guests using air mattresses.',
   },
 ];
 
@@ -113,9 +113,9 @@ export default function GroupLodgingPage() {
         <p className="text-sm font-medium text-ember">Group stays</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-6xl">Group lodging near Sequoia National Park</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          Traveling with two families or a group of 10 to 14? SSHOME has two entire homes in Visalia, so everyone can
-          stay under one roof instead of splitting across hotel rooms. Choose a home, then use the table below to see
-          how your group would sleep.
+          Two families, a few generations, or the friends you never get enough time with? Choose a Visalia home where
+          everyone can share meals and spend time together. Each sleeps up to 14 with extra sleeping arrangements;
+          the guide below helps you work out who sleeps where.
         </p>
 
         <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">
@@ -155,7 +155,7 @@ export default function GroupLodgingPage() {
         </section>
 
         <section id="sleeping-plans" className="mt-14">
-          <h2 className="text-3xl">How each group size sleeps</h2>
+          <h2 className="text-3xl">Sleeping arrangements by group size</h2>
           <p className="mt-4 leading-relaxed text-stone">
             These are examples, assuming two people share each king, queen, sofa bed and queen air mattress, and one
             person uses each twin or single bed.
@@ -181,7 +181,7 @@ export default function GroupLodgingPage() {
 
           <div className="mt-6 hidden overflow-hidden rounded-lg border border-line bg-white md:block">
             <table className="w-full border-collapse text-left text-sm">
-              <caption className="sr-only">Example sleeping plans by group size at each SSHOME home</caption>
+              <caption className="sr-only">Example sleeping plans by group size at each home</caption>
               <thead>
                 <tr className="border-b border-line">
                   <th scope="col" className="p-4 font-medium">Guests</th>
@@ -208,7 +208,7 @@ export default function GroupLodgingPage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">Planning a stay for a big group</h2>
+          <h2 className="text-3xl">More people. A little more planning.</h2>
           <div className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
             {tips.map((tip) => (
               <div key={tip.title}>
@@ -230,7 +230,7 @@ export default function GroupLodgingPage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">Group stay questions</h2>
+          <h2 className="text-3xl">Questions about group stays</h2>
           <div className="mt-6">
             <FaqList faqs={faqs} />
           </div>

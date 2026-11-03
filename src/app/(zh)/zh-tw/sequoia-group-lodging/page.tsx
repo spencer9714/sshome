@@ -68,7 +68,7 @@ export default function ChineseGroupLodgingPage() {
         <p className="text-sm font-medium text-ember">團體住宿</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-5xl">紅杉國家公園團體住宿：<span className="whitespace-nowrap">10～14 人</span>怎麼住？</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          兩個家庭同行，或一群 10 到 14 人的親友出遊？SSHOME 在 Visalia 有兩間整棟住宿，大家可以住在同一個屋簷下，不用分散住好幾間飯店房。先選房子，再用下方範例看看大家怎麼睡。
+          兩個家庭同行，或一群 10 到 14 人的親友出遊？我們在 Visalia 有兩間整棟住宿，大家可以住在同一個屋簷下，不用分散住好幾間飯店房。先選房子，再用下方範例看看大家怎麼睡。
         </p>
 
         <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">
@@ -118,7 +118,7 @@ export default function ChineseGroupLodgingPage() {
 
           <div className="mt-6 hidden overflow-hidden rounded-lg border border-line bg-white md:block">
             <table className="w-full border-collapse text-left text-sm">
-              <caption className="sr-only">SSHOME 兩間住宿依人數的床位分配範例</caption>
+              <caption className="sr-only">兩間住宿依人數的床位分配範例</caption>
               <thead>
                 <tr className="border-b border-line">
                   <th scope="col" className="p-4 font-medium">人數</th>

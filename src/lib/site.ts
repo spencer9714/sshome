@@ -4,7 +4,7 @@ export const site = {
   name: 'SSHOME',
   title: 'SSHOME | Visalia Vacation Homes near Sequoia & Kings Canyon',
   description:
-    'Private Visalia vacation homes for up to 14 guests, a base for Sequoia and Kings Canyon. Choose a pool home or a family home with a game room.',
+    'Explore two private vacation homes in Visalia, each accommodating up to 14 guests. Choose a private pool or a game room for your Sequoia and Kings Canyon trip.',
   ogImage: '/stays/desert-retreat/pool-1.jpg',
 };
 

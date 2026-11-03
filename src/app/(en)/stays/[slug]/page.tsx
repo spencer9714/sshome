@@ -82,7 +82,7 @@ export default async function StayPage({ params }: Props) {
           ))}
         </div>
 
-        <a href="#photo-tour" className="mt-4 inline-block rounded-md border border-ink px-4 py-2 text-sm font-medium hover:bg-sand">Explore all {stay.photos.length} photos by room</a>
+        <a href="#photo-tour" className="mt-4 inline-block rounded-md border border-ink px-4 py-2 text-sm font-medium hover:bg-sand">View all {stay.photos.length} photos by room</a>
 
         <StayOverview stay={stay} />
         <MobileStayBooking stay={stay} />
@@ -106,7 +106,7 @@ export default async function StayPage({ params }: Props) {
             <p className="mt-8 text-xl leading-relaxed">{stay.lead}</p>
 
             <section className="mt-14">
-              <h2 className="text-3xl">Why guests choose it</h2>
+              <h2 className="text-3xl">What makes this home special</h2>
               <div className="mt-6 grid gap-x-8 gap-y-7 sm:grid-cols-2">
                 {stay.highlights.map((highlight) => (
                   <div key={highlight.title}>
@@ -190,7 +190,7 @@ export default async function StayPage({ params }: Props) {
                 From Visalia Municipal Airport, the National Park Service lists {parkFacts.drives[0].time.toLowerCase()} to the{' '}
                 {parkFacts.drives[0].entrance} into {parkFacts.drives[0].place}, and{' '}
                 {parkFacts.drives[1].time.toLowerCase()} to the {parkFacts.drives[1].entrance} into{' '}
-                {parkFacts.drives[1].place}. These are airport-to-entrance references; allow extra time to reach the giant sequoia groves.{' '}
+                {parkFacts.drives[1].place}. These estimates are from the airport to each entrance, not from the house to the main sights. Allow extra time to reach the giant sequoia groves.{' '}
                 <Link href="/sequoia-kings-canyon-guide" className="text-ink underline hover:text-ember">
                   Plan your days with our park guide.
                 </Link>
@@ -246,7 +246,7 @@ export default async function StayPage({ params }: Props) {
 
         {others.length > 0 && (
           <section className="mt-16">
-            <h2 className="text-3xl">Also in Visalia</h2>
+            <h2 className="text-3xl">Explore our other Visalia home</h2>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               {others.map((other) => (
                 <Link key={other.slug} href={stayPath(other)} className="group block">

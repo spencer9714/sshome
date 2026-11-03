@@ -12,7 +12,7 @@ import { absoluteUrl } from '@/lib/site';
 
 const path = '/zh-tw/visalia-crew-housing';
 const title = 'Visalia 工程團隊與承包商住宿｜整棟住宿最長29天';
-const description = '在 Visalia 施工或出差？SSHOME 兩間整棟住宿可讓 5～6 人每人一張床，有完整廚房、洗衣間，車庫和車道可停 3～6 台車，透過 Airbnb 訂房，最長可住29天。';
+const description = '在 Visalia 施工或出差？SSHOME 兩間整棟住宿可讓 5～6 人每人一張床，有完整廚房、洗衣間，附車道停車位，額外車輛請先向房東確認，透過 Airbnb 訂房，最長可住29天。';
 const image = '/stays/desert-retreat/kitchen-1.jpg';
 
 export const metadata: Metadata = {
@@ -69,7 +69,7 @@ export default function ChineseCrewHousingPage() {
         <p className="text-sm font-medium text-ember">工作住宿</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-5xl">Visalia 工程團隊與承包商住宿</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          團隊要到 Visalia、Tulare 或中央谷地其他地方施工？SSHOME 有兩間整棟住宿，可讓 5～6 人每人一張床，附完整廚房、洗衣機與烘衣機、Wi-Fi，車庫和車道可停 3～6 台車。最長可住 29 天，透過 Airbnb 訂房。
+          團隊要到 Visalia、Tulare 或中央谷地其他地方施工？我們提供兩間整棟住宿，可讓 5～6 人每人一張床，附完整廚房、洗衣機與烘衣機、Wi-Fi，附車道停車位，額外車輛請先向房東確認。最長可住 29 天，透過 Airbnb 訂房。
         </p>
 
         <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">

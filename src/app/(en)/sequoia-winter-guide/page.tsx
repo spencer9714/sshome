@@ -145,9 +145,9 @@ export default function WinterGuidePage() {
         <p className="text-sm font-medium text-ember">Winter guide</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-6xl">Visiting Sequoia in winter from Visalia</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          Giant sequoias under snow are worth the trip, but winter takes more planning. Carry tire chains, check the
-          roads that morning, and stay flexible. Visalia sits in the valley far below the snowy groves, so you can drive
-          up on a clear day and stay in on a stormy one.
+          Snow around the giant sequoias can make a familiar trail feel like a different world. Getting there takes
+          a little preparation: carry tire chains, check road conditions that morning, and keep your plans flexible.
+          Stay in Visalia down in the valley, head up when conditions allow, and enjoy the house when they do not.
         </p>
 
         <figure className="mt-10">
@@ -181,9 +181,9 @@ export default function WinterGuidePage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">What you can reach in winter</h2>
+          <h2 className="text-3xl">Winter destinations and road access</h2>
           <p className="mt-4 leading-relaxed text-stone">
-            These are typical patterns, not today’s conditions. Exact closures change with each storm.
+            This is a seasonal overview. Check current conditions before traveling, as storms can change road access.
           </p>
           <div className="mt-6 divide-y divide-line border-y border-line">
             {access.map((item) => (
@@ -270,13 +270,13 @@ export default function WinterGuidePage() {
               <Link href={stayPath(family)} className="font-medium text-ink underline hover:text-ember">
                 {family.name}
               </Link>{' '}
-              suits stormy days, with a pool table and a loft full of board games.
+              offers indoor entertainment for stormy days, including a pool table and board games in the loft.
             </p>
             <p>
               <Link href={stayPath(desert)} className="font-medium text-ink underline hover:text-ember">
                 {desert.name}
               </Link>{' '}
-              has a fire pit and motion games. Its pool is not heated, so don’t plan on a winter swim.
+              has a fire pit and Nex Playground motion-controlled games. Its pool is not heated, so don’t plan on a winter swim.
             </p>
             <p>
               Hoping to use a hot tub after a cold day? Message the host before booking, since reheating after servicing

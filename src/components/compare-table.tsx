@@ -20,7 +20,7 @@ const rows = [
 export function CompareTable() {
   return (
     <>
-      {/* Two home columns don't fit a phone, so each home gets its own card there. */}
+      {/* Home columns don't fit a phone, so each home gets its own card there. */}
       <div className="space-y-4 md:hidden">
         {stays.map((stay) => (
           <div key={stay.slug} className="rounded-lg border border-line bg-white p-5">

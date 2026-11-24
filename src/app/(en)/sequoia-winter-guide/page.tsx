@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: { title, description, url: path, type: 'article', images: [{ url: image }] },
 };
 
-const [desert, family] = stays;
+const [desert, sand, family] = stays;
 
 const npsPages = {
   activities: 'https://www.nps.gov/seki/planyourvisit/winteractivities.htm',
@@ -276,7 +276,11 @@ export default function WinterGuidePage() {
               <Link href={stayPath(desert)} className="font-medium text-ink underline hover:text-ember">
                 {desert.name}
               </Link>{' '}
-              has a fire pit and Nex Playground motion-controlled games. Its pool is not heated, so don’t plan on a winter swim.
+              and{' '}
+              <Link href={stayPath(sand)} className="font-medium text-ink underline hover:text-ember">
+                {sand.name}
+              </Link>{' '}
+              each have a fire pit and Nex Playground motion-controlled games. Their pools are not heated, so don’t plan on a winter swim.
             </p>
             <p>
               Hoping to use a hot tub after a cold day? Message the host before booking, since reheating after servicing

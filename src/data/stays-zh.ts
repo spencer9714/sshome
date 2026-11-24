@@ -16,13 +16,13 @@ export type StayZh = {
 
 export const staysZh: Record<string, StayZh> = {
   'desert-retreat-pool-hot-tub-visalia': {
-    title: 'Visalia 五房14人泳池住宿｜Desert Retreat 紅杉國家公園自駕基地',
-    description: 'Desert Retreat 位於 Visalia，五房可住14人，附私人不加熱泳池、熱水池、火坑、完整廚房、Wi-Fi 與工作區。查看床位分配與設施，再到 Airbnb 查日期與價格。',
-    name: 'Desert Retreat｜五房私人泳池度假屋',
+    title: 'The Sage House｜Visalia 五房14人泳池住宿・紅杉國家公園自駕基地',
+    description: 'Sage House 位於 Visalia，五房可住14人，附私人不加熱泳池、熱水池、火坑、完整廚房、Wi-Fi 與工作區。查看床位分配與設施，再到 Airbnb 查日期與價格。',
+    name: 'Sage House｜五房私人泳池度假屋',
     intro: '適合想多一間臥室、享受私人泳池與戶外空間的家庭或朋友。五房最多14人，附熱水池與火坑；泳池不加熱。',
     features: ['私人泳池附獨立圍欄與淺水躺椅區；泳池不加熱', '獨立熱水池、火坑、戶外座位與 cornhole 投沙包', '98 吋電視、各臥室 Smart TV 與 Nex Playground 體感遊戲', '完整廚房；二樓洗衣間附洗衣機與烘衣機', 'Wi-Fi；第二間臥室有書桌、椅子、螢幕與桌燈', '每間衛浴都有 Toto 免治馬桶；空調與暖氣', '智慧鎖自助入住', '車道可停三台，附近另有路邊停車；Tesla Level 2 充電器另計費，請先確認車輛相容性'],
     houseRules: ['最多14位過夜旅客；禁止派對或活動', '禁止吸菸，包含電子菸', '安靜時段為晚上9點至隔天早上8點', '最多可攜帶3隻寵物，費用請在 Airbnb 確認；協助動物依 Airbnb 政策處理', '禁止商業攝影或錄影', '親子提醒：泳池有獨立圍欄，兩道門會自動關閉並上鎖，門閂裝在幼童搆不到的高度。熱水池在泳池圍欄外，蓋子很重但不能上鎖；後院可從滑門進出，且沒有完全圍起，孩童需全程由大人看顧。'],
-    notes: ['戶外攝影機位於車庫上方、院子（火坑、泳池與草坪）及前門；屋內沒有攝影機。', '房源位於發展中的社區，附近施工可能產生日間噪音。', '請自備 K-Cup 咖啡膠囊。'],
+    notes: ['隔壁的 Sand House 是另一個房源；兩間都訂時，後院有門可以互通。想一起訂，請先透過 Airbnb 詢問兩間的空房。', '戶外攝影機位於車庫上方、院子（火坑、泳池與草坪）及前門；屋內沒有攝影機。', '房源位於發展中的社區，附近施工可能產生日間噪音。', '請自備 K-Cup 咖啡膠囊。'],
     compare: {
       bestFor: '想要泳池與後院空間的團體',
       outdoor: '附圍欄的私人泳池、熱水池、火坑、烤肉架、有頂露台、草坪遊戲',
@@ -31,20 +31,43 @@ export const staysZh: Record<string, StayZh> = {
       parking: '車道3台，附近另有路邊停車；EV 充電另計費',
     },
     faqs: [
-      { question: 'Desert Retreat 可以住幾個人？', answer: '最多14人：五間臥室可睡10人，氣墊床可再睡4人。' },
-      { question: 'Desert Retreat 的泳池多大？有加熱嗎？', answer: '私人泳池約 15 × 33 英尺，沒有加熱。獨立的熱水池可以加熱。' },
-      { question: 'Desert Retreat 可以幫電動車充電嗎？', answer: '可以，有 Tesla Level 2 充電器，需另外付費。請提前聯絡房東確認費用與安排。' },
-      { question: '可以在 Desert Retreat 遠端工作嗎？', answer: '可以。第二間臥室有書桌、椅子、螢幕與桌燈，房子也有 Wi-Fi。' },
+      { question: 'Sage House 可以住幾個人？', answer: '最多14人：五間臥室可睡10人，氣墊床可再睡4人。' },
+      { question: 'Sage House 的泳池多大？有加熱嗎？', answer: '私人泳池約 15 × 33 英尺，沒有加熱。獨立的熱水池可以加熱。' },
+      { question: 'Sage House 可以幫電動車充電嗎？', answer: '可以，有 Tesla Level 2 充電器，需另外付費。請提前聯絡房東確認費用與安排。' },
+      { question: '可以在 Sage House 遠端工作嗎？', answer: '可以。第二間臥室有書桌、椅子、螢幕與桌燈，房子也有 Wi-Fi。' },
     ],
     reviewTranslations: [
       '這趟到 Sequoia 和 Kings Canyon 國家公園的團體旅行，住宿安排好得不能再好。地點很棒：開車到兩座公園的入口都很順，房子也真的有精品度假的質感。一切都是全新的，而且很用心挑選；每間浴室都有免治馬桶，讓一大群人的早晨順暢許多，廚房也應有盡有，連香料都有。後院太夢幻了：探索巨杉一整天後，我們傍晚烤肉、在戶外用餐，還在超大的泳池邊放鬆。房東非常出色，品味一流。這是我們住過最漂亮的房子之一！',
       '我們非常喜歡這次住宿！地點很適合去 Sequoia 國家公園，我們進公園前在這裡住了一晚。房子全新又漂亮，感覺像五星級度假村！將近 30 英尺長的泳池很驚艷，晚上開燈時尤其美。池內躺椅和熱水池讓體驗更棒。和朋友泡在水裡喝幾瓶啤酒，真的很享受！後院還有 cornhole、火坑和瓦斯烤爐，很適合一起度過愉快的夜晚。室內的現代設計很好看，孩子也很喜歡體感遊戲和電視遊戲。老實說，我們沒人想離開，連大人也一樣！這間房子有輕鬆又難忘的假期所需的一切。我們很想再回來，也非常推薦！',
     ],
   },
+  'sand-house-pool-putting-green-visalia': {
+    title: 'The Sand House｜Visalia 五房14人泳池住宿・推桿果嶺與熱水池',
+    description: 'Sand House 位於 Visalia，五房可住14人，附私人不加熱泳池、熱水池、推桿果嶺、pergola 戶外餐區與工作區。隔壁就是 Sage House，可一起訂。到 Airbnb 查日期與價格。',
+    name: 'Sand House｜五房泳池與推桿果嶺度假屋',
+    intro: '適合想在後院玩一整個下午的家庭或朋友。五房最多14人，附泳池、熱水池、推桿果嶺與 pergola；泳池不加熱。隔壁的 Sage House 可另外預訂，後院有門相通。',
+    features: ['私人泳池附圍欄與淺水躺椅區、遮陽傘躺椅；泳池不加熱', '獨立熱水池、推桿果嶺、火坑、吊床與巨型四子棋', 'pergola 下有長餐桌與戶外沙發，旁邊有 BBQ 烤肉架', '98 吋電視、Nex Playground 體感遊戲；除雙人單床房外，各臥室都有 Smart TV', '完整廚房；洗衣間附洗衣機與烘衣機', 'Wi-Fi；第二間臥室有書桌、椅子、螢幕與桌燈', 'Toto 免治馬桶；智慧鎖自助入住', '車道可停三台，附近另有路邊停車；Tesla 充電器另計費，請先確認車輛相容性'],
+    houseRules: ['最多14位過夜旅客；禁止派對或活動', '禁止吸菸，包含電子菸', '安靜時段為晚上9點至隔天早上8點', '最多可攜帶3隻寵物，費用請在 Airbnb 確認；協助動物依 Airbnb 政策處理', '禁止商業攝影或錄影'],
+    notes: ['隔壁的 Sage House 是另一個房源；兩間都訂時，後院有門可以互通。想一起訂，請先透過 Airbnb 詢問兩間的空房。', '房源位於發展中的社區，附近施工可能產生日間噪音。', '請自備 K-Cup 咖啡膠囊。'],
+    compare: {
+      bestFor: '想要泳池、推桿果嶺與大後院的團體',
+      outdoor: '附圍欄的私人泳池、熱水池、推桿果嶺、pergola 餐區與沙發、火坑、吊床、烤肉架',
+      indoor: '98 吋電視、Nex Playground 體感遊戲',
+      work: '第二間臥室有書桌、椅子、螢幕與桌燈',
+      parking: '車道3台，附近另有路邊停車；EV 充電另計費',
+    },
+    faqs: [
+      { question: 'Sand House 可以住幾個人？', answer: '最多14人：五間臥室可睡10人，氣墊床可再睡4人。' },
+      { question: 'Sand House 和 Sage House 可以一起訂嗎？', answer: '可以，兩間都有空房時，請在 Airbnb 分別預訂。後院有門相通，合計 10 間臥室、6 間衛浴，最多 28 人。' },
+      { question: 'Sand House 的泳池有加熱嗎？', answer: '沒有，泳池不加熱。獨立的熱水池可以加熱。' },
+      { question: '可以在 Sand House 遠端工作嗎？', answer: '可以。第二間臥室有書桌、椅子、螢幕與桌燈，房子也有 Wi-Fi。' },
+    ],
+    reviewTranslations: [],
+  },
   'luxury-family-home-hot-tub-game-room-visalia': {
-    title: 'Visalia 四房14人家庭住宿｜Family Home 熱水池與撞球桌',
-    description: 'Luxury Family Home 位於 Visalia，四房最多14人，附熱水池、撞球桌、閣樓桌遊、完整廚房與 Wi-Fi，沒有泳池或專用工作區。查看床位配置並到 Airbnb 訂房。',
-    name: 'Luxury Family Home｜四房家庭度假屋',
+    title: 'The Amber House｜Visalia 四房14人家庭住宿・熱水池與撞球桌',
+    description: 'Amber House 位於 Visalia，四房最多14人，附熱水池、撞球桌、閣樓桌遊、完整廚房與 Wi-Fi，沒有泳池或專用工作區。查看床位配置並到 Airbnb 訂房。',
+    name: 'Amber House｜四房家庭度假屋',
     intro: '適合喜歡一起玩遊戲、煮飯與放鬆的家庭。四房最多14人，附撞球桌、閣樓與熱水池；沒有泳池。',
     features: ['私人六人熱水池與戶外座位；沒有泳池', '遊戲室撞球桌、75 吋電視與閣樓桌遊', '完整廚房與兒童餐具；二樓洗衣間附洗衣機與烘衣機', 'Wi-Fi；沒有專用工作區', '每間衛浴都有 Toto 免治馬桶；中央空調與暖氣', '智慧鎖自助入住', '車庫可停一台、車道兩台、路邊一台；部分車庫改為遊戲室，Level 2 充電器僅限 Tesla，另計費', '依屋主估計，開車到 Target 不到五分鐘，實際依交通而異'],
     houseRules: ['最多14位過夜旅客；禁止派對或活動', '禁止吸菸，包含電子菸', '安靜時段為晚上9點至隔天早上8點', '最多可攜帶3隻寵物，每隻每次住宿75美元；未經核准攜帶可能產生至少150美元費用，請在 Airbnb 確認最新條款。協助動物依 Airbnb 政策處理'],
@@ -57,9 +80,9 @@ export const staysZh: Record<string, StayZh> = {
       parking: '車庫1台、車道2台、路邊1台；EV 充電另計費',
     },
     faqs: [
-      { question: 'Luxury Family Home 的床位怎麼安排？', answer: '最多14位過夜旅客，會使用臥室的床、沙發床、沙發與氣墊床。' },
-      { question: 'Luxury Family Home 附近有餐廳和超市嗎？', answer: '房客表示附近有超市和簡餐選擇，開車約 5 分鐘也有加油站，以及 Raising Cane’s、In-N-Out 等營業到較晚的餐廳。' },
-      { question: 'Luxury Family Home 可以幫電動車充電嗎？', answer: '可以，車庫有僅限 Tesla 的 Level 2 充電器，需另外付費。請提前告知房東，以便開通。' },
+      { question: 'Amber House 的床位怎麼安排？', answer: '最多14位過夜旅客，會使用臥室的床、沙發床、沙發與氣墊床。' },
+      { question: 'Amber House 附近有餐廳和超市嗎？', answer: '房客表示附近有超市和簡餐選擇，開車約 5 分鐘也有加油站，以及 Raising Cane’s、In-N-Out 等營業到較晚的餐廳。' },
+      { question: 'Amber House 可以幫電動車充電嗎？', answer: '可以，車庫有僅限 Tesla 的 Level 2 充電器，需另外付費。請提前告知房東，以便開通。' },
     ],
     reviewTranslations: [
       '對我們這群要前往 Sequoia 和 Kings Canyon 國家公園的人來說，這裡的安排和地點好得不能再好！房東溝通順暢，需要時也很幫忙。',
@@ -94,9 +117,10 @@ export const reviewContextZh: Record<string, string> = {
 };
 
 export const siteFaqsZh: Faq[] = [
-  { question: '住宿在哪裡？', answer: '都在加州 Tulare 郡的 Visalia。確切地址會在訂房後由 Airbnb 提供。' },
+  { question: '住宿在哪裡？', answer: '三間都在加州 Tulare 郡的 Visalia。Sage House 和 Sand House 是隔壁鄰居，Amber House 在 Visalia 的另一區。確切地址會在訂房後由 Airbnb 提供。' },
   { question: '如何預訂住宿？', answer: '全部透過 Airbnb 預訂，可在 Airbnb 查看即時空房、價格、房屋規則與取消條款。每間房源頁都有 Airbnb 連結。' },
-  { question: '入住與退房時間是幾點？', answer: '兩間都是下午 4:00 入住、上午 10:00 退房。提前入住或延後退房需視情況而定，也可能另收費。' },
-  { question: 'EV 充電和烤肉瓦斯有包含嗎？', answer: '兩間都需另外付費。兩間都有 Tesla Level 2 充電器，其中 Luxury Family Home 僅限 Tesla。費用與安排請透過 Airbnb 詢問房東。' },
-  { question: '兩間都有 Wi-Fi 和工作區嗎？', answer: '兩間都有 Wi-Fi。只有 Desert Retreat 有專用工作區，位於第二間臥室；Luxury Family Home 沒有專用工作區。' },
+  { question: '入住與退房時間是幾點？', answer: '三間都是下午 4:00 入住、上午 10:00 退房。提前入住或延後退房需視情況而定，也可能另收費。' },
+  { question: 'EV 充電和烤肉瓦斯有包含嗎？', answer: '三間都需另外付費。每間都有 Tesla 充電器，其中 Amber House 僅限 Tesla。費用、安排與車輛相容性請透過 Airbnb 詢問房東。' },
+  { question: '三間都有 Wi-Fi 和工作區嗎？', answer: '三間都有 Wi-Fi。Sage House 和 Sand House 的第二間臥室都有書桌、椅子、螢幕與桌燈；Amber House 沒有專用工作區。' },
+  { question: '人很多的話，可以訂相鄰的兩間嗎？', answer: '可以。Sage House 和 Sand House 是隔壁鄰居，兩間都訂時，後院有門可以互通，合計 10 間臥室、6 間衛浴，最多 28 人。請在 Airbnb 分別預訂，並先傳訊息給房東確認兩間在你的日期都有空房。' },
 ];

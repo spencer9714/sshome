@@ -6,7 +6,7 @@ export function ParkTravel({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
         <p className="text-sm font-medium text-ember">Sequoia National Park</p>
         <h4 className="mt-2 text-xl">Ash Mountain Entrance</h4>
         <p className="mt-2 font-medium">{zh ? 'Visalia 市區參考：約45分鐘・58公里' : 'From Visalia: about 45 min · 36 mi'}</p>
-        <p className="mt-2 text-sm leading-relaxed text-stone">{zh ? '沿 Highway 198。這是 NPS 公布的城市至入口參考，不是各房源的門到門車程。' : 'Via Highway 198. This is the NPS city-to-entrance reference, not a door-to-door estimate for either home.'}</p>
+        <p className="mt-2 text-sm leading-relaxed text-stone">{zh ? '沿 Highway 198。這是 NPS 公布的城市至入口參考，不是各房源的門到門車程。' : 'Via Highway 198. This is the NPS city-to-entrance reference, not a door-to-door estimate for any of the homes.'}</p>
         <a href="https://www.nps.gov/seki/planyourvisit/driving-directions.htm" target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-sm underline">{zh ? 'NPS 路線與距離 ↗' : 'NPS directions & distance ↗'}</a>
       </div>
       <div className="rounded-lg border border-line bg-white p-5">

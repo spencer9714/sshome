@@ -6,7 +6,7 @@ import { languageAlternates, zhStayPath } from '@/lib/locales';
 import { site } from '@/lib/site';
 
 const title = '關於 SSHOME 與聯絡方式';
-const description = '認識 SSHOME：加州 Visalia 兩間為家庭與團體設計的度假住宿。比較兩間房源，並透過 Airbnb 聯絡房東。';
+const description = '認識 SSHOME：加州 Visalia 三間為家庭與團體設計的度假住宿。比較三間房源，並透過 Airbnb 聯絡房東。';
 
 export const metadata: Metadata = {
   title: { absolute: `${title} | ${site.name}` },
@@ -19,15 +19,15 @@ export default function ChineseAboutPage() {
   return <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
     <p className="text-sm font-medium text-ember">關於 SSHOME</p>
     <h1 className="mt-3 text-4xl sm:text-5xl">一起旅行，也有足夠的空間</h1>
-    <p className="mt-6 text-xl leading-relaxed">我們在加州 Visalia 提供兩間用心佈置的度假住宿。我們想提供的很簡單：讓家庭和團體在探險之間，有空間一起煮飯、放鬆、相處。</p>
+    <p className="mt-6 text-xl leading-relaxed">我們在加州 Visalia 提供三間用心佈置的度假住宿。我們想提供的很簡單：讓家庭和團體在探險之間，有空間一起煮飯、放鬆、相處。</p>
     <section className="mt-10 rounded-lg bg-sand p-6 sm:p-8">
       <h2 className="text-3xl">找到適合這趟旅行的住宿</h2>
       <p className="mt-4 leading-relaxed">想確認床位、熱水池或其他入住安排，請透過 Airbnb 聯絡我們。</p>
     </section>
-    <p className="mt-5 leading-relaxed text-stone">可以選附私人泳池和火坑的五房住宿，或有撞球桌和閣樓的四房家庭住宿。兩間都有完整廚房和熱水池，使用所列的床位最多可住 14 人。</p>
+    <p className="mt-5 leading-relaxed text-stone">可以選附私人泳池和火坑的 Sage House、隔壁有泳池和推桿果嶺的 Sand House，或有撞球桌和閣樓的 Amber House。Sage 和 Sand 一起訂時，後院有門相通。每間都有完整廚房和熱水池，使用所列的床位最多可住 14 人。</p>
     <section className="mt-12"><h2 className="text-3xl">訂房前有問題？</h2><p className="mt-4 leading-relaxed text-stone">請在 Airbnb 打開想住的房源，選擇「聯絡房東」或「傳訊息給房東」，詢問床位、熱水池狀況、EV 充電或目前的費用。訂房前也請在 Airbnb 查看空房、房屋規則和取消條款。</p>
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">{stays.map((stay) => <div key={stay.slug} className="rounded-lg border border-line bg-white p-6"><h3 className="text-2xl">{stay.name}</h3><p className="mt-2 text-sm text-stone">{staysZh[stay.slug].compare.bestFor}</p><Link href={zhStayPath(stay.slug)} className="mt-4 block py-1 text-sm underline">看床位、照片與設施</Link><a href={airbnbUrl(stay)} data-booking-placement="zh-about-contact" data-airbnb-intent="contact" className="mt-4 inline-block rounded-md bg-ember px-4 py-3 text-sm font-medium text-white">到 Airbnb 查看並聯絡房東</a></div>)}</div>
+      <div className="mt-6 grid gap-5 sm:grid-cols-3">{stays.map((stay) => <div key={stay.slug} className="rounded-lg border border-line bg-white p-6"><h3 className="text-2xl">{stay.name}</h3><p className="mt-2 text-sm text-stone">{staysZh[stay.slug].compare.bestFor}</p><Link href={zhStayPath(stay.slug)} className="mt-4 block py-1 text-sm underline">看床位、照片與設施</Link><a href={airbnbUrl(stay)} data-booking-placement="zh-about-contact" data-airbnb-intent="contact" className="mt-4 inline-block rounded-md bg-ember px-4 py-3 text-sm font-medium text-white">到 Airbnb 查看並聯絡房東</a></div>)}</div>
     </section>
-    <section className="mt-12"><h2 className="text-3xl">規劃公園行程</h2><p className="mt-4 text-stone">兩間房子都在 Visalia，位於公園外。到入口的車程，和到巨杉景點的時間並不相同。</p><Link href="/zh-tw/sequoia-guide" className="mt-4 inline-block py-1 underline">閱讀繁中自駕指南</Link></section>
+    <section className="mt-12"><h2 className="text-3xl">規劃公園行程</h2><p className="mt-4 text-stone">三間房子都在 Visalia，位於公園外。到入口的車程，和到巨杉景點的時間並不相同。</p><Link href="/zh-tw/sequoia-guide" className="mt-4 inline-block py-1 underline">閱讀繁中自駕指南</Link></section>
   </article>;
 }

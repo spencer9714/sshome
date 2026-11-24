@@ -2,7 +2,7 @@
 
 這份素材導流到各房源官網頁，再讓旅客前往 Airbnb 查日期與價格。可追蹤網址在同資料夾 `campaign-links.csv`；依房源、語言和發布位置選一列使用。
 
-## Desert Retreat：把住宿也排進旅程
+## The Sage House：把住宿也排進旅程
 
 ### 中文貼文
 
@@ -10,7 +10,7 @@
 
 留一個下午給住宿：在有遮蔭的露台吃點東西、一起玩 cornhole，或趁天氣適合時享受自己的泳池。
 
-SSHOME Desert Retreat 位於 Visalia，提供五間臥室、完整廚房、私人泳池與熱水池，也有 Wi-Fi 和專屬工作區。適合想把國家公園行程與住宿休息時間一起安排的家庭。
+SSHOME The Sage House 位於 Visalia，提供五間臥室、完整廚房、私人泳池與熱水池，也有 Wi-Fi 和專屬工作區。適合想把國家公園行程與住宿休息時間一起安排的家庭。
 
 最多入住 14 人，包含額外睡眠安排；床位配置請見房源頁。泳池不加熱，使用體驗依季節及天氣而異。熱水池須依現場狀況與使用規範，抵達首晚不保證已達適用溫度。
 
@@ -24,7 +24,7 @@ Your Sequoia trip deserves an afternoon with no itinerary.
 
 Lunch on the covered patio. A round of cornhole. Pool time when the weather feels right.
 
-Desert Retreat by SSHOME is a five-bedroom vacation home in Visalia with a full kitchen, private pool, hot tub, Wi-Fi and a dedicated workspace. Make room for time at the house alongside your national park adventures.
+The Sage House by SSHOME is a five-bedroom vacation home in Visalia with a full kitchen, private pool, hot tub, Wi-Fi and a dedicated workspace. Make room for time at the house alongside your national park adventures.
 
 Sleeps up to 14 with additional sleeping arrangements; see the listing for the full setup. The pool is unheated and seasonal conditions affect swimming comfort. Hot tub readiness depends on servicing and reheating; first-night temperature is not guaranteed.
 
@@ -34,9 +34,9 @@ Explore the home, then check dates and prices on Airbnb through our listing link
 
 ### Story 短文
 
-中文：Sequoia 行程，留半天給自己。五房、私人泳池、露台與完整廚房。泳池不加熱。點連結看 Desert Retreat，再到 Airbnb 查日期。
+中文：Sequoia 行程，留半天給自己。五房、私人泳池、露台與完整廚房。泳池不加熱。點連結看 The Sage House，再到 Airbnb 查日期。
 
-English: Leave an afternoon open. Five bedrooms, your own pool, a covered patio and a full kitchen in Visalia. Pool is unheated. Explore Desert Retreat and check dates on Airbnb.
+English: Leave an afternoon open. Five bedrooms, your own pool, a covered patio and a full kitchen in Visalia. Pool is unheated. Explore The Sage House and check dates on Airbnb.
 
 ### 24 秒直式影片分鏡
 
@@ -49,7 +49,7 @@ English: Leave an afternoon open. Five bedrooms, your own pool, a covered patio 
 | 8–12 | `/stays/desert-retreat/turf-cornhole.jpg` | 一起玩，再一起放空 | Play a round. Slow down. |
 | 12–16 | `/stays/desert-retreat/kitchen-1.jpg` | 買好食材，回家煮一餐 | Bring groceries. Cook together. |
 | 16–20 | `/stays/desert-retreat/bedroom-1.jpg` | Visalia・五間臥室 | Five bedrooms in Visalia |
-| 20–24 | `/stays/desert-retreat/pool-baja-shelf.jpg` | Desert Retreat｜Airbnb 查日期 | Desert Retreat｜Check dates on Airbnb |
+| 20–24 | `/stays/desert-retreat/pool-baja-shelf.jpg` | The Sage House｜Airbnb 查日期 | The Sage House｜Check dates on Airbnb |
 
 泳池鏡頭加上可讀小字「泳池不加熱 / Unheated pool」。影片貼文用上方完整文案交代入住人數與設施限制；不要用會遮住房屋的大片字幕。先用合法可商用或平台允許的音樂。
 
@@ -64,13 +64,13 @@ English: Leave an afternoon open. Five bedrooms, your own pool, a covered patio 
 
 以上輪播圖片都在 `public/stays/desert-retreat/`。
 
-## Luxury Family Home：出門玩，回來也有得玩
+## The Amber House：出門玩，回來也有得玩
 
 ### 中文貼文
 
 國家公園走了一天，回到住宿還可以一起玩一局撞球。
 
-SSHOME Luxury Family Home 位於 Visalia，設有四間臥室、撞球桌、閣樓遊戲空間、完整廚房與私人熱水池。想一起吃飯、玩桌遊，或各自找個角落休息，都能把住宿時間排進旅程。
+SSHOME The Amber House 位於 Visalia，設有四間臥室、撞球桌、閣樓遊戲空間、完整廚房與私人熱水池。想一起吃飯、玩桌遊，或各自找個角落休息，都能把住宿時間排進旅程。
 
 依屋主估計，開車到 Target 不到五分鐘，實際時間依交通而異，採買也方便。
 
@@ -84,7 +84,7 @@ SSHOME Luxury Family Home 位於 Visalia，設有四間臥室、撞球桌、閣�
 
 A day exploring Sequoia. A game of pool back at the house.
 
-Luxury Family Home by SSHOME brings everyone together in Visalia with four bedrooms, a pool table, a loft game space, a full kitchen and a private hot tub. Cook a meal, bring out the board games and make the evening part of the trip.
+The Amber House by SSHOME brings everyone together in Visalia with four bedrooms, a pool table, a loft game space, a full kitchen and a private hot tub. Cook a meal, bring out the board games and make the evening part of the trip.
 
 Target is under a five-minute drive by the owner's estimate; traffic may vary.
 
@@ -96,9 +96,9 @@ See the photos and check dates and prices on Airbnb through our listing link.
 
 ### Story 短文
 
-中文：白天探索 Sequoia，晚上回來打一局。四房、撞球桌、閣樓遊戲空間與完整廚房。點連結看 Luxury Family Home，再到 Airbnb 查日期。
+中文：白天探索 Sequoia，晚上回來打一局。四房、撞球桌、閣樓遊戲空間與完整廚房。點連結看 The Amber House，再到 Airbnb 查日期。
 
-English: Explore Sequoia by day. Play a round back at the house. Four bedrooms, a pool table, a loft game space and a full kitchen. Explore Luxury Family Home and check dates on Airbnb.
+English: Explore Sequoia by day. Play a round back at the house. Four bedrooms, a pool table, a loft game space and a full kitchen. Explore The Amber House and check dates on Airbnb.
 
 ### 24 秒直式影片分鏡
 
@@ -109,7 +109,7 @@ English: Explore Sequoia by day. Play a round back at the house. Four bedrooms, 
 | 8–12 | `/stays/luxury-family-home/kitchen-1.jpg` | 一起做晚餐 | Make dinner together |
 | 12–16 | `/stays/luxury-family-home/dining.jpg` | 一張餐桌，聊今天的旅程 | Share stories around the table |
 | 16–20 | `/stays/luxury-family-home/primary-bedroom-1.jpg` | Visalia・四間臥室 | Four bedrooms in Visalia |
-| 20–24 | `/stays/luxury-family-home/living-room-1.jpg` | Luxury Family Home｜Airbnb 查日期 | Luxury Family Home｜Check dates on Airbnb |
+| 20–24 | `/stays/luxury-family-home/living-room-1.jpg` | The Amber House｜Airbnb 查日期 | The Amber House｜Check dates on Airbnb |
 
 撞球請寫 pool table，避免只寫 pool 而讓人誤以為有泳池。不使用 air hockey、三合一遊戲桌或專屬工作區等敘述。
 

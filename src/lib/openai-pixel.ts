@@ -20,8 +20,8 @@ export function openAIAdsBootstrap(pixelId: string) {
       if (!raw) return;
       let url: URL;
       try { url = new URL(raw, window.location.origin); } catch { return; }
-      const direct = url.protocol === 'https:' && url.hostname === 'www.airbnb.com' && /^\/rooms\/(1800164576342497106|1291019377672253246)\/?$/.test(url.pathname);
-      const short = url.origin === window.location.origin && /^\/go\/(desert|family)\/?$/.test(url.pathname);
+      const direct = url.protocol === 'https:' && url.hostname === 'www.airbnb.com' && /^\/rooms\/(1800164576342497106|1291019377672253246|1805174055124619035)\/?$/.test(url.pathname);
+      const short = url.origin === window.location.origin && /^\/go\/(desert|family|sand)\/?$/.test(url.pathname);
       if (!direct && !short) return;
       // Review browsing is not an availability or booking-intent conversion.
       if (element.getAttribute('data-airbnb-intent') === 'reviews') return;

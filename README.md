@@ -98,7 +98,7 @@ References: [Google custom-dimension setup](https://support.google.com/analytics
 
 1. Verify the deployed homepage, new guide pages, `/robots.txt`, `/sitemap.xml`, and both short redirects. Ensure the host/CDN allows OAI-SearchBot requests and its official IP ranges. Application robots rules alone cannot verify the firewall.
 2. Submit the sitemap in Google Search Console and Bing Webmaster Tools using the owner's accounts. Monitor indexing and queries; crawling and structured data do not guarantee search or ChatGPT recommendations.
-3. Start with two campaign themes: Desert Retreat — park days followed by poolside downtime (pool is unheated); Luxury Family Home — shared meals, pool-table evenings and room for two families. Use real photos and separate landing pages. Never advertise ping pong or air hockey.
+3. Start with two campaign themes: The Sage House — park days followed by poolside downtime (pool is unheated); The Amber House — shared meals, pool-table evenings and room for two families. Use real photos and separate landing pages. Never advertise ping pong or air hockey.
 4. Example Desert caption: “Giant trees by day. Your own poolside retreat by evening. Five bedrooms in Visalia for your Sequoia getaway. Check dates on Airbnb.”
 5. Example Family caption: “Bring the whole crew. A four-bedroom Visalia home with a pool table, loft and private hot tub. Explore sleeping arrangements and check dates on Airbnb.” Do not promise first-night hot tub readiness.
 6. Link Traditional Chinese travel posts to `/zh-tw/sequoia-guide`. Follow each community's promotional rules. Start paid campaigns only after the real measurement property is verified; judge campaigns using qualified traffic and Airbnb outcomes, not clicks alone.

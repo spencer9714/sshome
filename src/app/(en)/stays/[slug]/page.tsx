@@ -162,7 +162,7 @@ export default async function StayPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-sm text-stone">{stay.slug.startsWith('desert-') ? 'Need the extra sleeping space? We provide 1 queen and 2 twin air mattresses, bringing the total capacity to 14 guests.' : stay.extraSleeping}</p>
+              <p className="mt-4 text-sm text-stone">{!stay.slug.startsWith('luxury-') ? 'Need the extra sleeping space? We provide 1 queen and 2 twin air mattresses, bringing the total capacity to 14 guests.' : stay.extraSleeping}</p>
               <Link href="/sequoia-group-lodging#sleeping-plans" className="mt-3 inline-block py-1 text-sm underline hover:text-ember">Plan the sleeping arrangements for 8 to 14 guests</Link>
             </section>
 

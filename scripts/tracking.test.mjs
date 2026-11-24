@@ -72,7 +72,7 @@ test('direct and short links share a stable ID; spoofed and unrelated destinatio
 
 test('UTM links use each real landing page, with distinct languages and explicit test debug mode', () => {
   const links = campaignLinks({ source: 'chatgpt', medium: 'cpc', campaign: 'tracking_test', debug: true });
-  assert.equal(links.length, 4);
+  assert.equal(links.length, Object.keys(config.listings).length * 2);
   for (const link of links) {
     const url = new URL(link.url);
     assert.equal(url.origin, config.siteUrl);

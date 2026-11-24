@@ -26,7 +26,7 @@ for (const image of imageUrls) {
 for (const path of ['/', '/zh-tw']) {
   const schemas = [...pages.get(path).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
   const collection = schemas.find((schema) => schema['@type'] === 'CollectionPage');
-  assert.equal(collection.mainEntity.numberOfItems, 2);
+  assert.equal(collection.mainEntity.numberOfItems, paths.filter((item) => item.startsWith('/stays/')).length);
   assert.equal(collection.inLanguage, path === '/' ? 'en' : 'zh-Hant');
 }
 
@@ -37,7 +37,7 @@ for (const path of paths) {
   assert.equal(new URL(canonical).href, new URL(path, canonicalSite).href, `${path}: canonical`);
 }
 
-for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury-family-home-hot-tub-game-room-visalia', 5]]) {
+for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['sand-house-pool-putting-green-visalia', 6], ['luxury-family-home-hot-tub-game-room-visalia', 5]]) {
   const html = pages.get(`/stays/${slug}`);
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
   const rental = schemas.find((item) => item['@type'] === 'VacationRental');
@@ -47,7 +47,8 @@ for (const [slug, beds] of [['desert-retreat-pool-hot-tub-visalia', 6], ['luxury
   assert.ok(!('review' in rental) && !('aggregateRating' in rental), 'No copied rating rich-result markup');
   assert.ok(html.includes('name="adults"') && html.includes('name="children"') && html.includes('name="guests"'), 'Separate adult/child booking fields');
   assert.ok(!/35 miles|55 miles|about a 1-hour drive from Sequoia/.test(html), 'No ambiguous distance claims');
-  assert.ok(html.includes('data-airbnb-intent="reviews"') && html.includes('data-airbnb-intent="amenities"'), 'Distinct outbound intents');
+  // New listings have no reviews yet, so only listings with reviews link to them.
+  assert.ok(html.includes('data-airbnb-intent="amenities"') && (slug.startsWith('sand-') || html.includes('data-airbnb-intent="reviews"')), 'Distinct outbound intents');
 }
 
 for (const path of paths) {
@@ -74,7 +75,7 @@ for (const path of paths) {
 assert.ok(pages.get('/zh-tw/sequoia-guide').includes('五張臥室床'));
 assert.ok(pages.get('/llms.txt').includes('5 bedroom beds'));
 assert.ok(pages.get('/about').includes('data-airbnb-intent="contact"'));
-for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
+for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'sand-house-pool-putting-green-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
   const path = `/zh-tw/stays/${slug}`;
   const html = pages.get(path);
   assert.ok(html.includes('入住日期') && html.includes('成人（13歲以上）') && html.includes('name="children"'), 'Chinese booking form is rendered');
@@ -88,9 +89,10 @@ for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-h
 }
 assert.ok(pages.get('/zh-tw').includes('zh-home-card'));
 assert.ok(pages.get('/zh-tw').includes('"@type":"FAQPage"'), 'Chinese home has FAQ markup');
-for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
+for (const slug of ['desert-retreat-pool-hot-tub-visalia', 'sand-house-pool-putting-green-visalia', 'luxury-family-home-hot-tub-game-room-visalia']) {
   const html = pages.get(`/zh-tw/stays/${slug}`);
-  assert.ok(html.includes('"@type":"FAQPage"') && html.includes('房客怎麼說') && html.includes('查看 Airbnb 英文原文'), 'Chinese stay has FAQs and labelled review translations');
+  assert.ok(html.includes('"@type":"FAQPage"'), 'Chinese stay has FAQs');
+  if (!slug.startsWith('sand-')) assert.ok(html.includes('房客怎麼說') && html.includes('查看 Airbnb 英文原文'), 'Chinese stay has labelled review translations');
 }
 assert.equal((await fetch(new URL('/this-page-does-not-exist', base))).status, 404);
 

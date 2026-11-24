@@ -50,7 +50,7 @@ export function GET() {
     ),
     `- Source: ${parkFacts.sourceUrl}`,
     `- Park guide: ${absoluteUrl('/sequoia-kings-canyon-guide')}`,
-    `- Group lodging and sleeping plans for 8 to 14 guests: ${absoluteUrl('/sequoia-group-lodging')}`,
+    `- Group lodging: sleeping plans for 8 to 14 guests per home, and up to 28 guests in The Sage House and The Sand House next door to each other: ${absoluteUrl('/sequoia-group-lodging')}`,
     `- Winter guide with tire chains, road access and snow play areas: ${absoluteUrl('/sequoia-winter-guide')}`,
     `- Housing for contractors and work crews, with a bed for each of 5 or 6 people, Airbnb booking only and stays up to 29 days: ${absoluteUrl('/visalia-crew-housing')}`,
     `- Why choose Visalia and suggested itineraries: ${absoluteUrl('/sequoia-kings-canyon-guide#where-to-stay')}`,

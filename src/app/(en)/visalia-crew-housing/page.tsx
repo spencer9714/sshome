@@ -12,7 +12,7 @@ import { absoluteUrl } from '@/lib/site';
 const path = '/visalia-crew-housing';
 const title = 'Visalia Crew Housing for Contractors & Work Teams | SSHOME';
 const description =
-  'Visalia homes for work crews, with separate beds for 5 or 6 guests, full kitchens, laundry, and driveway parking. Book up to 29 days on Airbnb.';
+  'Visalia homes for work crews: a separate bed for 5 or 6 per home, or 12 in two homes next door. Full kitchens, laundry, parking. Up to 29 days on Airbnb.';
 const image = '/stays/desert-retreat/kitchen-1.jpg';
 
 export const metadata: Metadata = {
@@ -22,11 +22,16 @@ export const metadata: Metadata = {
   openGraph: { title, description, url: path, type: 'article', images: [{ url: image }] },
 };
 
-const [desert, family] = stays;
+const [desert, sand, family] = stays;
 
 const homes = [
   {
     stay: desert,
+    rooms: '4 private bedrooms, plus a room with 2 twin beds',
+    work: 'Bedroom 2 has a desk, chair, monitor, and lamp for catching up on paperwork.',
+  },
+  {
+    stay: sand,
     rooms: '4 private bedrooms, plus a room with 2 twin beds',
     work: 'Bedroom 2 has a desk, chair, monitor, and lamp for catching up on paperwork.',
   },
@@ -71,11 +76,11 @@ const faqs: Faq[] = [
   },
   {
     question: 'What if our crew has more than 6 people?',
-    answer: `Each home allows up to 14 overnight guests, but anyone beyond ${desert.beds} people at ${desert.name} or ${family.beds} at ${family.name} would use a sofa bed, couch or air mattress. Booking both homes gives ${desert.beds + family.beds} bedroom beds if both are available. They are at different locations in Visalia, not next door to each other.`,
+    answer: `Each home allows up to 14 overnight guests, but anyone beyond ${desert.beds} people at ${desert.name} or ${sand.name}, or ${family.beds} at ${family.name}, would use a sofa bed, couch or air mattress. For a larger crew, book ${desert.name} and ${sand.name} together if both are available. They are next door to each other, connected by a backyard gate, with ${desert.beds + sand.beds} bedroom beds and 6 driveway spaces between them.`,
   },
   {
     question: 'Can we bring a trailer or a large work vehicle?',
-    answer: 'Desert Retreat offers 3 driveway spaces and Luxury Family Home offers 2, with additional street parking nearby. Street spaces are not reserved. If you are bringing extra vehicles, a trailer or an oversized vehicle, message the host before booking.',
+    answer: 'The Sage House and The Sand House each offer 3 driveway spaces and The Amber House offers 2, with additional street parking nearby. Street spaces are not reserved. If you are bringing extra vehicles, a trailer or an oversized vehicle, message the host before booking.',
   },
   {
     question: 'How close are the homes to our job site?',
@@ -111,15 +116,16 @@ export default function CrewHousingPage() {
         <p className="text-sm font-medium text-ember">Work stays</p>
         <h1 className="mt-3 text-4xl leading-tight sm:text-6xl">Housing for contractors and work crews in Visalia</h1>
         <p className="mt-6 text-xl leading-relaxed">
-          Bringing a work crew to Visalia, Tulare, or elsewhere in the Central Valley? Choose from two private homes with
+          Bringing a work crew to Visalia, Tulare, or elsewhere in the Central Valley? Choose from three private homes with
           separate bedroom beds for 5 or 6 guests, full kitchens, laundry facilities, Wi-Fi, and driveway parking.
-          Stay up to 29 days and book on Airbnb.
+          Two of them sit next door to each other, so a crew of 12 can each have a bed. Stay up to 29 days and book
+          on Airbnb.
         </p>
 
         <div className="relative mt-10 aspect-[3/2] overflow-hidden rounded-lg">
           <Image
             src={image}
-            alt="Kitchen with a gas range, large refrigerator and breakfast bar at Desert Retreat in Visalia"
+            alt="Kitchen with a gas range, large refrigerator and breakfast bar at The Sage House in Visalia"
             fill
             priority
             sizes="(min-width: 896px) 848px, 100vw"
@@ -129,7 +135,7 @@ export default function CrewHousingPage() {
 
         <section className="mt-14">
           <h2 className="text-3xl">Which home suits your crew?</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
             {homes.map(({ stay, rooms, work }) => (
               <div key={stay.slug} className="rounded-lg border border-line bg-white p-6">
                 <h3 className="text-2xl">

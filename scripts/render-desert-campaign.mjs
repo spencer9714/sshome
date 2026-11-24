@@ -54,6 +54,6 @@ try {
     }
   }
   const links = campaignLinks({ source: 'instagram', medium: 'social', campaign: 'sshome_desert_launch', content: 'bio_zh_v1' });
-  console.log('Chinese bio:', links.find(x => x.listing === 'Desert Retreat' && x.language === 'zh-Hant').url);
+  console.log('Chinese bio:', links.find(x => x.listing === 'The Sage House' && x.language === 'zh-Hant').url);
   await call('Browser.close').catch(() => {});
 } finally { ws?.close(); browser.kill(); }

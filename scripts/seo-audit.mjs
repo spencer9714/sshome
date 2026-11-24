@@ -3,11 +3,11 @@ import { pathToFileURL } from 'node:url';
 export const defaultSite = 'https://www.sshomedesigns.com';
 export const paths = [
   '/', '/stays/desert-retreat-pool-hot-tub-visalia',
-  '/stays/luxury-family-home-hot-tub-game-room-visalia',
+  '/stays/luxury-family-home-hot-tub-game-room-visalia', '/stays/sand-house-pool-putting-green-visalia',
   '/sequoia-kings-canyon-guide', '/sequoia-group-lodging', '/sequoia-winter-guide', '/visalia-crew-housing', '/zh-tw/sequoia-guide', '/about', '/privacy',
   '/zh-tw', '/zh-tw/sequoia-group-lodging', '/zh-tw/sequoia-winter-guide', '/zh-tw/visalia-crew-housing', '/zh-tw/about', '/zh-tw/privacy',
   '/zh-tw/stays/desert-retreat-pool-hot-tub-visalia',
-  '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia',
+  '/zh-tw/stays/luxury-family-home-hot-tub-game-room-visalia', '/zh-tw/stays/sand-house-pool-putting-green-visalia',
 ];
 
 export async function audit(site = defaultSite) {

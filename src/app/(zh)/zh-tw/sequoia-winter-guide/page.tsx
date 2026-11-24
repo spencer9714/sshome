@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: { title, description, url: path, type: 'article', locale: 'zh_TW', images: [{ url: image }] },
 };
 
-const [desert, family] = stays;
+const [desert, sand, family] = stays;
 
 const npsPages = {
   activities: 'https://www.nps.gov/seki/planyourvisit/winteractivities.htm',
@@ -161,7 +161,7 @@ export default function ChineseWinterGuidePage() {
           <h2 className="text-2xl">冬天住 Visalia</h2>
           <div className="mt-4 space-y-3 leading-relaxed text-stone">
             <p><Link href={zhStayPath(family.slug)} className="font-medium text-ink underline hover:text-ember">{family.name}</Link> 很適合風雪天，有撞球桌，閣樓也有桌遊。</p>
-            <p><Link href={zhStayPath(desert.slug)} className="font-medium text-ink underline hover:text-ember">{desert.name}</Link> 有火坑和體感遊戲。泳池沒有加熱，冬天不適合游泳。</p>
+            <p><Link href={zhStayPath(desert.slug)} className="font-medium text-ink underline hover:text-ember">{desert.name}</Link> 和 <Link href={zhStayPath(sand.slug)} className="font-medium text-ink underline hover:text-ember">{sand.name}</Link> 都有火坑和體感遊戲。泳池沒有加熱，冬天不適合游泳。</p>
             <p>想在冷天泡熱水池嗎？請在訂房前先詢問房東，因為冬季保養後重新加熱需要較久。</p>
           </div>
         </section>

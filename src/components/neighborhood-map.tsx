@@ -2,7 +2,8 @@ import { mapPoint, mapZoom, neighborhoodCheckedOn, neighborhoods, publicPlaceMap
 
 export function NeighborhoodMap({ slug, language = 'en' }: { slug: string; language?: 'en' | 'zh-Hant' }) {
   const zh = language === 'zh-Hant';
-  const key = slug.startsWith('desert-') ? 'desert' : 'family';
+  // The Sand House is next door to The Sage House, so they share a neighborhood.
+  const key = slug.startsWith('luxury-') ? 'family' : 'desert';
   const { area, bounds, places } = neighborhoods[key];
   const topLeft = mapPoint(bounds.north, bounds.west);
   const bottomRight = mapPoint(bounds.south, bounds.east);

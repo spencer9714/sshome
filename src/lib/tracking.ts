@@ -7,8 +7,8 @@ export function airbnbTrackingTarget(raw: string, origin: string) {
   try { url = new URL(raw, origin); } catch { return null; }
   const room = url.hostname === 'www.airbnb.com' && url.protocol === 'https:'
     ? url.pathname.match(/^\/rooms\/(\d+)\/?$/)?.[1] : undefined;
-  const shortKey = url.origin === origin ? url.pathname.match(/^\/go\/(desert|family)\/?$/)?.[1] : undefined;
-  const shortListing = shortKey === 'desert' || shortKey === 'family' ? config.listings[shortKey] : undefined;
+  const shortKey = url.origin === origin ? url.pathname.match(/^\/go\/(desert|family|sand)\/?$/)?.[1] : undefined;
+  const shortListing = shortKey ? config.listings[shortKey as keyof typeof config.listings] : undefined;
   const id = room || shortListing?.id;
   if (!id) return null;
   return { listing_id: `airbnb_${id}` };

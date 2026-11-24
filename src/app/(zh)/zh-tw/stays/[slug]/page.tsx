@@ -40,7 +40,7 @@ export default async function ChineseStay({ params }: Props) {
     <JsonLd data={{ ...staySchema(stay), '@id': `${absoluteUrl(zhStayPath(slug))}#rental`, name: text.name, description: text.description, url: absoluteUrl(zhStayPath(slug)) }} />
     <JsonLd data={faqSchema(text.faqs)} />
     <JsonLd data={breadcrumbSchema([{ name: '中文首頁', path: '/zh-tw' }, { name: text.name, path: zhStayPath(slug) }])} />
-    <Link href="/zh-tw#homes" className="text-sm underline">比較兩間住宿</Link><h1 className="mt-4 text-4xl leading-tight sm:text-5xl">{text.name}</h1><p className="mt-4 text-stone">Visalia 整棟住宿・最多 {stay.guests} 人・{stay.bedrooms} 房・{stay.baths} 間衛浴{stay.rating && <>・★ {stay.rating.value}（{stay.rating.count} 則 Airbnb 評論）</>}</p>
+    <Link href="/zh-tw#homes" className="text-sm underline">比較三間住宿</Link><h1 className="mt-4 text-4xl leading-tight sm:text-5xl">{text.name}</h1><p className="mt-4 text-stone">Visalia 整棟住宿・最多 {stay.guests} 人・{stay.bedrooms} 房・{stay.baths} 間衛浴{stay.rating && <>・★ {stay.rating.value}（{stay.rating.count} 則 Airbnb 評論）</>}</p>
     <div className="relative mt-6 aspect-[3/2] overflow-hidden rounded-lg"><Image src={getHeroPhoto(stay).src} alt={text.name} fill priority sizes="(min-width: 1024px) 1100px, 100vw" className="object-cover" /></div>
     <StayOverview stay={stay} language="zh-Hant" />
     <MobileStayBooking stay={stay} language="zh-Hant" />

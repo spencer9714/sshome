@@ -11,7 +11,7 @@ export function SiteFooter({ language = 'en' }: { language?: 'en' | 'zh-Hant' })
         <div>
           <p className="font-display text-2xl tracking-[0.12em]">SSHOME</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone/75">
-            Two private homes in Visalia, California, for park adventures and time together.
+            Three private homes in Visalia, California, for park adventures and time together.
           </p>
         </div>
         <nav aria-label="Homes" className="text-sm">

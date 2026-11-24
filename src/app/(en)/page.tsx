@@ -14,7 +14,7 @@ export const metadata: Metadata = { alternates: { canonical: '/', languages: lan
 
 export default function HomePage() {
   const hero = stays[0].photos[0];
-  const homeFaqs = siteFaqs.filter((faq) => !['Which home has a swimming pool?', 'How should two families or 10 to 14 guests choose a home?', 'How far is Visalia from Sequoia and Kings Canyon National Parks?'].includes(faq.question));
+  const homeFaqs = siteFaqs.filter((faq) => !['Which homes have a swimming pool?', 'How should two families or 10 to 14 guests choose a home?', 'How far is Visalia from Sequoia and Kings Canyon National Parks?'].includes(faq.question));
   const featuredReviews = stays
     .flatMap((stay) => stay.reviews.map((review) => ({ review, stayName: stay.name })))
     .slice(0, 3);
@@ -33,7 +33,7 @@ export default function HomePage() {
             Big park days. A place to call your own.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-            Spend the day among the giant sequoias. Come back for dinner together, a game of pool, or a quiet evening outside. Two private Visalia homes, each welcoming up to {maxGuests} guests.
+            Spend the day among the giant sequoias. Come back for dinner together, a swim, a game of pool, or a quiet evening outside. Three private Visalia homes, each welcoming up to {maxGuests} guests.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
             <Link
@@ -43,14 +43,14 @@ export default function HomePage() {
               Find your home
             </Link>
             <Link href="#compare" className="border-b border-white pb-1">
-              Compare the two homes
+              Compare the homes
             </Link>
           </div>
         </div>
       </section>
 
       <section id="homes" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <h2 className="max-w-2xl text-3xl sm:text-5xl">Pool days or game nights?</h2>
+        <h2 className="max-w-2xl text-3xl sm:text-5xl">Pool days, putting greens, or game nights?</h2>
         <div className="mt-12 space-y-16 lg:mt-16 lg:space-y-24">
           {stays.map((stay, index) => (
             <article key={stay.slug} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
@@ -108,7 +108,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-5xl">Compare the homes</h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
-            Five bedrooms and a private pool, or four bedrooms with a pool table and loft? Both homes have a hot tub and a full kitchen. The swimming pool is exclusive to Desert Retreat and is not heated.
+            Two five-bedroom pool homes side by side, or four bedrooms with a pool table and loft? All three homes have a hot tub and a full kitchen. The pools at The Sage House and The Sand House are not heated, and a backyard gate connects those two homes when you book both.
           </p>
           <p className="mt-4 text-sm text-stone">The 14-guest capacity includes extra sleeping spaces. Review the bed arrangements before booking.</p>
           <div className="mt-10">
@@ -163,7 +163,7 @@ export default function HomePage() {
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {[
-            { href: '/sequoia-group-lodging', title: 'Bringing the whole group?', description: 'See the sleeping arrangements for 8 to 14 guests.', action: 'Find room for everyone' },
+            { href: '/sequoia-group-lodging', title: 'Bringing the whole group?', description: 'See how 8 to 14 guests sleep, or book two homes next door for up to 28.', action: 'Find room for everyone' },
             { href: '/sequoia-kings-canyon-guide#itineraries', title: 'A park day, at your pace', description: 'Ideas for one or two nights, with time for the house, too.', action: 'Explore trip ideas' },
             { href: '/sequoia-winter-guide', title: 'Heading up in winter?', description: 'What to know about snow, tire chains, and seasonal road access.', action: 'Read the winter guide' },
             { href: '/sequoia-kings-canyon-guide#where-to-stay', title: 'Why stay in Visalia?', description: 'Easy grocery runs, meals out, and a home to come back to.', action: 'Get to know the area' },

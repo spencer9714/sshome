@@ -227,7 +227,7 @@ export const stays: Stay[] = [
   },
   {
     slug: 'sand-house-pool-putting-green-visalia',
-    heroPhoto: '/stays/sand-house/pool-sunset.jpg',
+    heroPhoto: '/stays/sand-house/putting-green-2.jpg',
     name: 'The Sand House',
     airbnbId: trackingConfig.listings.sand.id,
     airbnbTitle: 'The Sand House | Pool, hot tub, mini golf',
@@ -318,7 +318,7 @@ export const stays: Stay[] = [
       sand('hot-tub-1', 'Bubbling hot tub with the putting green beyond', 'Hot tub'),
       sand('hot-tub-night', 'Hot tub lit blue at night', 'Hot tub'),
       sand('putting-green-1', 'Putting green with a wooden footbridge and picnic table', 'Putting green'),
-      sand('putting-green-2', 'Putting green and desert landscaping under a blue sky', 'Putting green'),
+      sand('putting-green-2', 'Backyard putting green with the pergola, BBQ and two-story home at The Sand House in Visalia', 'Putting green'),
       sand('putting-green-dusk', 'Putting green with path lights at dusk', 'Putting green'),
       sand('pergola-dining', 'Table set for eight under the pergola, with the pool beyond', 'Pergola & patio'),
       sand('outdoor-dining', 'Outdoor dining table with glasses and plates', 'Pergola & patio'),

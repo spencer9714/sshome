@@ -3,6 +3,7 @@ const spacesZh: Record<string, string> = {
   'Dining area': '用餐區', 'Backyard & patio': '後院與露台',
   'Game room': '遊戲室', Loft: '閣樓', Workspace: '工作區',
   'EV charging': 'EV 充電', Entrance: '入口', 'Laundry room': '洗衣間',
+  'Putting green': '推桿果嶺', 'Pergola & patio': 'Pergola 與露台', Backyard: '後院',
 };
 
 export function photoSpaceLabel(space: string, language: 'en' | 'zh-Hant') {
